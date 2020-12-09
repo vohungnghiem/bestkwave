@@ -1,0 +1,84 @@
+.subscribe {
+    h2 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    table,
+    th,td{
+        border: 1px solid $color-text;
+        border-collapse: collapse;
+       
+    }
+    table {
+        border-top: 3px solid $color-title;
+        width: 100%;
+        margin: 20px 0px;
+    }
+    td {
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+    tr {
+        min-height: 100px;
+    }
+    tr>td:first-child {
+        background: $color-title;
+        width: 30%;
+        font-weight: bold;
+        color: $color-white;
+    }
+    select {
+        margin: 4px;
+        padding: 7px;
+        color: $color-border;
+    }
+    input {
+        margin: 4px;
+        padding: 4px;
+    }
+    .span {
+        font-size: 13px;
+        color: $color-border;
+    }
+    .noti {
+        text-align: center;
+        p {
+            font-size: 14px;
+            color: $color-border;
+        }
+        .btn-noti {
+            width: 80px;
+            background: $color-white;
+            border: 1px solid $color-title;
+        }
+    }
+    .error {
+        color: $color-more;
+        margin: 3px;
+    }
+}
+
+.error-page {
+    padding-top: 20%;
+    text-align: center;
+    height: 500px;
+    h1 {
+        color: $color-more;
+    }
+    p {
+        a {
+            color: $color-title;
+        }
+    }
+}
+
+.about {
+    // border: 1px dotted $color-title;
+    color: $color-text;
+    font-weight: 550;
+    padding: 50px 10px;
+    img {
+        width: 100%;
+    }
+}

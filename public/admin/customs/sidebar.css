@@ -1,0 +1,28 @@
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: rgba(255,255,255,.1) !important;
+}
+.project-actions .badge i {
+    cursor: pointer !important;
+}
+
+.custom-upload {
+    background-color: #008000;
+    border: 1px solid #006400;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    padding: 4px 10px;
+}
+.custom-upload input {
+    left: -9999px; 
+    position: absolute;
+}
+
+#upload-demo, .upload-demo{
+    /* width: 1000px; */
+    height:500px;
+    padding-bottom:25px;
+    text-align: center;
+    width: 100%;
+}
+
