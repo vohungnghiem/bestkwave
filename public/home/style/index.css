@@ -27,6 +27,7 @@ a:hover {
   margin-top: 50px;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
 }
 .header-wrapper .main-header-menu .header-logo .logo {
   width: 320px;

@@ -56,7 +56,7 @@
             <div id="logo-fixed" class="header-logo">
                 <div  class="logo text-center">
                     <div class="slogan"> Tạp chí chuyên nghiệp Việt Nam </div>
-                    <a href="/"><img src="public/uploads/logobg/logo.png" alt="logo"></a>
+                    <a href="/" style="height: 200px;"><img src="public/uploads/logobg/logo.png" alt="logo"></a>
                 </div>
             </div>
             <nav id="main-menu-fixed" class="main-menu">
