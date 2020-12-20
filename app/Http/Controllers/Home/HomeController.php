@@ -16,6 +16,22 @@ class HomeController extends Controller
 {
     public function index() 
     {
+    // view
+        $sessionIP = \Request::ip();  
+        //Session::forget($sessionIP);
+
+        $sessionView = Session::get($sessionIP);
+        // Session::put($sessionIP, $sessionView);
+        // dd($sessionIP);
+        // $view = Post::findOrFail($post->id);
+        if (!isset($sessionView)) { 
+            Session::put($sessionIP, 1); 
+            // $view->increment('view');
+        }else {
+            Session::put($sessionIP, null); 
+            
+        }
+        dd(Session::get($sessionIP));
     // index
         $banners = DB::table('posts')->where([['type_post',2],['status',1]])->orderByDesc('id')->limit(4)->get();
         $latest = DB::table('posts')
