@@ -1,3 +1,8 @@
+@php
+    $visitor_total = DB::table('views')->sum('view');
+    $visitor_today = DB::table('views')->whereDate('created_at',date("Y-m-d"))->sum('view');
+    $visitor_month = DB::table('views')->whereMonth('created_at',date("m"))->sum('view');
+@endphp
 <footer id="footer" class="footer">
     <div class="logo-footer">
         <img src="public/uploads/logobg/logo-footer.png?v={{time()}}" alt="logo">
@@ -10,6 +15,12 @@
             <a href="page/about">About us</a> 
             <a href="page/advertisement">Hợp tác quảng cáo</a> 
         </p>
+        <ul class="list-unstyled text-right p-3 footer-count">
+            <li>Count Per Day</li>
+            <li>Total Visitors: {{$visitor_total}}</li>
+            <li>Visitors today: {{$visitor_today}}</li>
+            <li>Visitors per month: {{$visitor_month}}</li>
+        </ul>
     </div>
     <div class="scroll"><i class="fas fa-chevron-up"></i></div>
 </footer>

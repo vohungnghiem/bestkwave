@@ -10,6 +10,7 @@ use App\Models\Subscribe;
 use App\Models\SubReceive;
 use App\Models\SubSend;
 use App\Models\SubJob;
+use App\Models\View;
 use Carbon\Carbon;
 use Session;
 class HomeController extends Controller
@@ -17,21 +18,21 @@ class HomeController extends Controller
     public function index() 
     {
     // view
-        $sessionIP = \Request::ip();  
-        //Session::forget($sessionIP);
-
-        $sessionView = Session::get($sessionIP);
-        // Session::put($sessionIP, $sessionView);
-        // dd($sessionIP);
-        // $view = Post::findOrFail($post->id);
-        if (!isset($sessionView)) { 
-            Session::put($sessionIP, 1); 
-            // $view->increment('view');
-        }else {
-            Session::put($sessionIP, null); 
-            
+        $date = date("Y-m-d H:i:s");
+        $exists = View::whereDate('created_at',date("Y-m-d"))->first();  
+        if (!session()->has('key')) {
+            if ($exists) {
+               $view = View::find($exists->id);
+               $view->increment('view');
+            }else{
+                $view = new View;
+                $view->view = 1;
+                $view->created_at = $date;
+                $view->save();
+            }
+            session()->put('key', 'default');
+            Session::save();
         }
-        dd(Session::get($sessionIP));
     // index
         $banners = DB::table('posts')->where([['type_post',2],['status',1]])->orderByDesc('id')->limit(4)->get();
         $latest = DB::table('posts')

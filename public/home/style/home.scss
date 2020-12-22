@@ -178,6 +178,7 @@
     // background-color: #F7D0D0;
     // background: url('/uploads/logobg/backgroud.jpg') no-repeat center center fixed;
     // background-size: cover;
+    position: relative;
     background-image: linear-gradient(to right, #d08182,#f7aba5,#ebbdb5, #f7aba5,#d08182);
     padding-bottom: 50px;
     min-height: 200px;
@@ -207,6 +208,11 @@
                 margin: 0 5px;
             }
         }
+    }
+    .footer-count {
+        position: absolute; 
+        top: 10px; 
+        right: 10px
     }
 }
 .hr {
