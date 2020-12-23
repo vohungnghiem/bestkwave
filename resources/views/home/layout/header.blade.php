@@ -69,6 +69,7 @@
                     @foreach ($chunkcategories[1] as $item)
                         <li class="menu-item"><a href="category/{{$item->slug}}">{{$item->title}}</a></li>
                     @endforeach
+                    <li class="menu-item"><a href="/">E-MAGAZINE</a></li>
                 </ul>
             </nav>
         </div>

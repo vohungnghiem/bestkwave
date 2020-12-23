@@ -29,11 +29,10 @@
             
             <section id="home"> 
                 @yield('header')
-                
-                <div id="wrap-content">
-                    @yield('content')
-                </div>
             </section>
+        </div>
+        <div id="wrap-content">
+            @yield('content')
         </div>
         @include('home.layout.footer')      
           

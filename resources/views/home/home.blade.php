@@ -23,7 +23,16 @@
     @include('home.layout.header')
 @endsection
 @section('content')
+<section class="qc-1">
+    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
+</section>
 <section class="home-lasted">
+    <aside class="qc-2 qc-2-left">
+        <img src="public/uploads/advertisement/so2.jpg" alt="advertisement">
+    </aside>
+    <aside class="qc-2 qc-2-right">
+        <img src="public/uploads/advertisement/so2.jpg" alt="advertisement">
+    </aside>
     <div class="row" id="loadmore">
         @foreach ($latest as $item)
         <article class="col-md-4 col-12">
@@ -50,7 +59,13 @@
         <span></span>
     </div>
 </section>
+<section class="qc-1">
+    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
+</section>
 <section class="home-most">
+    <aside class="qc-3-right">
+        <img src="public/uploads/advertisement/so3.jpg" alt="advertisement">
+    </aside>
     <h1 class="home-most-title">most popular</h1>
     <div class="hr"></div>
     <div class="home-most-list">
@@ -69,6 +84,9 @@
         </article>
         @endforeach
     </div>
+</section>
+<section class="qc-1">
+    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
 </section>
 @endsection
 @push('javascript')

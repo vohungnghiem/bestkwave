@@ -139,6 +139,25 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="admincp/standad" class="nav-link">
+                        <i class="nav-icon far fa-envelope-open"></i>
+                        <p>
+                            Standad
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="admincp/advertisement" class="nav-link">
+                        <i class="nav-icon far fa-envelope-open"></i>
+                        <p>
+                            Advertisement
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

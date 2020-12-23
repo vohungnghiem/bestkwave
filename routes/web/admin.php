@@ -120,6 +120,30 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'admincp', 'namespa
 		Route::post('sort/{id}', 'SubscribeController@sort');
 	});
 
+	Route::group(['prefix' => 'standad'],function(){
+		Route::get('/','StandadController@index');
+		Route::get('create','StandadController@create' );
+		Route::post('store', 'StandadController@store');
+		Route::get('{id}/edit', 'StandadController@edit');
+		Route::post('{id}/update', 'StandadController@update');
+		Route::get('{id}/destroy', 'StandadController@destroy');
+		Route::get('{id}', 'StandadController@show');
+		Route::post('status/{id}','StandadController@status');
+		Route::post('sort/{id}', 'StandadController@sort');
+	});
+
+	Route::group(['prefix' => 'advertisement'],function(){
+		Route::get('/','AdvertisementController@index');
+		Route::get('create','AdvertisementController@create' );
+		Route::post('store', 'AdvertisementController@store');
+		Route::get('{id}/edit', 'AdvertisementController@edit');
+		Route::post('{id}/update', 'AdvertisementController@update');
+		Route::get('{id}/destroy', 'AdvertisementController@destroy');
+		Route::get('{id}', 'AdvertisementController@show');
+		Route::post('status/{id}','AdvertisementController@status');
+		Route::post('sort/{id}', 'AdvertisementController@sort');
+	});
+
 });
 
 

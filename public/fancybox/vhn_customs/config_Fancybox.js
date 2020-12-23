@@ -23,7 +23,7 @@ $(document).ready(function(){
       
   }
   function clear_img(){
-    var images = 'uploads/no-image.jpg';
+    var images = '/admin/images/non_image.png';
     $('#prev_img').attr('src', images);
-    $('#none_img').val('uploads/no-image.jpg');
+    $('#none_img').val('');
   }

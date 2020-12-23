@@ -152,6 +152,8 @@ a:hover {
   height: 50px;
   display: flex;
   align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #menufixed .slogan {
   display: none;
@@ -177,6 +179,9 @@ a:hover {
   display: inline;
   padding: 5px;
   font-weight: 500;
+}
+#menufixed .second-header-left .menu-list .menu-item a {
+  font-size: 13px;
 }
 #menufixed .second-header-right {
   right: 0px;
@@ -393,12 +398,34 @@ a:hover {
 }
 
 #wrap-content {
+  max-width: 970px;
+  margin: -1px auto 0;
   padding: 30px 0px;
   min-height: 500px;
 }
+#wrap-content .qc-1 {
+  padding-top: 10px;
+}
+#wrap-content .qc-1 img {
+  max-width: 100%;
+}
 
 .home-lasted {
+  position: relative;
   padding: 15px 0px;
+}
+.home-lasted .qc-2 {
+  position: absolute;
+  margin-top: 15px;
+}
+.home-lasted .qc-2 img {
+  max-width: 200px;
+}
+.home-lasted .qc-2-left {
+  left: -200px;
+}
+.home-lasted .qc-2-right {
+  right: -200px;
 }
 .home-lasted .home-item-article {
   padding: 15px 0px;
@@ -463,7 +490,12 @@ a:hover {
 }
 
 .home-most {
+  position: relative;
   padding: 15px 5px;
+}
+.home-most .qc-3-right {
+  position: absolute;
+  right: 0;
 }
 .home-most .home-most-title {
   font-family: Oranienbaum, Georgia, serif;
