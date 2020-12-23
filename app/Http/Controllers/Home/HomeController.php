@@ -46,7 +46,24 @@ class HomeController extends Controller
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
             ->orderBy('id','desc')->paginate(9);
         $most = DB::table('posts')->where('status',1)->whereNotIn('type_post',[2])->orderBy('view','desc')->limit(5)->get();
-        return view('home.home',['banners'=>$banners,'latest'=>$latest,'most'=>$most]);
+
+        $adfirst = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',1],['standads.status',1],['advertisements.status',1]])->first();
+        $adsecond = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',2],['standads.status',1],['advertisements.status',1]])->first();
+        $adthird = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',3],['standads.status',1],['advertisements.status',1]])->first();
+        $adfourth = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',4],['standads.status',1],['advertisements.status',1]])->first();
+        $adfifth = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',5],['standads.status',1],['advertisements.status',1]])->first();
+        $adsixth = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',6],['standads.status',1],['advertisements.status',1]])->first();
+        return view('home.home',[
+                'banners'=>$banners,'latest'=>$latest,'most'=>$most,
+                'adfirst'=>$adfirst,'adsecond'=>$adsecond,'adthird'=>$adthird,
+                'adfourth'=>$adfourth,'adfifth'=>$adfifth,'adsixth'=>$adsixth
+            ]);
     }
     public function getLoadmore() 
     {

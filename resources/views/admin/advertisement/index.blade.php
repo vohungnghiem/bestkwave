@@ -113,6 +113,8 @@
             columnDefs: [
                 {	orderable: false},
                 { "width": "5%", "targets": 0},
+                { "width": "15%", "targets": 1},
+                { "width": "10%", "targets": 2},
                 { "width": "10%", "targets": 3, "className": "text-center"},
                 { "width": "5%", "targets": 4, "className": "text-center"},
                 { "width": "10%", "targets": 5, "className": "text-center"},

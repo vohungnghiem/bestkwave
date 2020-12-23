@@ -31,9 +31,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><a class="btn btn-primary" href="admincp/standad/create">Create Stand Advertisement</a></h3>
+                            <h3 class="card-title">
+                                <a class="btn btn-primary" href="admincp/standad/create">Create Stand Advertisement</a>
+                            </h3>
                         </div>
                         <div class="card-body">
+                            <b>notice: </b>Sắp xếp theo sort để trình diễn theo thứ tự ngoài trang chủ
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

@@ -23,16 +23,23 @@
     @include('home.layout.header')
 @endsection
 @section('content')
+
+@isset($adfirst)
 <section class="qc-1">
-    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
+    <img src="{{$adfirst->image}}" alt="advertisement">
 </section>
+@endisset
 <section class="home-lasted">
+    @isset($adsecond)
     <aside class="qc-2 qc-2-left">
-        <img src="public/uploads/advertisement/so2.jpg" alt="advertisement">
+        <img src="{{$adsecond->image}}" alt="advertisement">
     </aside>
+    @endisset
+    @isset($adthird)
     <aside class="qc-2 qc-2-right">
-        <img src="public/uploads/advertisement/so2.jpg" alt="advertisement">
+        <img src="{{$adthird->image}}" alt="advertisement">
     </aside>
+    @endisset
     <div class="row" id="loadmore">
         @foreach ($latest as $item)
         <article class="col-md-4 col-12">
@@ -59,13 +66,17 @@
         <span></span>
     </div>
 </section>
+@isset($adfourth)
 <section class="qc-1">
-    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
+    <img src="{{$adfourth->image}}" alt="advertisement">
 </section>
+@endisset
 <section class="home-most">
+    @isset($adfifth)
     <aside class="qc-3-right">
-        <img src="public/uploads/advertisement/so3.jpg" alt="advertisement">
+        <img src="{{$adfifth->image}}" alt="advertisement">
     </aside>
+    @endisset
     <h1 class="home-most-title">most popular</h1>
     <div class="hr"></div>
     <div class="home-most-list">
@@ -85,9 +96,12 @@
         @endforeach
     </div>
 </section>
+@isset($adsixth)
 <section class="qc-1">
-    <img src="public/uploads/advertisement/so1.jpg" alt="advertisement">
+    <img src="{{$adsixth->image}}" alt="advertisement">
 </section>
+@endisset
+
 @endsection
 @push('javascript')
     <script type="text/javascript" src="public/home/script/moreajax.js?v={{time()}}"></script>

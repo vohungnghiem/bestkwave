@@ -144,7 +144,7 @@
                     <a href="admincp/standad" class="nav-link">
                         <i class="nav-icon far fa-envelope-open"></i>
                         <p>
-                            Standad
+                            Stand
                         </p>
                     </a>
                 </li>
