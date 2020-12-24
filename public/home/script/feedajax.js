@@ -28,7 +28,7 @@ $(document).ready(function () {
                                     '<h2><a href="'+item.slug+'">'+item.title+'</a> </h2>' +
                                     '<div class="date">'+item.date+'</div>' +
                                     
-                                    '<div class="caption">'+item.caption+'</div>' +
+                                    '<div class="caption">'+'</div>' +
                                     '<a href="'+item.slug+'" class="btn-detail">detail +</a>' +
                                 '</div>' +
                             '</article>' +

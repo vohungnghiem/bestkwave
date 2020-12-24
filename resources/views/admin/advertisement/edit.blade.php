@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="link"> Link </label>
-                                <input type="text" name="link" value="{{$advertisement->link}}" class="form-control @if ($errors->first('link')) is-invalid @endif" placeholder="link" required>
+                                <input type="text" name="link" value="{{$advertisement->link}}" class="form-control @if ($errors->first('link')) is-invalid @endif" placeholder="link" >
                                 @if($errors->first('link'))  
                                     <small class="form-text text-danger" >
                                         {!! $errors->first('link') !!}
@@ -65,7 +65,7 @@
 
                             <div class="form-group">
                                 <div class="">
-                                    <a class="btn btn-primary iframe-btn fancy" href="tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
+                                    <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
                                     <span onclick="clear_img()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
                                 </div>
                                 <br>
@@ -73,7 +73,7 @@
                                 @if ($advertisement->image)
                                     <img src="{{$advertisement->image}}" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
                                 @else
-                                    <img src="admin/images/non_image.png'" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
+                                    <img src="public/admin/images/non_image.png'" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
                                 @endif
                                 <input name="image" type="hidden" value="{{$advertisement->image}}" id="none_img" class="form-control">
                             </div>
@@ -109,9 +109,14 @@
 
 @endsection
 @section('javascript')
-<link rel="stylesheet" href="fancybox/jquery.fancybox.css">
+<style type="text/css">
+    .form-group img {
+        max-height: 400px;
+    }
+</style>
+<link rel="stylesheet" href="public/fancybox/jquery.fancybox.css">
 {{-- <script src="fancybox/vhn_customs/preview-img.js"></script> --}}
-<link  href="fancybox/vhn_customs/preview-img.css">
-<script src="fancybox/jquery.fancybox.pack.js"></script>
-<script src="fancybox/vhn_customs/config_Fancybox.js"></script>
+<link  href="public/fancybox/vhn_customs/preview-img.css">
+<script src="public/fancybox/jquery.fancybox.pack.js"></script>
+<script src="public/fancybox/vhn_customs/config_Fancybox.js"></script>
 @endsection

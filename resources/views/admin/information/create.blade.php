@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Admincp | Create Advertisement')
+@section('title', 'Admincp | Create Information')
 @section('content')
 @if (session('error'))
     <div class="alert alert-danger">
@@ -11,11 +11,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Advertisement</h1>
+                    <h1>Create Information</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="admincp/advertisement">Advertisement</a></li>
+                        <li class="breadcrumb-item"><a href="admincp/information">Information</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div>
@@ -24,18 +24,19 @@
     </section>
 
     <section class="content">
-        <form method="POST" action="{{url('admincp/advertisement/store')}}" autocomplete="off" enctype="multipart/form-data">
+        <form method="POST" action="{{url('admincp/information/store')}}" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-group" id="type_post">
-                                <label> Vị trí</label>
-                                <select class="form-control select2bs4" name="standad"  style="width: 100%;">
-                                    @foreach ($standads as $item)
-                                        <option value="{{$item->id}}">{{$item->title}}</option>                                        
-                                    @endforeach
+                            <div class="form-group" id="type">
+                                <label> Type</label>
+                                <select class="form-control select2bs4" name="type"  style="width: 100%;">
+                                    <option value="1">Website</option>
+                                    <option value="2">Phone</option>
+                                    <option value="3">Email</option>
+                                    <option value="4">Address</option>                                                                            
                                 </select>
                             </div>
                             <div class="form-group">
@@ -56,17 +57,6 @@
                                     </small>
                                 @endif
                             </div>
-
-                            <div class="form-group">
-                                <div class="">
-                                    <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
-                                    <span onclick="clear_img()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
-                                </div>
-                                <br>
-                                <img src="{{url('public/admin/images/non_image.png')}}" alt="" id="prev_img" class=" medium ui image bordered img-thumbnail ">
-                                <input name="image" type="hidden" value="" id="none_img" class="form-control">
-                            </div>
-                            
                             <div class="form-group">
                                 <label for="sort"> Sort </label>
                                 <input type="number" name="sort" value="{{$sort}}" class="form-control " placeholder="sort" style="width:100px" >
@@ -78,7 +68,7 @@
                             <div>
                                 <button class="btn btn-primary" type="submiti"> Confirm </button>
                                 <button class="btn btn-secondary"type="reset"> Cancel </button>
-                                <a class="btn btn-dark" href="admincp/advertisement"> Back list </a>
+                                <a class="btn btn-dark" href="admincp/information"> Back list </a>
                             </div>  
                         </div>
                     </div>   
@@ -98,14 +88,5 @@
 
 @endsection
 @section('javascript')
-<style type="text/css">
-    .form-group img {
-        max-height: 400px;
-    }
-</style>
-<link rel="stylesheet" href="public/fancybox/jquery.fancybox.css">
-{{-- <script src="fancybox/vhn_customs/preview-img.js"></script> --}}
-<link  href="public/fancybox/vhn_customs/preview-img.css">
-<script src="public/fancybox/jquery.fancybox.pack.js"></script>
-<script src="public/fancybox/vhn_customs/config_Fancybox.js"></script>
+
 @endsection

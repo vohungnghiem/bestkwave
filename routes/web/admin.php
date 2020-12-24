@@ -144,6 +144,18 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'admincp', 'namespa
 		Route::post('sort/{id}', 'AdvertisementController@sort');
 	});
 
+	Route::group(['prefix' => 'information'],function(){
+		Route::get('/','InformationController@index');
+		Route::get('create','InformationController@create' );
+		Route::post('store', 'InformationController@store');
+		Route::get('{id}/edit', 'InformationController@edit');
+		Route::post('{id}/update', 'InformationController@update');
+		Route::get('{id}/destroy', 'InformationController@destroy');
+		Route::get('{id}', 'InformationController@show');
+		Route::post('status/{id}','InformationController@status');
+		Route::post('sort/{id}', 'InformationController@sort');
+	});
+
 });
 
 

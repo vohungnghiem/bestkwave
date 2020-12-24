@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Advertisement extends Model
+class Information extends Model
 {
-    protected $table = "advertisements";
+    protected $table = "informations";
     public $timestamps = false;
 }

@@ -24,11 +24,13 @@ class HomeController extends Controller
         $exists = View::whereDate('created_at',$d)->first();  
         if (!session()->has('key')) {
             if (isset($exists)) {
-               $view = View::find($exists->id);
-               $view->increment('view');
+                $view = View::find($exists->id);
+                $view->view += 6;
+                $view->save();
+                // $view->increment('view');
             }else{
                 $view = new View;
-                $view->view = 1;
+                $view->view = 6;
                 $view->created_at = $date;
                 $view->save();
             }

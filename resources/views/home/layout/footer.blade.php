@@ -2,14 +2,21 @@
     $visitor_total = DB::table('views')->sum('view');
     $visitor_today = DB::table('views')->whereDate('created_at',date("Y-m-d"))->sum('view');
     $visitor_month = DB::table('views')->whereMonth('created_at',date("m"))->sum('view');
+
+    $website = DB::table('informations')->where([['status',1],['type',1]])->get();
+    $phone = DB::table('informations')->where([['status',1],['type',2]])->get();
+    $email = DB::table('informations')->where([['status',1],['type',3]])->get();
+    $address = DB::table('informations')->where([['status',1],['type',4]])->get();
 @endphp
 <footer id="footer" class="footer">
     <div class="logo-footer">
         <img src="public/uploads/logobg/logo-footer.png?v={{time()}}" alt="logo">
     </div>
     <div class="footer-txt">
-        www.bestkwave.com / bestkwave@gmail.com / +84 0862 303 059<br>
-        B2-10 Scenic Valley 2, Phú Mỹ Hưng, Quận 7, Thành Phố Hồ Chí Minh, Vietnam <br>
+        Website: @foreach ($website as $item) {{$item->title}} @endforeach <br> 
+        Email: @foreach ($email as $item) {{$item->title}} /  @endforeach <br>
+        Phone: @foreach ($phone as $item) {{$item->title}} @endforeach <br>
+        @foreach ($address as $item) {{$item->title}} @endforeach <br>
         COPYRIGHT ⓒ  2021 KWAVE ALL RIGHTS RESERVED
         <p>
             <a href="page/about">About us</a> 

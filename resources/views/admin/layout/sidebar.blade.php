@@ -142,18 +142,27 @@
 
                 <li class="nav-item">
                     <a href="admincp/standad" class="nav-link">
-                        <i class="nav-icon far fa-envelope-open"></i>
+                        <i class="nav-icon fas fa-ad"></i>
                         <p>
-                            Stand
+                            Stand (sắp xếp AD)
                         </p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="admincp/advertisement" class="nav-link">
-                        <i class="nav-icon far fa-envelope-open"></i>
+                        <i class="nav-icon fab fa-adversal"></i>
                         <p>
                             Advertisement
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="admincp/information" class="nav-link">
+                        <i class="nav-icon fas fa-info"></i>
+                        <p>
+                            Information
                         </p>
                     </a>
                 </li>

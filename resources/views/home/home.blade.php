@@ -26,18 +26,18 @@
 
 @isset($adfirst)
 <section class="qc-1">
-    <img src="{{$adfirst->image}}" alt="advertisement">
+    <a href="{{$adfirst->link}}"><img src="{{$adfirst->image}}" alt="advertisement"></a>
 </section>
 @endisset
 <section class="home-lasted">
     @isset($adsecond)
     <aside class="qc-2 qc-2-left">
-        <img src="{{$adsecond->image}}" alt="advertisement">
+        <a href="{{$adsecond->link}}"><img src="{{$adsecond->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     @isset($adthird)
     <aside class="qc-2 qc-2-right">
-        <img src="{{$adthird->image}}" alt="advertisement">
+        <a href="{{$adthird->link}}"><img src="{{$adthird->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     <div class="row" id="loadmore">
@@ -68,13 +68,13 @@
 </section>
 @isset($adfourth)
 <section class="qc-1">
-    <img src="{{$adfourth->image}}" alt="advertisement">
+    <a href="{{$adfourth->link}}"><img src="{{$adfourth->image}}" alt="advertisement"></a>
 </section>
 @endisset
 <section class="home-most">
     @isset($adfifth)
     <aside class="qc-3-right">
-        <img src="{{$adfifth->image}}" alt="advertisement">
+        <a href="{{$adfifth->link}}"><img src="{{$adfifth->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     <h1 class="home-most-title">most popular</h1>
@@ -98,7 +98,7 @@
 </section>
 @isset($adsixth)
 <section class="qc-1">
-    <img src="{{$adsixth->image}}" alt="advertisement">
+    <a href="{{$adsixth->link}}"><img src="{{$adsixth->image}}" alt="advertisement"></a>
 </section>
 @endisset
 
