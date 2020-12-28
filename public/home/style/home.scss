@@ -30,7 +30,7 @@
 #wrap-content {
     max-width: 970px; 
     margin: -1px auto 0;
-    padding: 30px 0px;
+    padding: 30px 0px 45px 0px;
     min-height: 500px;
     .qc-1 {
         padding-top: 10px;
@@ -126,6 +126,9 @@
     .qc-3-right {
         position: absolute;
         right: 0;
+        img {
+            max-width: 230px;
+        }
     }
     .home-most-title {
         font-family: Oranienbaum, Georgia, serif;
@@ -296,7 +299,7 @@
         padding: 0px 0px; 
     }
     #wrap-content {
-        padding: 30px 5px;
+        padding: 30px 5px 45px 5px;
     }
     .header-wrapper {
         padding: 0px 5px;
@@ -307,6 +310,14 @@
                 max-width: 270px;
             }
         }
+        .qc-3-right {
+            display: none;
+        }
+    }
+    .home-lasted{
+        .qc-2 {
+            display: none;
+        }
     }
 }
 @media only screen and (max-width: 376px) {
@@ -315,6 +326,14 @@
             .home-most-text {
                 max-width: 210px;
             }
+        }
+        .qc-3-right {
+            display: none;
+        }
+    }
+    .home-lasted{
+        .qc-2 {
+            display: none;
         }
     }
 }

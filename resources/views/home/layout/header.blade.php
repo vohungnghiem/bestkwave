@@ -1,6 +1,7 @@
 @php
     $categories = DB::table('categories')->where([['parent',0],['status',1]])->orderBy('sort','asc')->orderBy('id','asc')->get();
     $chunkcategories = $categories->chunk(4);
+    $emagazine = DB::table('informations')->where([['status',1],['type',5]])->first();
 @endphp
 <header class="header-wrapper">    
     <div class="mobile">
@@ -69,7 +70,9 @@
                     @foreach ($chunkcategories[1] as $item)
                         <li class="menu-item"><a href="category/{{$item->slug}}">{{$item->title}}</a></li>
                     @endforeach
-                    <li class="menu-item"><a href="/">E-MAGAZINE</a></li>
+                    @isset($emagazine)
+                        <li class="menu-item"><a href="{{$emagazine->link}}">E-MAGAZINE</a></li>                        
+                    @endisset
                 </ul>
             </nav>
         </div>

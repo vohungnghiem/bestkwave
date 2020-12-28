@@ -1,5 +1,5 @@
 @extends('home.layout.master')
-@section('title', 'KWave kết nối đọc giả | (Best K wave)')
+@section('title', 'bestkwave')
 @section('description', 'Ấn phẩm mang những thông tin giải trí và văn hóa Hàn Quốc hữu ích cho độc giả Việt Nam')
 @section('banner')
 <section id="banner" class="carousel slide" data-ride="carousel">
@@ -59,10 +59,32 @@
             </div>
         </article>
         @endforeach
-       
+        @isset($adseventh)
+        <section class="qc-1 col-md-12">
+            <a href="{{$adseventh->link}}"><img src="{{$adseventh->image}}" alt="advertisement"></a>
+        </section>
+        @endisset
+        @foreach ($latestadd as $item)
+        <article class="col-md-4 col-12">
+            <div class="home-item-article">
+                <div class="item-image">
+                    <a href="{{$item->slug}}">
+                        <img src="public/uploads/thumb/{{$item->year}}/{{$item->month}}/{{$item->image}}?v={{time()}}"
+                        onerror="this.onerror=null; this.src='public/home/image/non_image.png'" alt="{{$item->title}}" />
+                    </a>
+                </div>
+                <div class="item-text">
+                    <p class="item-cat">{{$item->title_cat}}</p>
+                    <h2 class="item-title"><a href="{{$item->slug}}">{{$item->title}}</a></h2>
+                    {{-- <p class="item-date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </p> --}}
+                    <p class="item-date">{{ $item->date}} </p>
+                </div>
+            </div>
+        </article>
+        @endforeach
     </div>
     <div class="btn-more">
-        <p><a class="nextpage" href="{{ $latest->currentPage() }}">load more stories</a></p>
+        <p><a class="nextpage" href="1">load more stories</a></p>
         <span></span>
     </div>
 </section>

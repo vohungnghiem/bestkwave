@@ -46,7 +46,17 @@ class HomeController extends Controller
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
                 DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
-            ->orderBy('id','desc')->paginate(9);
+            ->orderBy('id','desc')
+            ->skip(0)->take(6)->get();
+        $latestadd = DB::table('posts')
+            ->join('categories','categories.id','=','posts.category')
+            ->where([['posts.status',1],['categories.status',1]])
+            ->whereNotIn('posts.type_post',[2])
+            ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
+                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
+            ->orderBy('id','desc')
+            ->skip(6)->take(3)->get();
         $most = DB::table('posts')->where('status',1)->whereNotIn('type_post',[2])->orderBy('view','desc')->limit(5)->get();
 
         $adfirst = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
@@ -61,10 +71,12 @@ class HomeController extends Controller
             ->where([['standads.sort',5],['standads.status',1],['advertisements.status',1]])->first();
         $adsixth = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
             ->where([['standads.sort',6],['standads.status',1],['advertisements.status',1]])->first();
+        $adseventh = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',7],['standads.status',1],['advertisements.status',1]])->first();
         return view('home.home',[
-                'banners'=>$banners,'latest'=>$latest,'most'=>$most,
+                'banners'=>$banners,'latest'=>$latest,'latestadd'=>$latestadd,'most'=>$most,
                 'adfirst'=>$adfirst,'adsecond'=>$adsecond,'adthird'=>$adthird,
-                'adfourth'=>$adfourth,'adfifth'=>$adfifth,'adsixth'=>$adsixth
+                'adfourth'=>$adfourth,'adfifth'=>$adfifth,'adsixth'=>$adsixth,'adseventh'=>$adseventh
             ]);
     }
     public function getLoadmore() 

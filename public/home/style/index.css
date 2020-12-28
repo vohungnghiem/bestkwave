@@ -400,7 +400,7 @@ a:hover {
 #wrap-content {
   max-width: 970px;
   margin: -1px auto 0;
-  padding: 30px 0px;
+  padding: 30px 0px 45px 0px;
   min-height: 500px;
 }
 #wrap-content .qc-1 {
@@ -496,6 +496,9 @@ a:hover {
 .home-most .qc-3-right {
   position: absolute;
   right: 0;
+}
+.home-most .qc-3-right img {
+  max-width: 230px;
 }
 .home-most .home-most-title {
   font-family: Oranienbaum, Georgia, serif;
@@ -664,7 +667,7 @@ a:hover {
   }
 
   #wrap-content {
-    padding: 30px 5px;
+    padding: 30px 5px 45px 5px;
   }
 
   .header-wrapper {
@@ -674,10 +677,24 @@ a:hover {
   .home-most .home-most-list .home-most-text {
     max-width: 270px;
   }
+  .home-most .qc-3-right {
+    display: none;
+  }
+
+  .home-lasted .qc-2 {
+    display: none;
+  }
 }
 @media only screen and (max-width: 376px) {
   .home-most .home-most-list .home-most-text {
     max-width: 210px;
+  }
+  .home-most .qc-3-right {
+    display: none;
+  }
+
+  .home-lasted .qc-2 {
+    display: none;
   }
 }
 .category {
@@ -745,6 +762,7 @@ a:hover {
   color: #808080;
   font-size: 14px;
   font-weight: 300;
+  padding-bottom: 30px;
 }
 .category .cat-article-wrap .cat-article-right .cat-article-bottom {
   position: absolute;

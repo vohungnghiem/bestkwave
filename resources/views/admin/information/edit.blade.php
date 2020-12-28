@@ -40,7 +40,8 @@
                                 <option value="1" @if ($information->type == 1) selected @endif>Website</option>
                                 <option value="2" @if ($information->type == 2) selected @endif>Phone</option>
                                 <option value="3" @if ($information->type == 3) selected @endif>Email</option>
-                                <option value="4" @if ($information->type == 4) selected @endif>Address</option>                                                                            
+                                <option value="4" @if ($information->type == 4) selected @endif>Address</option> 
+                                <option value="5" @if ($information->type == 5) selected @endif>E-MAGAZINE</option>                                                                            
                             </select>
                             <div class="form-group">
                                 <label for="title"> Title </label>

@@ -67,6 +67,9 @@
                                                     case '4': 
                                                         echo "Address";
                                                         break;
+                                                    case '5':
+                                                        echo "E-MAGAZINE";
+                                                        break;
                                                     default:
                                                         echo "Not found";
                                                         break;

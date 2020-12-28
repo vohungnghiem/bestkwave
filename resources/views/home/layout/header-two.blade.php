@@ -1,5 +1,6 @@
 @php
     $categories = DB::table('categories')->where([['parent',0],['status',1]])->get();
+    $emagazine = DB::table('informations')->where([['status',1],['type',5]])->first();
 @endphp
 <header class="header-wrapper layout-two-check" >
     <div class="mobile">
@@ -62,6 +63,9 @@
                     @foreach ($categories as $item)
                         <li class="menu-item"><a href="category/{{$item->slug}}">{{$item->title}}</a></li>
                     @endforeach
+                    @isset($emagazine)
+                        <li class="menu-item"><a href="{{$emagazine->link}}">E-MAGAZINE</a></li>                        
+                    @endisset
                 </ul>
                 
             </nav>

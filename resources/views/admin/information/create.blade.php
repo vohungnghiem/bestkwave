@@ -36,7 +36,8 @@
                                     <option value="1">Website</option>
                                     <option value="2">Phone</option>
                                     <option value="3">Email</option>
-                                    <option value="4">Address</option>                                                                            
+                                    <option value="4">Address</option>     
+                                    <option value="5">E-MAGAZINE</option>                                                                          
                                 </select>
                             </div>
                             <div class="form-group">
