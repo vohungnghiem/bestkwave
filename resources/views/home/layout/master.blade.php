@@ -37,5 +37,5 @@
         @include('home.layout.footer')      
           
     </body>
-    
+    @stack('script')
     </html>

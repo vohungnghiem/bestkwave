@@ -968,6 +968,71 @@ a:hover {
   width: 100%;
 }
 
+#idol {
+  /* start Scroll Custom */
+}
+#idol .wrap-rank {
+  height: 400px;
+  overflow-y: auto;
+}
+#idol .wrap-rank::-webkit-scrollbar {
+  width: 5px;
+  /* width */
+}
+#idol .wrap-rank::-webkit-scrollbar-track {
+  background: #808080;
+  /* Track */
+}
+#idol .wrap-rank::-webkit-scrollbar-thumb {
+  background: #d08182;
+  /* Handle */
+}
+#idol .wrap-rank::-webkit-scrollbar-thumb:hover {
+  background: black;
+  /* Handle on hover */
+}
+#idol .wrap-rank .item-rank {
+  padding: 5px 5px;
+  margin-right: 0px;
+  margin-left: 0px;
+  align-items: center;
+  border-top: 1px solid #d08182;
+}
+#idol .wrap-rank .item-rank .num-rank {
+  padding-left: 0px;
+  text-align: center;
+  color: #404040;
+  font-size: 23px;
+}
+#idol .wrap-rank .item-rank .img-rank {
+  padding-left: 0px;
+  width: 43px;
+  height: 55px;
+}
+#idol .wrap-rank .item-rank .img-rank img {
+  max-height: 100%;
+}
+#idol .wrap-rank .item-rank .name-rank {
+  padding-left: 0px;
+}
+#idol .wrap-rank .item-rank .name-rank a {
+  font-size: 14px;
+}
+#idol .wrap-rank .item-rank .name-rank a:hover {
+  color: #d08182;
+}
+#idol .wrap-rank .item-rank .result-rank {
+  padding: 0px;
+}
+#idol .wrap-rank .item-rank .first {
+  color: #d08182;
+  font-weight: bold;
+}
+#idol .wrap-rank .item-rank .second, #idol .wrap-rank .item-rank .third {
+  color: black;
+  font-weight: 600;
+}
+
 .header-wrapper {
   position: relative;
 }

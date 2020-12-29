@@ -18,4 +18,9 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::get('advertisement','HomeController@getAdvertisement');
         Route::get('error','HomeController@getError');
     });
+
+    Route::group(['prefix' => 'idol'], function () {
+        Route::get('statistic','IdolController@index');
+        Route::get('ranking','IdolController@ranking');
+    });
 });
