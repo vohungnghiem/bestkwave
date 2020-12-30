@@ -22,5 +22,6 @@ Route::group([ 'namespace' => 'Home'], function() {
     Route::group(['prefix' => 'idol'], function () {
         Route::get('statistic','IdolController@index');
         Route::get('ranking','IdolController@ranking');
+        Route::get('list','IdolController@list');
     });
 });

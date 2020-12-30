@@ -6,95 +6,142 @@
 @endsection
 @section('content')
 <section id="ranking">
-    {{-- <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Idol Nam</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Idol Nữ</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div id="home" class="container tab-pane active"><br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Xếp hạng</th>
-                        <th>Tên</th>
-                        <th>Nhóm</th>
-                        <th>Số phiếu bầu</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="public/home/image/idol-men.jpg" alt="" style="width: 40px"> Võ Hùng Nghiêm</td>
-                        <td>Nhóm nhạc a</td>
-                        <td>400.000 </td>
-                        <td class="text-right"><span class="btn btn-sm btn-secondary">bỏ phiếu bầu</span></td>
-                    </tr>
-                  
-                </tbody>
-            </table>
-        </div>
-        <div id="menu1" class="container tab-pane fade"><br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Xếp hạng</th>
-                        <th>Tên</th>
-                        <th>Nhóm</th>
-                        <th>Số phiếu bầu</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="public/home/image/idol-men.jpg" alt="" style="width: 40px"> Võ Hùng Nghiêm</td>
-                        <td>Nhóm nhạc</td>
-                        <td>400.000 </td>
-                        <td class="text-right"><span class="btn btn-sm btn-secondary">bỏ phiếu bầu</span></td>
-                    </tr>
-                  
-                </tbody>
-            </table>
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a class="nav-link active" data-toggle="tab" href="#men">Idol Nam</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#woman">Idol Nữ</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div id="men" class="container tab-pane active"><br>
+			<div id="no-more-tables">
+				<table class="col-md-12 table-striped ">
+					<h1 class="text-center">IDOL NAM</h1>
+					<thead >
+						<tr>
+							<th width="8%">Xếp hạng</th>
+							<th width="10%"></th>
+							<th width="32%">Tên</th>
+							<th width="20%">Nhóm</th>
+							<th width="15%">Số phiếu bầu</th>
+							<th width="15%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/silver-medal.png" alt="silver medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>	
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/bronze-medal.png" alt="bronze medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>
+						@for ($i = 4; $i < 21; $i++)
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank">{{$i}}</td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm {{$i}}.</td>
+							<td data-title="Nhóm">Nhóm {{$i}}</td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>	
+						@endfor
+						
+					</tbody>
+				</table>
+			</div>
+			
+			<ul class="pagination pagination-md float-right">
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+			
+		</div>
+		<div id="woman" class="container tab-pane fade"><br>
+			<div id="no-more-tables">
+				<table class="col-md-12 table-striped ">
+					<h1 class="text-center">IDOL NỮ</h1>
+					<thead >
+						<tr>
+							<th width="8%">Xếp hạng</th>
+							<th width="10%"></th>
+							<th width="32%">Tên</th>
+							<th width="20%">Nhóm</th>
+							<th width="15%">Số phiếu bầu</th>
+							<th width="15%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-woman.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/silver-medal.png" alt="silver medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-woman.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>	
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/bronze-medal.png" alt="bronze medal"></td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-woman.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
+							<td data-title="Nhóm">Nhóm </td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>
+						@for ($i = 4; $i < 21; $i++)
+						<tr>
+							<td data-title="Xếp hạng" class="num-rank">{{$i}}</td>
+							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-woman.jpg" alt=""></td>
+							<td data-title="Tên"> Võ Hùng Nghiêm {{$i}}.</td>
+							<td data-title="Nhóm">Nhóm {{$i}}</td>
+							<td data-title="Số phiếu bầu">400.000</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+						</tr>	
+						@endfor
+						
+					</tbody>
+				</table>
+			</div>
+			
+			<ul class="pagination pagination-md float-right">
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</div>
+	</div>
 
-        </div>
-    </div> --}}
-    <div class="container mt-3">
-        <h2>Toggleable Tabs</h2>
-        <br>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-          </li>
-        </ul>
-      
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div id="home" class="container tab-pane active"><br>
-            <h3>HOME</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
-        </div>
-      </div>
 </section>
 @endsection
 

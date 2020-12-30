@@ -26,5 +26,11 @@ class IdolController extends Controller
     // view
         return view('home.idol.ranking',[]);
     }
+
+    public function list() 
+    {
+    // view
+        return view('home.idol.list',[]);
+    }
    
 }
