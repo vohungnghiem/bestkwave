@@ -32,5 +32,9 @@ class IdolController extends Controller
     // view
         return view('home.idol.list',[]);
     }
-   
+    public function detail() 
+    {
+    // view
+        return view('home.idol.detail',[]);
+    }
 }

@@ -13,6 +13,12 @@
         <img src="public/uploads/logobg/logo-footer.png?v={{time()}}" alt="logo">
     </div>
     <div class="footer-txt">
+        <ul class="list-unstyled text-right p-3 footer-count">
+            <li>Count Per Day</li>
+            <li>Total Visitors: {{$visitor_total}}</li>
+            <li>Visitors today: {{$visitor_today}}</li>
+            <li>Visitors per month: {{$visitor_month}}</li>
+        </ul>
         Website: @foreach ($website as $item) {{$item->title}} @endforeach <br> 
         Email: @foreach ($email as $item) {{$item->title}} /  @endforeach <br>
         Phone: @foreach ($phone as $item) {{$item->title}} @endforeach <br>
@@ -22,12 +28,7 @@
             <a href="page/about">About us</a> 
             <a href="page/advertisement">Hợp tác quảng cáo</a> 
         </p>
-        <ul class="list-unstyled text-right p-3 footer-count">
-            <li>Count Per Day</li>
-            <li>Total Visitors: {{$visitor_total}}</li>
-            <li>Visitors today: {{$visitor_today}}</li>
-            <li>Visitors per month: {{$visitor_month}}</li>
-        </ul>
+        
     </div>
     <div class="scroll"><i class="fas fa-chevron-up"></i></div>
 </footer>

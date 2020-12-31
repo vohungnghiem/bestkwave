@@ -498,7 +498,7 @@ a:hover {
   right: 0;
 }
 .home-most .qc-3-right img {
-  max-width: 230px;
+  max-width: 210px;
 }
 .home-most .home-most-title {
   font-family: Oranienbaum, Georgia, serif;
@@ -683,6 +683,13 @@ a:hover {
 
   .home-lasted .qc-2 {
     display: none;
+  }
+
+  .footer .footer-count {
+    position: relative;
+    top: -20px;
+    right: 10px;
+    margin-bottom: -15px;
   }
 }
 @media only screen and (max-width: 376px) {
@@ -1052,6 +1059,175 @@ a:hover {
 #ranking table .btn-bp {
   background-color: #d08182;
   color: white;
+}
+
+#listidol .listidol-search {
+  align-items: center;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 5px;
+  background: #d08182;
+}
+#listidol .listidol-search .btn, #listidol .listidol-search button, #listidol .listidol-search input, #listidol .listidol-search .form-control {
+  border: 1px solid white;
+}
+#listidol .listidol-search .btn:focus, #listidol .listidol-search button:focus, #listidol .listidol-search input:focus, #listidol .listidol-search .form-control:focus {
+  outline: none !important;
+  box-shadow: inset 0 0px 0 #d08182;
+}
+#listidol .listidol-search .btn {
+  color: white;
+}
+#listidol .listidol-search .btn-group .btn, #listidol .listidol-search .btn-group button {
+  border: none;
+  color: white;
+}
+#listidol .listidol-idol {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+#listidol .listidol-idol .item-idol-hover {
+  margin-top: 15px;
+  padding: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
+#listidol .listidol-idol .item-idol-hover:hover {
+  -webkit-transform: scale(1.11) rotate(0.01deg);
+  transform: scale(1.11) rotate(0.01deg);
+}
+#listidol .listidol-idol .item-idol {
+  border: 1px solid #eee;
+  background: #eee;
+  padding: 2px 2px 5px 2px;
+}
+#listidol .listidol-idol .item-idol img {
+  max-width: 100%;
+}
+#listidol .listidol-idol .item-idol .box-idol {
+  padding: 5px;
+  text-align: center;
+}
+#listidol .listidol-idol .item-idol .box-idol .name-idol {
+  font-weight: 700;
+  font-size: 16px;
+  color: black;
+  margin-top: 7px;
+}
+#listidol .listidol-idol .item-idol .box-idol .group-idol {
+  font-weight: 500;
+  font-size: 15px;
+  color: #808080;
+  margin-top: 7px;
+}
+#listidol .listidol-idol .item-idol .box-idol .like-idol {
+  font-weight: 500;
+  font-size: 15px;
+  color: #d08182;
+  margin-top: 7px;
+}
+
+#detailidol .idol-detail .idol-profile {
+  background: #eee;
+  padding: 15px;
+}
+#detailidol .idol-detail .idol-profile .pro-header {
+  position: relative;
+  color: black;
+}
+#detailidol .idol-detail .idol-profile .pro-header h3 {
+  font-size: 22px;
+}
+#detailidol .idol-detail .idol-profile .pro-header .pro-question {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+#detailidol .idol-detail .idol-profile .pro-box .pro-list {
+  line-height: 27px;
+  font-size: 14px;
+}
+#detailidol .idol-detail .idol-profile .pro-box .pro-list .pro-key {
+  display: inline-block;
+  min-width: 70px;
+  color: #808080;
+  font-weight: 600;
+}
+#detailidol .idol-detail .idol-profile .pro-box .pro-list .pro-value {
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  padding-left: 10px;
+}
+#detailidol .idol-detail .detail-top .detail-background {
+  position: relative;
+  z-index: 1;
+}
+#detailidol .idol-detail .detail-top .detail-background img {
+  width: 100%;
+}
+#detailidol .idol-detail .detail-top .mo {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#detailidol .idol-detail .detail-top .detail-img {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#detailidol .idol-detail .detail-top .detail-img img {
+  border-radius: 5px;
+}
+#detailidol .idol-detail .detail-top .detail-img .name {
+  font-size: 23px;
+  color: white;
+}
+#detailidol .idol-detail .detail-top .detail-img .agency {
+  font-size: 21px;
+  color: #eee;
+}
+#detailidol .idol-detail .detail-top .detail-vote {
+  position: absolute;
+  z-index: 10;
+  right: 0px;
+  top: 10px;
+  margin-right: 30px;
+}
+#detailidol .idol-detail .detail-top .detail-vote a {
+  color: white;
+}
+#detailidol .idol-detail .detail-top .detail-vote a i {
+  font-size: 20px;
+}
+#detailidol .idol-detail .detail-top .detail-vote .btn-vote {
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 2px 10px;
+}
+#detailidol .idol-detail .detail-top .detail-tab {
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+}
+#detailidol .idol-detail .detail-top .detail-tab .tab-bot {
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 800px) {

@@ -12,6 +12,7 @@
         <title>@yield('title')</title>
         <title>@yield('description')</title>
         <link rel="icon" href="public/uploads/logobg/logo.png" type="image/png" sizes="16x16">
+        @stack('facescript')
         <link rel="stylesheet" href="public/home/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="public/home/style/index.css?v={{time()}}">
         <script src="public/home/script/jquery-3.5.1.min.js"></script>

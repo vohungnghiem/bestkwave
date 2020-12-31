@@ -127,7 +127,7 @@
         position: absolute;
         right: 0;
         img {
-            max-width: 230px;
+            max-width: 210px;
         }
     }
     .home-most-title {
@@ -317,6 +317,14 @@
     .home-lasted{
         .qc-2 {
             display: none;
+        }
+    }
+    .footer {
+        .footer-count {
+            position: relative; 
+            top: -20px; 
+            right: 10px;
+            margin-bottom: -15px;
         }
     }
 }

@@ -50,3 +50,6 @@
 @push('javascript')
     <script type="text/javascript" src="public/home/script/feedajax.js?v={{time()}}"></script>
 @endpush
+@push('facescript')
+<img style="display: none" src="public/uploads/thumb/{{year($post->created_at)}}/{{month($post->created_at)}}/{{$post->image}}" />
+@endpush
