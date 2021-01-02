@@ -197,6 +197,7 @@
             }
         }
         .detail-top {
+            position: relative;
             .detail-background {
                 position: relative;
                 z-index: 1;
@@ -266,8 +267,48 @@
                 }
             }
         }
+        .detail-bottom {
+            position: relative;
+            margin: 15px 0px;
+            .detail-item {
+                padding: 0px;
+                text-align: center;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }
+
+#loginModal {
+    .modal-header {
+        .close {
+        margin-top: -1.5rem;
+        }
+    }
+    
+    .form-title {
+        margin: -2rem 0rem 2rem;
+    }
+    
+    .btn-round {
+        border-radius: 3rem;
+    }
+    
+    .delimiter {
+        padding: 1rem;  
+    }
+    
+    .social-buttons {
+        .btn {
+        margin: 0 0.5rem 1rem;
+        }
+    }
+}
+
+
 @media only screen and (max-width: 800px) {
     #ranking {
         table {

@@ -1162,6 +1162,9 @@ a:hover {
   font-weight: 700;
   padding-left: 10px;
 }
+#detailidol .idol-detail .detail-top {
+  position: relative;
+}
 #detailidol .idol-detail .detail-top .detail-background {
   position: relative;
   z-index: 1;
@@ -1228,6 +1231,34 @@ a:hover {
   text-align: center;
   color: white;
   font-size: 20px;
+}
+#detailidol .idol-detail .detail-bottom {
+  position: relative;
+  margin: 15px 0px;
+}
+#detailidol .idol-detail .detail-bottom .detail-item {
+  padding: 0px;
+  text-align: center;
+  overflow: hidden;
+}
+#detailidol .idol-detail .detail-bottom .detail-item img {
+  width: 100%;
+}
+
+#loginModal .modal-header .close {
+  margin-top: -1.5rem;
+}
+#loginModal .form-title {
+  margin: -2rem 0rem 2rem;
+}
+#loginModal .btn-round {
+  border-radius: 3rem;
+}
+#loginModal .delimiter {
+  padding: 1rem;
+}
+#loginModal .social-buttons .btn {
+  margin: 0 0.5rem 1rem;
 }
 
 @media only screen and (max-width: 800px) {

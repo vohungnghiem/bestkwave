@@ -46,7 +46,7 @@ function sticky_menu(menu, sticky) {
     if (typeof sticky === 'undefined' || !jQuery.isNumeric(sticky)) sticky = 0;
     if ($(window).scrollTop() >= sticky) {
         if ($('#menufixed').length === 0) {
-            widthfixed = $('#container-all').width();
+            widthfixed = $('#container-all').width() + 1;
             logo = $('#logo-fixed').html();
             mainmenu = $('#main-menu-fixed').html();
             secondmenu = $('#second-header-right').html();
