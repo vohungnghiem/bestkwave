@@ -130,6 +130,13 @@
             max-width: 210px;
         }
     }
+    .qc-3-left {
+        position: absolute;
+        left: 0;
+        img {
+            max-width: 210px;
+        }
+    }
     .home-most-title {
         font-family: Oranienbaum, Georgia, serif;
         text-transform: uppercase;
@@ -313,6 +320,9 @@
         .qc-3-right {
             display: none;
         }
+        .qc-3-left {
+            display: none;
+        }
     }
     .home-lasted{
         .qc-2 {
@@ -336,6 +346,9 @@
             }
         }
         .qc-3-right {
+            display: none;
+        }
+        .qc-3-left {
             display: none;
         }
     }

@@ -94,6 +94,11 @@
 </section>
 @endisset
 <section class="home-most">
+    @isset($adeighth)
+    <aside class="qc-3-left">
+        <a href="{{$adeighth->link}}"><img src="{{$adeighth->image}}" alt="advertisement"></a>
+    </aside>
+    @endisset
     @isset($adfifth)
     <aside class="qc-3-right">
         <a href="{{$adfifth->link}}"><img src="{{$adfifth->image}}" alt="advertisement"></a>

@@ -500,6 +500,13 @@ a:hover {
 .home-most .qc-3-right img {
   max-width: 210px;
 }
+.home-most .qc-3-left {
+  position: absolute;
+  left: 0;
+}
+.home-most .qc-3-left img {
+  max-width: 210px;
+}
 .home-most .home-most-title {
   font-family: Oranienbaum, Georgia, serif;
   text-transform: uppercase;
@@ -680,6 +687,9 @@ a:hover {
   .home-most .qc-3-right {
     display: none;
   }
+  .home-most .qc-3-left {
+    display: none;
+  }
 
   .home-lasted .qc-2 {
     display: none;
@@ -697,6 +707,9 @@ a:hover {
     max-width: 210px;
   }
   .home-most .qc-3-right {
+    display: none;
+  }
+  .home-most .qc-3-left {
     display: none;
   }
 

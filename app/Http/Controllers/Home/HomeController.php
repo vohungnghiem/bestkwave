@@ -73,10 +73,13 @@ class HomeController extends Controller
             ->where([['standads.sort',6],['standads.status',1],['advertisements.status',1]])->first();
         $adseventh = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
             ->where([['standads.sort',7],['standads.status',1],['advertisements.status',1]])->first();
+        $adeighth = DB::table('advertisements')->join('standads','standads.id','=','advertisements.standad')
+            ->where([['standads.sort',8],['standads.status',1],['advertisements.status',1]])->first();
         return view('home.home',[
                 'banners'=>$banners,'latest'=>$latest,'latestadd'=>$latestadd,'most'=>$most,
                 'adfirst'=>$adfirst,'adsecond'=>$adsecond,'adthird'=>$adthird,
-                'adfourth'=>$adfourth,'adfifth'=>$adfifth,'adsixth'=>$adsixth,'adseventh'=>$adseventh
+                'adfourth'=>$adfourth,'adfifth'=>$adfifth,'adsixth'=>$adsixth,
+                'adseventh'=>$adseventh,'adeighth'=>$adeighth
             ]);
     }
     public function getLoadmore() 
