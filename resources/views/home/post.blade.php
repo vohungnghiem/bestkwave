@@ -32,7 +32,7 @@
         <article class="row">
             <div class="col-md-4">
                 <a href="{{$item->slug}}">
-                    <img src="public/uploads/thumb/{{$item->year}}/{{$item->month}}/{{$item->image}}" onerror="this.onerror=null; this.src='public/home/image/non_image.png'" alt="{{$item->title}}" />
+                    <img src="public/uploads/thumb/{{$item->year}}/{{month($item->created_at)}}/{{$item->image}}" onerror="this.onerror=null; this.src='public/home/image/non_image.png'" alt="{{$item->title}}" />
                 </a>
             </div>
             <div class="col-md-8">

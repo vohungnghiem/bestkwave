@@ -46,7 +46,7 @@
             <div class="home-item-article">
                 <div class="item-image">
                     <a href="{{$item->slug}}">
-                        <img src="public/uploads/thumb/{{$item->year}}/{{$item->month}}/{{$item->image}}?v={{time()}}"
+                        <img src="public/uploads/thumb/{{$item->year}}/{{month($item->created_at)}}/{{$item->image}}?v={{time()}}"
                         onerror="this.onerror=null; this.src='public/home/image/non_image.png'" alt="{{$item->title}}" />
                     </a>
                 </div>
@@ -69,7 +69,7 @@
             <div class="home-item-article">
                 <div class="item-image">
                     <a href="{{$item->slug}}">
-                        <img src="public/uploads/thumb/{{$item->year}}/{{$item->month}}/{{$item->image}}?v={{time()}}"
+                        <img src="public/uploads/thumb/{{$item->year}}/{{month($item->created_at)}}/{{$item->image}}?v={{time()}}"
                         onerror="this.onerror=null; this.src='public/home/image/non_image.png'" alt="{{$item->title}}" />
                     </a>
                 </div>

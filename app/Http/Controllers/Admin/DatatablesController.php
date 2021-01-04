@@ -14,7 +14,7 @@ class DatatablesController extends Controller
         $posts = Post::join('categories','categories.id','=','posts.category')
                 ->whereNotIn('type_post', [2])
                 ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                    DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"))
+                    DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"))
                 ->orderBy('id','desc')
                 ->get();
         $datatables =  DataTables::of($posts);
@@ -28,8 +28,10 @@ class DatatablesController extends Controller
 	        return '<a href="admincp/category/'.$posts->parent.'/list">'.$posts->title_cat.'</a>';
         });
         $datatables->editColumn('image', function ($posts) {
-	        return '<img src="public/uploads/thumb/'.$posts->year.'/'.$posts->month.'/'.$posts->image.'?v='.time().'" onerror="this.onerror=null; this.src=\'public/home/image/non_image.png\'" alt="'.$posts->title.'" />';
+            $month = date('m', strtotime($posts->created_at));
+	        return '<img src="public/uploads/thumb/'.$posts->year.'/'.$month.'/'.$posts->image.'?v='.time().'" onerror="this.onerror=null; this.src=\'public/home/image/non_image.png\'" alt="'.$posts->title.'" />';
         });
+
         $datatables->editColumn('sort', function ($posts) {
 	        return '<div class="wrapsort">'.
                 '<input class="form-control sort" idsort="'.$posts->id.'" type="number" value="'.$posts->sort.'">'.
@@ -62,7 +64,7 @@ class DatatablesController extends Controller
         $posts = Post::join('categories','categories.id','=','posts.category')
             ->where('type_post',2)
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"))
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"))
             ->orderByDesc('id')
             ->get();
         $datatables =  DataTables::of($posts);
@@ -76,7 +78,8 @@ class DatatablesController extends Controller
 	        return '<a href="admincp/category/'.$posts->parent.'/list">'.$posts->title_cat.'</a>';
         });
         $datatables->editColumn('image', function ($posts) {
-	        return '<img src="public/uploads/thumb/'.$posts->year.'/'.$posts->month.'/'.$posts->image.'?v='.time().'" onerror="this.onerror=null; this.src=\'public/home/image/non_image.png\'" alt="'.$posts->title.'" />';
+            $month = date('m', strtotime($posts->created_at));
+	        return '<img src="public/uploads/thumb/'.$posts->year.'/'.$month.'/'.$posts->image.'?v='.time().'" onerror="this.onerror=null; this.src=\'public/home/image/non_image.png\'" alt="'.$posts->title.'" />';
         });
         $datatables->editColumn('sort', function ($posts) {
 	        return '<div class="wrapsort">'.

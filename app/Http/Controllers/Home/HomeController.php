@@ -44,7 +44,7 @@ class HomeController extends Controller
             ->where([['posts.status',1],['categories.status',1]])
             ->whereNotIn('posts.type_post',[2])
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
             ->orderBy('id','desc')
             ->skip(0)->take(6)->get();
@@ -53,7 +53,7 @@ class HomeController extends Controller
             ->where([['posts.status',1],['categories.status',1]])
             ->whereNotIn('posts.type_post',[2])
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
             ->orderBy('id','desc')
             ->skip(6)->take(3)->get();
@@ -90,7 +90,7 @@ class HomeController extends Controller
             ->where([['posts.status',1],['categories.status',1]])
             ->whereNotIn('posts.type_post',[2])
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date')
             )
             ->orderBy('id','desc')->paginate(9);
@@ -111,7 +111,7 @@ class HomeController extends Controller
                 ->whereIn('categories.slug', $arrall)
                 ->whereNotIn('posts.type_post',[2])
                 ->select('posts.*','categories.slug AS slugcat','categories.title AS titlecat',
-                    DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                    DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                     DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
                 ->orderBy('id','desc')->paginate(9);
             return view('home.category',['catparent'=>$catparent,'catchild'=>$catchild,'posts'=>$posts]);
@@ -130,7 +130,7 @@ class HomeController extends Controller
             ->where([['categories.slug',$slug],['categories.status',1],['posts.status',1]])
             ->whereNotIn('posts.type_post',[2])
             ->select('posts.*','categories.slug AS slugcat','categories.title AS titlecat',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
             ->orderBy('id','desc')->paginate(9);
         return view('home.category',['catparent'=>$catparent,'catchild'=>$catchild,'posts'=>$posts]);
@@ -145,7 +145,7 @@ class HomeController extends Controller
                 ->leftJoin('socials','socials.id','=','social_posts.id_social')
                 ->where([['posts.slug',$slug],['posts.status',1]])
                 ->select('posts.*','categories.slug AS slugcat','categories.title AS titlecat',
-                    DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                    DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                     DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'),
                     DB::raw('GROUP_CONCAT(DISTINCT socials.slug,"|",social_posts.link) as linksocial')
                 )
@@ -171,7 +171,7 @@ class HomeController extends Controller
                 ->whereNotIn('posts.type_post',[2])
                 ->whereNotIn('posts.id',[$post->id])
                 ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                    DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"))
+                    DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"))
                 ->orderBy('id','desc')
                 ->paginate(3);
             return view('home.post',['post'=>$post,'parentcat'=>$parentcat,'posts'=>$posts,'more'=>$more]);
@@ -195,7 +195,7 @@ class HomeController extends Controller
             ->whereNotIn('posts.type_post',[2])
             ->whereNotIn('posts.id',[$post->id])
             ->select('posts.*','categories.slug AS slug_cat','categories.title AS title_cat','categories.parent AS parent',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date') )
             ->orderByDesc('id')
             ->paginate(3);
@@ -257,7 +257,7 @@ class HomeController extends Controller
             ->whereNotIn('posts.type_post',[2])
             ->where('posts.title','LIKE','%'.$search.'%')
             ->select('posts.*','categories.slug AS slugcat','categories.title AS titlecat',
-                DB::raw("MONTH(posts.created_at) month"),DB::raw("YEAR(posts.created_at) year"),
+                DB::raw('DATE_FORMAT(posts.created_at, "%m") month'),DB::raw("YEAR(posts.created_at) year"),
                 DB::raw('DATE_FORMAT(posts.created_at, "%Y.%m.%d") date'))
             ->orderBy('id','desc')->paginate(9);
         return view('home.search',['search'=>$search,'posts'=>$posts]);
