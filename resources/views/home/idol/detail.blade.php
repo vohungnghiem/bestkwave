@@ -8,8 +8,10 @@
 <section id="detailidol">
     <div class="row idol-detail ">
         <div class="col-12">
-            <h6>đăng nhập: {{Auth::user()->provider}}</h6>
-            <h4>{{Auth::user()->name}}</h4>
+            @if(Auth::user())
+                <h6>đăng nhập: {{Auth::user()->provider}}</h6>
+                <h4>{{Auth::user()->name}}</h4>
+            @endif
         </div>
         <div class="col-md-5 col-12">
             <div class="idol-profile">

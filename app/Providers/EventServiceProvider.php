@@ -20,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
             'SocialiteProviders\Zalo\ZaloExtendSocialite@handle',
+            // 'SocialiteProviders\Google\GoogleExtendSocialite@handle',
         ],
     ];
 

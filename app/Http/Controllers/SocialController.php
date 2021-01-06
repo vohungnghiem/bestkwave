@@ -10,15 +10,13 @@ class SocialController extends Controller
 {
     public function redirect($provider)
     {
-        echo Socialite::driver('zalo')->redirect();
-        exit();
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
     
     public function callback($provider)
     {
             
-        $getInfo = Socialite::driver($provider)->user();
+        $getInfo = Socialite::driver($provider)->stateless()->user();
         $finduser = User::where('provider_id', $getInfo->id)->first();
 
         if($finduser){
