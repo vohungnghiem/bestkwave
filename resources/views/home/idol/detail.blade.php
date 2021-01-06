@@ -7,6 +7,10 @@
 @section('content')
 <section id="detailidol">
     <div class="row idol-detail ">
+        <div class="col-12">
+            <h6>đăng nhập: {{Auth::user()->provider}}</h6>
+            <h4>{{Auth::user()->name}}</h4>
+        </div>
         <div class="col-md-5 col-12">
             <div class="idol-profile">
                 <div class="pro-header">
@@ -126,6 +130,12 @@
 
                     <div class="text-center text-muted delimiter">or use a social network</div>
                     <div class="d-flex justify-content-center social-buttons">
+                        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
+                        data-placement="top" title="Google"><i class="fab fa-google"></i></a>
+                        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
+                        data-placement="top" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="{{ url('/auth/redirect/zalo') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
+                        data-placement="top" title="Facebook"><i class="fab fa-zalo"></i></a>
                         <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip"
                             data-placement="top" title="Twitter">
                             <i class="fab fa-twitter"></i>

@@ -1,6 +1,7 @@
 <?php 
 Route::group([ 'namespace' => 'Home'], function() {
-	Route::get('/','HomeController@index');
+    Route::get('/','HomeController@index');
+    Route::get('public/home','HomeController@index');
     Route::get('category/{slug}','HomeController@category');
     Route::get('category/{cat}/{slug}','HomeController@categoryChild');
     
@@ -26,3 +27,13 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::get('detail','IdolController@detail');
     });
 });
+
+Route::get('login/google', function () {
+    return view('googleAuth');
+});
+
+// Route::get('/auth/google', 'Auth\LoginController@redirectToGoogle');
+// Route::get('/auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');

@@ -30,4 +30,21 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => '163434374156-1bnf02flrbviuplfb4rc2tp3kqg4p837.apps.googleusercontent.com',
+        'client_secret' => 'BHuXH2wTarQi1nsskrBUXypd',
+        'redirect' => 'http://localhost/callback/google',
+    ],
+
+    'facebook' => [
+        'client_id' => '158121739091971',
+        'client_secret' => '1f76d8e5017cb95daa49478dcb818a27',
+        'redirect' => 'http://localhost/callback/facebook',
+    ],
+
+    'zalo' => [
+        'client_id' => '4302442031182802619',
+        'client_secret' => 'DD16D58PRcELUiE41BYq',
+        'redirect' => 'http://localhost/callback/zalo',
+    ],
 ];
