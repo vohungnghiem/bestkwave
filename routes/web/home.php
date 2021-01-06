@@ -27,13 +27,6 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::get('detail','IdolController@detail');
     });
 
-    Route::get('login/google', function () {
-        return view('googleAuth');
-    });
-    
-    // Route::get('/auth/google', 'Auth\LoginController@redirectToGoogle');
-    // Route::get('/auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
-    
     Route::get('auth/redirect/{provider}', 'SocialController@redirect');
     Route::get('callback/{provider}', 'SocialController@callback');
 });
