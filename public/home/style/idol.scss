@@ -282,31 +282,17 @@
     }
 }
 
-#loginModal {
     .modal-header {
         .close {
-        margin-top: -1.5rem;
+            margin-top: -1.5rem;
         }
     }
-    
-    .form-title {
-        margin: -2rem 0rem 2rem;
-    }
-    
-    .btn-round {
-        border-radius: 3rem;
-    }
-    
-    .delimiter {
-        padding: 1rem;  
-    }
-    
+        
     .social-buttons {
         .btn {
-        margin: 0 0.5rem 1rem;
+            margin: 0 0.5rem 1rem;
         }
     }
-}
 
 
 @media only screen and (max-width: 800px) {

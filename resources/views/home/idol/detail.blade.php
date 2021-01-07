@@ -12,6 +12,18 @@
                 <h6>đăng nhập: {{Auth::user()->provider}}</h6>
                 <h4>{{Auth::user()->name}}</h4>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            {{-- @if ($errors->has('email'))  --}}
+            {{$errors->first('email')}}
+            {{-- @endif --}}
         </div>
         <div class="col-md-5 col-12">
             <div class="idol-profile">
@@ -96,12 +108,13 @@
                 </div>
             </div>
             <div class="row detail-bottom">
-                @for ($i = 1; $i < 10; $i++) <div class="col-md-4 col-6 detail-item">
+                @for ($i = 1; $i < 10; $i++) 
+                <div class="col-md-4 col-6 detail-item">
                     <a href="public/home/image/idol-men.jpg" data-lightbox="photos">
                         <img class="img-fluid" src="public/home/image/idol-men.jpg">
                     </a>
-            </div>
-            @endfor
+                </div>
+                @endfor
         </div>
     </div>
     </div>
@@ -154,13 +167,49 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
+                <div class="signup-section">Not a member yet? <a href="#a" class="text-info" data-toggle="modal" data-target="#signupModal"> Sign Up</a>.</div>
             </div>
         </div>
         
     </div>
 </div>
-
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h4>Signup</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form action="log/signup" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name2" placeholder="Your name...">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" id="email2" placeholder="Your email address...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" id="password2" placeholder="Your password...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="passwordVerify" class="form-control" id="passwordVerify" placeholder="Your password verify...">
+                        </div>
+                        <button type="submit" class="btn btn-info btn-block btn-round">Signup</button>
+                    </form>
+                </div>
+            </div>
+            {{-- <div class="modal-footer d-flex justify-content-center">
+                <div class="signup-section">Not a member yet? <a href="#a" class="text-info" data-toggle="modal" data-target="#signupModal"> Sign Up</a>.</div>
+            </div> --}}
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('script')
@@ -168,6 +217,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 <script>
     $(document).ready(function () {
+ 
+        // Close modal on button click
+        $(".signup-section").click(function(){
+            $("#loginModal").modal('hide');
+        });
         $('[data-toggle="popover"]').popover({html: true});
     });
 </script>

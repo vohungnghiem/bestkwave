@@ -27,6 +27,9 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::get('detail','IdolController@detail');
     });
 
+    Route::group(['prefix' => 'log'], function () {
+        Route::post('signup','LogAuthController@signup');
+    });
     Route::get('auth/redirect/{provider}', 'SocialController@redirect');
     Route::get('callback/{provider}', 'SocialController@callback');
 });
