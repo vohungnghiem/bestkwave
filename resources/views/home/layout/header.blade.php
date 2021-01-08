@@ -7,7 +7,7 @@
     <div class="mobile">
         <div class="mobile-header">
             <div class="mobile-logo">
-                <a href="/"><img src="public/uploads/logobg/logo.png" alt="logo"></a>
+                <a href="/"><img src="public/uploads/logobg/logo.png?v={{time()}}" alt="logo"></a>
             </div>
             <div id="mobile-right" class="mobile-right">
                 <a href="subscribe/form" class="subscribe">subscribe</a>
@@ -44,7 +44,7 @@
                     <div class="dropdown right"> SIDE MENU
                         <div class="dropdown-menu" id="drop_link">
                             <a href="page/about" class="dropdown-item">About us</a> 
-                            <a href="page/advertisement" class="dropdown-item">Hợp tác quảng cáo</a> 
+                            <a href="page/advertisement" class="dropdown-item">Advertising Cooperation</a> 
                         </div>
                     </div>
                     <div class="right br-0"><a href="subscribe/form">SUBSCRIBE</a></div>
@@ -56,8 +56,8 @@
         <div class="main-header-menu" id="main-menu">
             <div id="logo-fixed" class="header-logo">
                 <div  class="logo text-center">
-                    <div class="slogan"> Tạp chí chuyên nghiệp Việt Nam </div>
-                    <a href="/" style="height: 200px;"><img src="public/uploads/logobg/logo.png" alt="logo"></a>
+                    {{-- <div class="slogan"> Tạp chí chuyên nghiệp Việt Nam </div> --}}
+                    <a href="/" style="height: 200px;"><img src="public/uploads/logobg/logo.png?v={{time()}}" alt="logo"></a>
                 </div>
             </div>
             <nav id="main-menu-fixed" class="main-menu">

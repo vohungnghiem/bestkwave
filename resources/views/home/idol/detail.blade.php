@@ -12,18 +12,6 @@
                 <h6>đăng nhập: {{Auth::user()->provider}}</h6>
                 <h4>{{Auth::user()->name}}</h4>
             @endif
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            {{-- @if ($errors->has('email'))  --}}
-            {{$errors->first('email')}}
-            {{-- @endif --}}
         </div>
         <div class="col-md-5 col-12">
             <div class="idol-profile">
@@ -133,81 +121,42 @@
                     <h4>Login</h4>
                 </div>
                 <div class="d-flex flex-column text-center">
-                    <form>
+                    <form action="logauth/login" method="post" id="loginLogAuth">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email1" placeholder="Your email address...">
+                            <input type="email" name="email" class="form-control" id="emailLogAuth" placeholder="Your email address...">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="password1" placeholder="Your password...">
+                            <input type="password" name="password" class="form-control" id="passwordLogAuth" placeholder="Your password...">
                         </div>
-                        <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+                        <div class="form-group text-left">
+                            <div class="icheck-secondary">
+                                <input type="checkbox" name="remember" id="rememberLogAuth" checked >
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-block btn-round">Login</button>
                     </form>
 
                     <div class="text-center text-muted delimiter">or use a social network</div>
                     <div class="d-flex justify-content-center social-buttons">
-                        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                        data-placement="top" title="Google"><i class="fab fa-google"></i></a>
-                        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                        data-placement="top" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="{{ url('/auth/redirect/zalo') }}" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                        data-placement="top" title="Facebook"><i class="fab fa-zalo"></i></a>
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                            data-placement="top" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                            data-placement="top" title="Facebook">
-                            <i class="fab fa-facebook"></i>
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip"
-                            data-placement="top" title="Linkedin">
-                            <i class="fab fa-linkedin"></i>
-                        </button>
+                        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google"><i class="fab fa-google"></i></a>
+                        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="{{ url('/auth/redirect/zalo') }}" class="btn btn-light btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                            <i class="fab fa-zalo"></i>
+                            <img src="public/home/image/zalo.svg" alt="" width="18px">
+                        </a>
+                        <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter"> <i class="fab fa-twitter"></i> </button>
                     </div>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Not a member yet? <a href="#a" class="text-info" data-toggle="modal" data-target="#signupModal"> Sign Up</a>.</div>
+                <div class="signup-section">Not a member yet? <a href="logauth/signup" class="text-info" > Sign Up</a>.</div>
             </div>
         </div>
         
-    </div>
-</div>
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-title text-center">
-                    <h4>Signup</h4>
-                </div>
-                <div class="d-flex flex-column text-center">
-                    <form action="log/signup" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name2" placeholder="Your name...">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" id="email2" placeholder="Your email address...">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password2" placeholder="Your password...">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="passwordVerify" class="form-control" id="passwordVerify" placeholder="Your password verify...">
-                        </div>
-                        <button type="submit" class="btn btn-info btn-block btn-round">Signup</button>
-                    </form>
-                </div>
-            </div>
-            {{-- <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Not a member yet? <a href="#a" class="text-info" data-toggle="modal" data-target="#signupModal"> Sign Up</a>.</div>
-            </div> --}}
-        </div>
     </div>
 </div>
 @endsection
@@ -217,12 +166,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 <script>
     $(document).ready(function () {
- 
-        // Close modal on button click
-        $(".signup-section").click(function(){
-            $("#loginModal").modal('hide');
-        });
         $('[data-toggle="popover"]').popover({html: true});
+    });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var remember = $.cookie('rememberLogAuth');
+        if (remember == 'true') 
+        {
+            var email = $.cookie('emailLogAuth');
+            var password = atob($.cookie('passwordLogAuth'));
+            $('#emailLogAuth').val(email);
+            $('#passwordLogAuth').val(password);
+            $('#rememberLogAuth').prop('checked', true);
+        }
+        $("#loginLogAuth").submit(function() {
+            if ($('#rememberLogAuth').is(':checked')) {
+                var email = $('#emailLogAuth').val();
+                var password = btoa($('#passwordLogAuth').val());
+                $.cookie('emailLogAuth', email, { expires: 365 });
+                $.cookie('passwordLogAuth', password, { expires: 365 });
+                $.cookie('rememberLogAuth', true, { expires: 365 });
+            }
+          
+        });
+
+        $("#resetLogAuth").click(function() {
+            $.cookie('emailLogAuth', null);
+            $.cookie('passwordLogAuth', null);
+            $.cookie('rememberLogAuth', null);
+        });
+
     });
 </script>
 @endpush

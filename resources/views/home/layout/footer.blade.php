@@ -26,7 +26,7 @@
         COPYRIGHT ⓒ  2021 KWAVE ALL RIGHTS RESERVED
         <p>
             <a href="page/about">About us</a> 
-            <a href="page/advertisement">Hợp tác quảng cáo</a> 
+            <a href="page/advertisement">Advertising Cooperation</a> 
         </p>
         
     </div>
