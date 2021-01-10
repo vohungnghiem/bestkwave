@@ -156,6 +156,74 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'admincp', 'namespa
 		Route::post('sort/{id}', 'InformationController@sort');
 	});
 
+	Route::group(['prefix' => 'idolplus'],function(){
+		Route::group(['prefix' => 'agency'],function(){
+			Route::get('/','AgencyController@index');
+			Route::get('create','AgencyController@create' );
+			Route::post('store', 'AgencyController@store');
+			Route::get('{id}/edit', 'AgencyController@edit');
+			Route::post('{id}/update', 'AgencyController@update');
+			Route::get('{id}/destroy', 'AgencyController@destroy');
+			Route::get('{id}', 'AgencyController@show');
+			Route::post('status/{id}','AgencyController@status');
+			Route::post('sort/{id}', 'AgencyController@sort');
+		});
+		Route::group(['prefix' => 'group'],function(){
+			Route::get('/','GroupController@index');
+			Route::get('create','GroupController@create' );
+			Route::post('store', 'GroupController@store');
+			Route::get('{id}/edit', 'GroupController@edit');
+			Route::post('{id}/update', 'GroupController@update');
+			Route::get('{id}/destroy', 'GroupController@destroy');
+			Route::get('{id}', 'GroupController@show');
+			Route::post('status/{id}','GroupController@status');
+			Route::post('sort/{id}', 'GroupController@sort');
+		});
+		Route::group(['prefix' => 'agency'],function(){
+			Route::get('/','AgencyController@index');
+			Route::get('create','AgencyController@create' );
+			Route::post('store', 'AgencyController@store');
+			Route::get('{id}/edit', 'AgencyController@edit');
+			Route::post('{id}/update', 'AgencyController@update');
+			Route::get('{id}/destroy', 'AgencyController@destroy');
+			Route::get('{id}', 'AgencyController@show');
+			Route::post('status/{id}','AgencyController@status');
+			Route::post('sort/{id}', 'AgencyController@sort');
+		});
+		Route::group(['prefix' => 'gender'],function(){
+			Route::get('/','GenderController@index');
+			Route::get('create','GenderController@create' );
+			Route::post('store', 'GenderController@store');
+			Route::get('{id}/edit', 'GenderController@edit');
+			Route::post('{id}/update', 'GenderController@update');
+			Route::get('{id}/destroy', 'GenderController@destroy');
+			Route::get('{id}', 'GenderController@show');
+			Route::post('status/{id}','GenderController@status');
+			Route::post('sort/{id}', 'GenderController@sort');
+		});
+		Route::group(['prefix' => 'profession'],function(){
+			Route::get('/','ProfessionController@index');
+			Route::get('create','ProfessionController@create' );
+			Route::post('store', 'ProfessionController@store');
+			Route::get('{id}/edit', 'ProfessionController@edit');
+			Route::post('{id}/update', 'ProfessionController@update');
+			Route::get('{id}/destroy', 'ProfessionController@destroy');
+			Route::get('{id}', 'ProfessionController@show');
+			Route::post('status/{id}','ProfessionController@status');
+			Route::post('sort/{id}', 'ProfessionController@sort');
+		});
+	});
+	Route::group(['prefix' => 'idol'],function(){
+		Route::get('/','IdolController@index');
+		Route::get('create','IdolController@create' );
+		Route::post('store', 'IdolController@store');
+		Route::get('{id}/edit', 'IdolController@edit');
+		Route::post('{id}/update', 'IdolController@update');
+		Route::get('{id}/destroy', 'IdolController@destroy');
+		Route::get('{id}', 'IdolController@show');
+		Route::post('status/{id}','IdolController@status');
+		Route::post('sort/{id}', 'IdolController@sort');
+	});
 });
 
 

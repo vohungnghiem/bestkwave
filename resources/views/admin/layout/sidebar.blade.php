@@ -40,7 +40,6 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -49,7 +48,6 @@
                         <i class="nav-icon far fa-file-word"></i>
                         <p>
                            Posts
-                           {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -167,6 +165,50 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-envelope-square"></i>
+                      <p>
+                        IDOL plus +
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="admincp/idolplus/agency" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Agency (đại lý)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="admincp/idolplus/group" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Group (nhóm nhạc)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="admincp/idolplus/gender" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gender (giới tính)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="admincp/idolplus/profession" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Profession (Nghề)</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="admincp/idol" class="nav-link">
+                        <i class="nav-icon fas fa-info"></i>
+                        <p>
+                            IDOL
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
