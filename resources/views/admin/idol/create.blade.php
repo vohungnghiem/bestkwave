@@ -131,6 +131,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                    <a class="iframe-btn fancy" href="tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe">
+                                        <i class="fas fa-upload"></i> Tải Gallery </a>
+                                <br>
+                                <div class="grid-container row">
+                                    {{-- image here --}}
+                                </div>
+                                <input type="hidden" id="none_img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div> 
         </form>
         <div id="cropImagePop" class="modal fade" tabindex="-1">
@@ -156,13 +171,18 @@
 
 @endsection
 @section('javascript')
-<script>
-    $(document).ready(function() {
-        $('[data-mask]').inputmask()
-    });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('[data-mask]').inputmask()
+        });
+    </script>
     <script src="public/admin/plugins/croppie/croppie.js"></script>
     <link rel="stylesheet" href="public/admin/plugins/croppie/croppie.css">
     <script src="public/admin/customs/image_avatar.js?v={{time()}}"></script>
     <script>cutimage(250,345)</script>
+    <link rel="stylesheet" href="public/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="public/fancybox/vhn_customs/preview-img.css">
+    {{-- <script src="public/fancybox/vhn_customs/preview-img.js"></script> --}}
+    <script src="public/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="public/fancybox/vhn_customs/config_Fancybox_gallery.js"></script>
 @endsection

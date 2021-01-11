@@ -20,7 +20,7 @@ $(document).ready(function(){
         if (count > 1) {
           res[i] = res[i].slice(1,-1);
         }
-        var article = '<article class="location-listing">';
+        var article = '<article class="location-listing col-6" >';
             article += '<span class="location-title">';
             article += '<div>  <i class="fas fa-trash-alt trash"></i> </div>';
             // article += '<div> <i class="flag outline icon" linkimg="'+res[i]+'"></i> </div>';

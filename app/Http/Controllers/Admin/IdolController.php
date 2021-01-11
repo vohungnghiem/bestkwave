@@ -70,7 +70,15 @@ class IdolController extends Controller
             $idol->avatar = NULL;
         }
         $idol->save();
-        
+        if ($request->gallery) {
+            foreach ($request->gallery as $key => $item) {
+                DB::table('gallery_idols')->insert([
+                    'idol_id' => $idol->id,
+                    'gallery_id' => $key,
+                    'image' => $item
+                ]);
+            }
+        }
         return redirect('admincp/idol/'.$idol->id.'/edit')->with('success','Success !');
         
         
@@ -80,7 +88,8 @@ class IdolController extends Controller
         $idol = Idol::find($id);  
         $professions = Profession::all();
         $genders = Gender::all();
-        return view('admin.idol.edit',['idol'=>$idol,'professions'=>$professions,'genders'=>$genders]);
+        $gallery = Gallery::all();
+        return view('admin.idol.edit',['idol'=>$idol,'professions'=>$professions,'genders'=>$genders,'gallery'=>$gallery]);
     }
     public function update(Request $request,$id)
     {   

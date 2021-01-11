@@ -140,8 +140,19 @@
                                     <a class="iframe-btn fancy" href="tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe">
                                         <i class="fas fa-upload"></i> Tải Gallery </a>
                                 <br>
-                                <div class="grid-container">
+                                <div class="grid-container row">
                                     {{-- image here --}}
+                                    @foreach ($gallery as $item)
+                                        <article class="location-listing col-6" >
+                                            <span class="location-title">
+                                                <div>  <i class="fas fa-trash-alt trash"></i> </div>
+                                                {{-- <div> <i class="flag outline icon" linkimg="'+res[i]+'"></i> </div> --}}
+                                            </span>
+                                            <div class="location-image"><img src="{{$item->image}}"  class="prev_img"></div>
+                                            <input name="gallery[]" type="hidden" value="{{$item->image}}">
+                                        </article>
+                                    @endforeach
+                                        
                                 </div>
                                 <input type="hidden" id="none_img">
                             </div>
