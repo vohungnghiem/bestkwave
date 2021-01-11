@@ -30,6 +30,7 @@
 <script src="public/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="public/admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script src="public/admin/plugins/select2/js/select2.full.min.js"></script>
+<script src="public/admin/plugins/inputmask/jquery.inputmask.js"></script>
 <!-- AdminLTE App -->
 <script src="public/admin/dist/js/adminlte.min.js"></script>
 <link rel="stylesheet" href="public/admin/customs/sidebar.css?v={{time()}}">

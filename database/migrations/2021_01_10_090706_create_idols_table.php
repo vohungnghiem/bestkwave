@@ -15,7 +15,7 @@ class CreateIdolsTable extends Migration
     {
         Schema::create('idols', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('nickname')->nullable();
             $table->string('name')->nullable();
             $table->unsignedInteger('agency_id')->nullable();

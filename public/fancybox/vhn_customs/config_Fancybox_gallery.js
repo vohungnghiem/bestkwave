@@ -22,20 +22,17 @@ $(document).ready(function(){
         }
         var article = '<article class="location-listing">';
             article += '<span class="location-title">';
-            article += '<div> <i class="trash alternate outline close icon"></i> </div>';
-            article += '<div> <i class="flag outline icon" linkimg="'+res[i]+'"></i> </div>';
+            article += '<div>  <i class="fas fa-trash-alt trash"></i> </div>';
+            // article += '<div> <i class="flag outline icon" linkimg="'+res[i]+'"></i> </div>';
             article += '</span>';
             article += '<div class="location-image"><img src="'+res[i]+'"  class="prev_img"></div>';
-            article += '<input name="image1[]" type="hidden" value='+res[i]+' ">';
+            article += '<input name="gallery[]" type="hidden" value='+res[i]+' ">';
             article += '</article>';
         $('.grid-container').prepend(article);       
       }
     }
   }
 
-  
-  // function clear_img(){
-  //   $(".location-title").click(function(){
-  //     $(this).parents('.location-listing').remove();
-  //   });
-  // }
+  $("div").on('click','.trash',function(e){
+    $(this).parents('.location-listing').remove();
+  });

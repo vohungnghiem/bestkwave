@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="public/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="public/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <link rel="stylesheet" href="public/admin/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="public/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="public/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="public/admin/dist/css/adminlte.min.css">
 </head>
