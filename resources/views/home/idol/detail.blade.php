@@ -13,7 +13,7 @@
                 <h4>{{Auth::user()->name}}</h4>
             @endif
         </div>
-        <div class="col-md-5 col-12">
+        <div class="col-md-6 col-12">
             <div class="idol-profile">
                 <div class="pro-header">
                     <h3>Hồ sơ</h3>
@@ -21,64 +21,64 @@
                         data-content="
                         <div class='popover-tt'>Thông tin thần tượng</div>
                         <div class='popover-tt'>Thông tin này cập nhật 10 phút 1 lần</div>
-                        <div class='popover-cn'>cập nhật lần cuối: 2020-01-01 00:00:00</div>">
+                        <div class='popover-cn'>cập nhật lần cuối: {{$idol->updated_at}}</div>">
                         <i class="far fa-question-circle fa-2x"></i>
                     </div>
                 </div>
                 <div class="pro-box">
                     <div class="pro-list">
                         <div class="pro-key">Tên thần tượng</div>
-                        <div class="pro-value">Jimin</div>
+                        <div class="pro-value">{{$idol->nickname}}</div>
                     </div>
                     <div class="pro-list">
-                        <div class="pro-key">Tên thậ</div>
-                        <div class="pro-value"> Công viên Jimin</div>
+                        <div class="pro-key">Tên thật</div>
+                        <div class="pro-value"> {{$idol->name}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Tên Nhóm</div>
-                        <div class="pro-value">Hướng đạo sinh chống đạn</div>
+                        <div class="pro-value">{{$idol->group_name}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Đại lý</div>
-                        <div class="pro-value"> Big Hit Entertainment</div>
+                        <div class="pro-value"> {{$idol->agency_name}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Sinh</div>
-                        <div class="pro-value"> 1995-10-13</div>
+                        <div class="pro-value"> {{$idol->birthday}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">thông tin thần tượng</div>
-                        <div class="pro-value"> Ca sĩ</div>
+                        <div class="pro-value"> {{$idol->profession}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Giới tính</div>
-                        <div class="pro-value"> Đàn ông</div>
+                        <div class="pro-value"> {{$idol->gender}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Tự nhiên</div>
-                        <div class="pro-value"> Busan</div>
+                        <div class="pro-value"> {{$idol->nature}}</div>
                     </div>
                     <div class="pro-list">
-                        <div class="pro-key">Chìa khóa</div>
-                        <div class="pro-value"> 175cm</div>
+                        <div class="pro-key">Chiều cao</div>
+                        <div class="pro-value"> {{$idol->height}} cm</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Cân nặng</div>
-                        <div class="pro-value"> 100kg</div>
+                        <div class="pro-value"> {{$idol->weight}} kg</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-7 col-12">
+        <div class="col-md-6 col-12">
             <div class="detail-top">
                 <div class="detail-background">
-                    <img src="public/home/image/idol-men.jpg" alt="">
+                    <img src="public/uploads/idol/{{year($idol->created_at)}}/{{month($idol->created_at)}}/{{$idol->avatar}}?v={{time()}}" alt="">
                     <div class="mo"></div>
                 </div>
                 <div class="detail-img">
-                    <img src="public/home/image/idol-men.jpg" alt="">
-                    <div class="name">Jimin</div>
-                    <div class="agency">Hướng đạo sinh chống đạn</div>
+                    <img src="public/uploads/idol/{{year($idol->created_at)}}/{{month($idol->created_at)}}/{{$idol->avatar}}?v={{time()}}" alt="">
+                    <div class="name">{{$idol->nickname}}</div>
+                    <div class="agency">{{$idol->agency_name}}</div>
                 </div>
                 <div class="detail-vote">
                     <a href="" data-toggle="modal" data-target="#loginModal"><i class="fas fa-heart"></i></a>
@@ -96,13 +96,13 @@
                 </div>
             </div>
             <div class="row detail-bottom">
-                @for ($i = 1; $i < 10; $i++) 
+                @foreach ($gallery as $item)
                 <div class="col-md-4 col-6 detail-item">
-                    <a href="public/home/image/idol-men.jpg" data-lightbox="photos">
-                        <img class="img-fluid" src="public/home/image/idol-men.jpg">
+                    <a href="{{$item->image}}" data-lightbox="photos">
+                        <img class="img-fluid" src="{{$item->image}}">
                     </a>
                 </div>
-                @endfor
+                @endforeach
         </div>
     </div>
     </div>

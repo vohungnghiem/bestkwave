@@ -1,5 +1,5 @@
 
-.custom-file-upload input[type="file"] {
+/* .custom-file-upload input[type="file"] {
     display: none;
 }
 .custom-file-upload {
@@ -7,19 +7,19 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-}
-img {
+} */
+.grid-container img {
     width: 100%; /* need to overwrite inline dimensions */
     height: auto; 
   }
-  /* .grid-container {
+  .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 1em;
-  } */
+  }
   /* hover styles */
   .location-listing {
-    width: 50%;
+    /* width: 50%; */
     position: relative;
   }
   .location-image {

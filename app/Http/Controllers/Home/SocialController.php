@@ -14,9 +14,8 @@ class SocialController extends Controller
         return Socialite::driver($provider)->stateless()->redirect();
     }
     
-    public function callback($provider)
+    public function callback(Request $request,$provider)
     {
-            
         $getInfo = Socialite::driver($provider)->stateless()->user();
         $finduser = User::where('provider_id', $getInfo->id)->first();
 
@@ -31,11 +30,13 @@ class SocialController extends Controller
             ]);
             Auth::login($newUser);
         }
-
-        // auth()->login($user);
-    
-        return redirect()->to('idol/detail');
-    
+        if ($request->session()->has('backurlsocial')) {
+            return redirect()->to(session('backurlsocial')); 
+        }else {
+            return redirect()->to('/');
+        }
+        
+        
     }
     function createUser($getInfo,$provider){
     
