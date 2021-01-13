@@ -9,7 +9,7 @@
 	<ul class="nav nav-tabs">
 		@foreach ($genders as $item)
 		<li class="nav-item">
-			<a class="nav-link @if($item->id == $gender) active @endif" href="idol/ranking?gender={{$item->id}}">Idol {{$item->title}}</a>
+			<a class="nav-link @if($item->id == $gender->id) active @endif" href="idol/ranking?gender={{$item->id}}">Idol {{$item->title}}</a>
 		</li>	
 		@endforeach
 		
@@ -18,7 +18,7 @@
 		<div id="men" class="container tab-pane active"><br>
 			<div id="no-more-tables">
 				<table class="col-md-12 table-striped ">
-					<h1 class="text-center">IDOL NAM</h1>
+					<h2 class="text-center">IDOL {{$gender->title}}</h2>
 					<thead >
 						<tr>
 							<th width="8%">Xếp hạng</th>

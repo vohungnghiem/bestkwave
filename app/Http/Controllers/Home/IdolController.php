@@ -14,8 +14,23 @@ class IdolController extends Controller
 {
     public function index() 
     {
-    // view
-        return view('home.idol.statistic',[]);
+        // dd();
+        $s = date("Y-m-d").' 22:00:00';
+        $date = strtotime($s);
+        // echo date('d/M/Y H:i:s', $date);
+        // exit();
+        $today = DB::table('votes')
+            ->whereDate('created_at','<=',$date)
+            // ->whereDate('created_at','<',date("Y-m-d").'12:00:00')
+            ->get();
+            // ->sum('vote');
+        dd($today);
+        $lists = DB::table('idols')
+            ->leftJoin('votes','votes.idol_id','=','idols.id')
+            ->where('status',1)
+            ->select('idols.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
+            ->orderBy('sumvote','desc')->limit(50)->get();
+        return view('home.idol.statistic',['lists'=>$lists]);
     }
 
     public function ranking() 
@@ -34,6 +49,7 @@ class IdolController extends Controller
         ->paginate($perpage)
         ->withPath('idol/ranking?perpage='.$perpage.'&gender='.$gender);
         $genders = DB::table('genders')->orderBy('sort','desc')->get();
+        $gender = DB::table('genders')->where('id',$gender)->first();
         return view('home.idol.ranking',['lists'=>$lists,'genders'=>$genders,'gender'=>$gender]);
     }
 

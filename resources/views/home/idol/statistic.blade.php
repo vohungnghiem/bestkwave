@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-4 col-12 wrap-rank">
             <ul class="list-unstyled ">
-                <li class="row item-rank">
+                {{-- <li class="row item-rank">
                     <div class="col-2 num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></div>
                     <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
                     <div class="col-5 name-rank"><a href="">Kang Daniel SFG FGG</a></div>
@@ -29,18 +29,21 @@
                     <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
                     <div class="col-5 name-rank"><a href="">Kang Daniel</a></div>
                     <div class="col-2 result-rank third">400.000</div>
-                </li>
-                @for ($i = 4; $i <= 20; $i++)
-                <li class="row item-rank">
-                    <div class="col-2 num-rank">{{$i}}</div>
-                    <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
-                    <div class="col-5 name-rank"><a href="">Kang Daniel</a></div>
-                    <div class="col-2 result-rank">400.000</div>
-                </li>    
-                @endfor
+                </li> --}}
+                @foreach ($lists as $key => $item)
+                    <li class="row item-rank">
+                        <div class="col-2 num-rank">{{++$key}}</div>
+                        <div class="col-3 img-rank"><img src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt="gold medal"></div>
+                        <div class="col-5 name-rank"><a href="idol/detail/{{$item->id}}">{{$item->nickname}}</a></div>
+                        <div class="col-2 result-rank">{{$item->sumvote}}</div>
+                    </li>    
+                @endforeach
             </ul>
         </div>
-        <p class="col-12 text-right mt-3"> <a href="" class="btn btn-sm btn-secondary">xem thêm</a> </p>
+        <p class="col-12 text-right mt-3"> 
+            <a href="idol/list" class="btn btn-sm btn-secondary">danh sách</a>
+            <a href="idol/ranking" class="btn btn-sm btn-secondary">xem xếp hạng</a> 
+        </p>
     </div>
 </section>
 @endsection
@@ -61,12 +64,11 @@
             labels: [
                 'today: PM', 'today: AM', 'yesterday: PM', 'yesterday: AM', 
                 '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM', 
-                '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM'
                 ],
             datasets: [
                 {
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 3],
+                    data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 300],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0)',
                       
@@ -84,17 +86,7 @@
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
                     ],
-                },
-                {
-                    label: '# of không biết',
-                    data: [ 5, 2, 3,12, 19,3, 5, 2, 3,12, 19, 3,],
-                    backgroundColor: [
-                        'rgba(255, 206, 86, 0)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 206, 86, 1)',
-                    ],
-                },
+                }
                
             ]
         },
