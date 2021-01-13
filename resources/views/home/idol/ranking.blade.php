@@ -7,12 +7,12 @@
 @section('content')
 <section id="ranking">
 	<ul class="nav nav-tabs">
+		@foreach ($genders as $item)
 		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" href="#men">Idol Nam</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#woman">Idol Nữ</a>
-		</li>
+			<a class="nav-link @if($item->id == $gender) active @endif" href="idol/ranking?gender={{$item->id}}">Idol {{$item->title}}</a>
+		</li>	
+		@endforeach
+		
 	</ul>
 	<div class="tab-content">
 		<div id="men" class="container tab-pane active"><br>
@@ -30,7 +30,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						{{-- <tr>
 							<td data-title="Xếp hạng" class="num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></td>
 							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
 							<td data-title="Tên"> Võ Hùng Nghiêm .</td>
@@ -53,28 +53,24 @@
 							<td data-title="Nhóm">Nhóm </td>
 							<td data-title="Số phiếu bầu">400.000</td>
 							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
-						</tr>
-						@for ($i = 4; $i < 21; $i++)
+						</tr> --}}
+						@foreach ($lists as $key => $item)
 						<tr>
-							<td data-title="Xếp hạng" class="num-rank">{{$i}}</td>
-							<td data-title="Hình" class="img-rank"><img src="public/home/image/idol-men.jpg" alt=""></td>
-							<td data-title="Tên"> Võ Hùng Nghiêm {{$i}}.</td>
-							<td data-title="Nhóm">Nhóm {{$i}}</td>
-							<td data-title="Số phiếu bầu">400.000</td>
-							<td data-title="Bỏ phiếu" class="text-right"><a href="" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
+							<td data-title="Xếp hạng" class="num-rank">{{++$key}}</td>
+							<td data-title="Hình" class="img-rank"><img src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt=""></td>
+							<td data-title="Tên"> {{$item->nickname}}</td>
+							<td data-title="Nhóm">{{$item->group_name}}</td>
+							<td data-title="Số phiếu bầu">{{$item->sumvote}}</td>
+							<td data-title="Bỏ phiếu" class="text-right"><a href="idol/detail/{{$item->id}}" class="btn btn-sm btn-bp">bỏ phiếu bầu</a></td>
 						</tr>	
-						@endfor
+						@endforeach
 						
 					</tbody>
 				</table>
 			</div>
 			
-			<ul class="pagination pagination-md float-right">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			<ul class="pagination pagination-md float-right mt-3">
+				{{ $lists->onEachSide(2)->links() }}
 			</ul>
 			
 		</div>

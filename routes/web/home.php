@@ -25,12 +25,16 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::get('ranking','IdolController@ranking');
         Route::get('list','IdolController@list');
         Route::get('detail/{id}','IdolController@detail');
+        Route::get('vote/{id}','IdolController@vote');
+        Route::get('like/{id}','IdolController@like');
+        
     });
 
     Route::group(['prefix' => 'logauth'], function () {
         Route::get('signup','LogAuthController@getSignup');
         Route::post('signup','LogAuthController@postSignup');
         Route::post('login','LogAuthController@postLogin');
+        Route::get('logout','LogAuthController@logout');
     });
     Route::get('auth/redirect/{provider}', 'SocialController@redirect');
     Route::get('callback/{provider}', 'SocialController@callback');

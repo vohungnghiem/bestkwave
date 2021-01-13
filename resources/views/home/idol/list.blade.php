@@ -8,11 +8,11 @@
 <section id="listidol">
     <div class="row listidol-search ">
         <div class="col-md-8 col-12">
-            <form action="/" method="GET">
+            <form action="idol/list" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Tìm Tên Idol">
+                    <input type="text" name="key" class="form-control" placeholder="Tìm Tên Idol" value="{{$key}}">
                     <div class="input-group-append">
-                    <button type="submit" class="btn btn-outline-secondary">Tìm kiếm</button>
+                        <button type="submit" class="btn btn-outline-secondary">Tìm kiếm</button>
                     </div>
                 </div>
             </form>
@@ -20,45 +20,45 @@
         <div class="col-md-4 col-12 text-left">
             <div class="btn-group ">
                 <button type="button" class="btn btn-bright dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                    Giới tính (tất cả)
+                    @if ($gender == 0)
+                        Giới tính (tất cả)
+                    @endif
+                    @foreach ($genders as $item)
+                        @if ($item->id == $gender)
+                            {{$item->title}}
+                        @endif
+                    @endforeach
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" type="button">Tất cả</a>
-                    <a class="dropdown-item" type="button">Nam Idol</a>
-                    <a class="dropdown-item" type="button">Nữ Idol</a>
+                    <a  href="idol/list?gender=0" class="dropdown-item" type="button">Giới tính (tất cả)</a>
+                    @foreach ($genders as $item)
+                        <a  href="idol/list?gender={{$item->id}}" class="dropdown-item" type="button">{{$item->title}}</a>
+                    @endforeach
                 </div>
               </div>
         </div>
     </div>
 
     <div class="row listidol-idol">
-        @for ($i = 1; $i < 13; $i++)
+        @foreach ($lists as $item)
         <div class="col-md-2 col-6 item-idol-hover">
             <div class="item-idol">
-                <a href="">
-                    <img src="public/home/image/idol-men.jpg" alt="">
+                <a href="idol/detail/{{$item->id}}">
+                    <img src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt="">
                 </a>
                 <div class="box-idol">
-                    <div class="name-idol">Võ Hùng Nghiêm</div>
-                    <div class="group-idol">Không có group</div>
-                    <div class="like-idol"><i class="fas fa-heart"></i> 300.000</div>
+                    <div class="name-idol">{{$item->nickname}}</div>
+                    <div class="group-idol">{{$item->group_name}}</div>
+                    <div class="like-idol"><i class="fas fa-heart"></i> {{$item->sumvote}}</div>
                 </div>
             </div>
         </div>    
-        @endfor
+        @endforeach
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
+    <nav aria-label="Page navigation example" >
+        <div class="pagination justify-content-center">
+          {{ $lists->onEachSide(2)->links() }}
+        </div>
       </nav>
 </section>
 @endsection

@@ -1223,12 +1223,22 @@ a:hover {
   color: white;
 }
 #detailidol .idol-detail .detail-top .detail-vote a i {
-  font-size: 20px;
+  font-size: 19px;
 }
 #detailidol .idol-detail .detail-top .detail-vote .btn-vote {
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 30px;
-  padding: 2px 10px;
+  padding: 0px 5px 3px 5px;
+  cursor: pointer;
+}
+#detailidol .idol-detail .detail-top .detail-vote .btn-voted {
+  border: 2px solid #d08182;
+  color: #d08182;
+  border-radius: 30px;
+  padding: 0px 5px 3px 5px;
+}
+#detailidol .idol-detail .detail-top .detail-vote .btn-voted-i i {
+  color: #d08182;
 }
 #detailidol .idol-detail .detail-top .detail-tab {
   position: absolute;

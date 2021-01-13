@@ -9,8 +9,23 @@
     <div class="row idol-detail ">
         <div class="col-12">
             @if(Auth::user())
-                <h6>đăng nhập: {{Auth::user()->provider}}</h6>
-                <h4>{{Auth::user()->name}}</h4>
+            <div class="float-left">
+                <h6>Tài khoản: {{Auth::user()->provider}}</h6>
+                <h5>Tên: {{Auth::user()->name}}</h5>
+            </div>
+                <a href="logauth/logout" class="btn btn-secondary btn-sm m-1 float-right">Đăng xuất</a>
+            @endif
+        </div>
+        <div class="col-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{session('error')}}
+                </div>
             @endif
         </div>
         <div class="col-md-6 col-12">
@@ -81,16 +96,31 @@
                     <div class="agency">{{$idol->agency_name}}</div>
                 </div>
                 <div class="detail-vote">
-                    <a href="" data-toggle="modal" data-target="#loginModal"><i class="fas fa-heart"></i></a>
-                    <a href="" class="btn-vote" data-toggle="modal" data-target="#loginModal">vote</a>
+                    @if (Auth::user())
+                        @if ($idollike)
+                            <a class="btn-voted-i" data-toggle="popover" data-placement="left" title="Thông báo" data-content="<div class='popover-tt'>Hôm nay bạn đã thích idol này rồi <br> Quay lại hôm sau bạn nhé !</div>">
+                                <i class="fas fa-heart"></i></a>
+                        @else
+                            <a href="idol/like/{{$idol->id}}"><i class="far fa-heart"></i></a>
+                        @endif
+                        @if ($idolvote)
+                            <a data-toggle="popover" data-placement="left" title="Thông báo" data-content="<div class='popover-tt'>Hôm nay bạn đã vote cho idol này rồi <br> Quay lại hôm sau bạn nhé !</div>" class="btn-vote btn-voted">vote</a>
+                        @else
+                            <a href="idol/vote/{{$idol->id}}" class="btn-vote">vote</a>
+                        @endif
+                    @else
+                        <a href="" data-toggle="modal" data-target="#loginModal"><i class="far fa-heart"></i></a>
+                        <a href="" class="btn-vote" data-toggle="modal" data-target="#loginModal">vote</a>
+                    @endif
+                    
                 </div>
                 <div class="detail-tab">
                     <div class="tab-bot vote">
-                        <div>23.000 </div>
+                        <div>{{$sumvote}} </div>
                         <div>vote</div>
                     </div>
                     <div class="tab-bot like">
-                        <div>23.000 </div>
+                        <div>{{$sumlike}} </div>
                         <div>like</div>
                     </div>
                 </div>
@@ -103,8 +133,8 @@
                     </a>
                 </div>
                 @endforeach
+            </div>
         </div>
-    </div>
     </div>
 </section>
 

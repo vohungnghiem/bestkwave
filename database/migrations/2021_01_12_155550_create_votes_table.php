@@ -16,10 +16,11 @@ class CreateVotesTable extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->unsignedInteger('idol_id');
             $table->unsignedInteger('user_id');
+            $table->date('date_id');
             $table->integer('vote')->default(0);
             $table->integer('like')->default(0);
             $table->timestamps();
-            $table->primary(['idol_id', 'user_id']);
+            $table->primary(['idol_id', 'user_id', 'date_id']);
 
             $table->foreign('idol_id')->references('id')->on('idols')
             ->onUpdate('cascade')->onDelete('cascade');

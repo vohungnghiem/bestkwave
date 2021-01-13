@@ -54,8 +54,11 @@ class LogAuthController extends Controller
         } else {
             return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
         }
-        // echo $request->email;
-        // echo $request->password;
-        // exit();
+
+    }
+    public function logout ()
+    {
+        Auth::logout();
+        return redirect()->back();
     }
 }
