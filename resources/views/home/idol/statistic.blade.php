@@ -45,6 +45,9 @@
             <a href="idol/ranking" class="btn btn-sm btn-secondary">xem xếp hạng</a> 
         </p>
     </div>
+    @php
+       echo implode(" ",$label);
+    @endphp
 </section>
 @endsection
 
@@ -61,14 +64,16 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [
-                'today: PM', 'today: AM', 'yesterday: PM', 'yesterday: AM', 
-                '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM', 
+            labels: 
+                [
+                // 'today: PM', 'today: AM', 'yesterday: PM', 'yesterday: AM', 
+                // '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM', 
+                {{implode(",",$label)}}
                 ],
             datasets: [
                 {
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3,12, 19, 3, 5, 2, 300],
+                    data: {{json_encode($vote)}},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0)',
                       
@@ -79,7 +84,7 @@
                 },
                 {
                     label: '# of Likes',
-                    data: [3, 5, 2, 3,12, 19, 3, 5, 2, 3,12, 19],
+                    data: {{json_encode($like)}},
                     backgroundColor: [
                         'rgba(54, 162, 235, 0)',
                     ],

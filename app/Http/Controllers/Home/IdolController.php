@@ -14,23 +14,49 @@ class IdolController extends Controller
 {
     public function index() 
     {
-        // dd();
-        $s = date("Y-m-d").' 22:00:00';
-        $date = strtotime($s);
-        // echo date('d/M/Y H:i:s', $date);
-        // exit();
-        $today = DB::table('votes')
-            ->whereDate('created_at','<=',$date)
-            // ->whereDate('created_at','<',date("Y-m-d").'12:00:00')
-            ->get();
-            // ->sum('vote');
-        dd($today);
+        $label = array();
+        $vote = array();
+        $like = array();
+        for ($i=0; $i >= -5 ; $i--) { 
+            $today_vote = DB::table('votes')
+                ->whereDate('date_id',date('Y-m-d',strtotime($i. " days")))
+                ->where('vote',1)
+                ->select( DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') )
+                ->get()->toArray();
+                array_push($vote,array_sum(array_column($today_vote,'daypm')));
+                array_push($vote,array_sum(array_column($today_vote,'dayam')));
+            $today_like = DB::table('votes')
+                ->whereDate('date_id',date('Y-m-d',strtotime($i." days")))
+                ->where('like',1)
+                ->select( DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') )
+                ->get()->toArray();
+                array_push($like,array_sum(array_column($today_like,'daypm')));
+                array_push($like,array_sum(array_column($today_like,'dayam')));
+            if ($i == 0) {
+                array_push($label,'hom nay : pm','hom nay : am');
+            }elseif ($i == -1) {
+                array_push($label,'hom qua : pm', 'hom qua : am');
+            }else {
+                $date = date('d-m-Y',strtotime($i. " days"));
+                array_push($label,$date.': pm', $date.': am');
+            }
+        }
+        
+        if (date('A') == "AM") {
+            array_shift($label);
+            array_shift($vote);
+            array_shift($like);
+        }
+        print_r($label); echo "<br>";
+        print_r($vote); echo "<br>";
+        print_r($like); echo "<br>";
+        // dd(implode(" ",$label));
         $lists = DB::table('idols')
             ->leftJoin('votes','votes.idol_id','=','idols.id')
             ->where('status',1)
             ->select('idols.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
             ->orderBy('sumvote','desc')->limit(50)->get();
-        return view('home.idol.statistic',['lists'=>$lists]);
+        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'vote'=>$vote,'like'=>$like]);
     }
 
     public function ranking() 
@@ -126,6 +152,7 @@ class IdolController extends Controller
             DB::table('votes')->insert([
                 'idol_id' => $id,
                 'user_id' => Auth::user()->id,
+                'date_id'  => date("Y-m-d"),
                 'vote' => 1,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
