@@ -60,7 +60,9 @@ class IdolController extends Controller
     public function ranking() 
     {
         $gender = isset($_GET['gender']) ? $_GET['gender'] : 1;
-        $perpage = 1;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $perpage = 3;
+        $curenrankpage = $page * $perpage - $page - 1 ;
         $lists = DB::table('idols')
         ->leftJoin('votes','votes.idol_id','=','idols.id')
         ->where('status',1)
@@ -74,7 +76,7 @@ class IdolController extends Controller
         ->withPath('idol/ranking?perpage='.$perpage.'&gender='.$gender);
         $genders = DB::table('genders')->orderBy('sort','desc')->get();
         $gender = DB::table('genders')->where('id',$gender)->first();
-        return view('home.idol.ranking',['lists'=>$lists,'genders'=>$genders,'gender'=>$gender]);
+        return view('home.idol.ranking',['lists'=>$lists,'genders'=>$genders,'gender'=>$gender,'curenrankpage'=>$curenrankpage]);
     }
 
     public function list(Request $request ) 

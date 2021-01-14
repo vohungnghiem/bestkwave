@@ -56,7 +56,7 @@
 						</tr> --}}
 						@foreach ($lists as $key => $item)
 						<tr>
-							<td data-title="Xếp hạng" class="num-rank">{{++$key}}</td>
+							<td data-title="Xếp hạng" class="num-rank">{{$curenrankpage + ($key)}}</td>
 							<td data-title="Hình" class="img-rank"><img src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt=""></td>
 							<td data-title="Tên"> {{$item->nickname}}</td>
 							<td data-title="Nhóm">{{$item->group_name}}</td>
