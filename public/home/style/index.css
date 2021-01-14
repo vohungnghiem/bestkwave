@@ -40,6 +40,7 @@ a:hover {
 }
 .header-wrapper .main-header-menu .main-menu {
   position: relative;
+  padding-bottom: 15px;
 }
 .header-wrapper .main-header-menu .main-menu .menu-list {
   list-style: none;
@@ -187,9 +188,19 @@ a:hover {
   right: 0px;
   position: absolute;
 }
+#menufixed .second-header-right .right:first-child {
+  display: none;
+}
+#menufixed .second-header-right .right:last-child {
+  display: none;
+}
+#menufixed .second-header-right .right:nth-child(2) {
+  display: none;
+}
 #menufixed .second-header-right .br-0 {
   border-right: none;
   padding-right: 0px;
+  padding-top: 3px;
 }
 
 .mobile {

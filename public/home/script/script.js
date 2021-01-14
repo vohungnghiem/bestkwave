@@ -176,27 +176,30 @@ $(document).ready(function () {
 
 // advertisement
 $(document).ready(function () {
-    var ad = $(".home-lasted");
-    var adqc = ad.offset().top + 1;
+    if($('#wrap-content').hasClass("home-lasted")) { // remove if to not debug
+        var ad = $(".home-lasted");
+        var adqc = ad.offset().top + 1;
 
-    var foot = $("#footer");
-    var footer = foot.offset().top + 1 - 70;
-    $(window).on('scroll', function () { 
-        if ($(window).scrollTop() >= footer) {
-            $(".qc-2").css({"opacity": "0"});
-        }else{
-            $(".qc-2").css({"opacity": "1"});
-        };
-        if ($(window).scrollTop() >= adqc) {
-            var widthfixed = $('#container-all').width();
-            var widthbody = $(window).width();
-            var subleft = (widthbody - widthfixed)/2 - 200;
-            var subright = (widthbody - widthfixed)/2 - 200;
-            $(".qc-2-left").css({"position": "fixed", "top":"15px", "margin-top": "-15px","left":subleft+"px"});
-            $(".qc-2-right").css({"position": "fixed", "top":"15px", "margin-top": "-15px","right":subright+"px"});
-        }else {
-            $(".qc-2-left").css({"position": "absolute","left":"-200px","margin-top":"15px"});
-            $(".qc-2-right").css({"position": "absolute","right":"-200px","margin-top":"15px"});
-        }
-    });
+        var foot = $("#footer");
+        var footer = foot.offset().top + 1 - 70;
+        $(window).on('scroll', function () { 
+            if ($(window).scrollTop() >= footer) {
+                $(".qc-2").css({"opacity": "0"});
+            }else{
+                $(".qc-2").css({"opacity": "1"});
+            };
+            if ($(window).scrollTop() >= adqc) {
+                var widthfixed = $('#container-all').width();
+                var widthbody = $(window).width();
+                var subleft = (widthbody - widthfixed)/2 - 200;
+                var subright = (widthbody - widthfixed)/2 - 200;
+                $(".qc-2-left").css({"position": "fixed", "top":"15px", "margin-top": "-15px","left":subleft+"px"});
+                $(".qc-2-right").css({"position": "fixed", "top":"15px", "margin-top": "-15px","right":subright+"px"});
+            }else {
+                $(".qc-2-left").css({"position": "absolute","left":"-200px","margin-top":"15px"});
+                $(".qc-2-right").css({"position": "absolute","right":"-200px","margin-top":"15px"});
+            }
+        });
+    }
+    
 });

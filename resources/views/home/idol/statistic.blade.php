@@ -31,8 +31,17 @@
                     <div class="col-2 result-rank third">400.000</div>
                 </li> --}}
                 @foreach ($lists as $key => $item)
+                
                     <li class="row item-rank">
-                        <div class="col-2 num-rank">{{++$key}}</div>
+                        @if ($key == 0)
+                            <div class="col-2 num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></div>
+                        @elseif($key == 1)
+                            <div class="col-2 num-rank"><img src="public/home/image/silver-medal.png" alt="silver medal"></div>
+                        @elseif($key == 2)
+                             <div class="col-2 num-rank"><img src="public/home/image/bronze-medal.png" alt="bronze medal"></div>
+                        @else
+                            <div class="col-2 num-rank">{{++$key}}</div>
+                        @endif
                         <div class="col-3 img-rank"><img src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt="gold medal"></div>
                         <div class="col-5 name-rank"><a href="idol/detail/{{$item->id}}">{{$item->nickname}}</a></div>
                         <div class="col-2 result-rank">{{$item->sumvote}}</div>
@@ -45,9 +54,7 @@
             <a href="idol/ranking" class="btn btn-sm btn-secondary">xem xếp hạng</a> 
         </p>
     </div>
-    @php
-       echo implode(" ",$label);
-    @endphp
+    <div id="label" label="{{json_encode($label)}}"></div>
 </section>
 @endsection
 
@@ -61,15 +68,17 @@
 <script>
     var ctx = document.getElementById('myChart');
     var ctx = $('#myChart');
+    var label = $('#label').attr('label');
+    label = label.replace(/'/g, '"');
+    label = JSON.parse(label);
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: 
-                [
-                // 'today: PM', 'today: AM', 'yesterday: PM', 'yesterday: AM', 
-                // '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM', 
-                {{implode(",",$label)}}
-                ],
+            labels: label, 
+                // [
+                // "today: PM", 'today: AM', 'yesterday: PM', 'yesterday: AM', 
+                // '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM',
+                // ],
             datasets: [
                 {
                     label: '# of Votes',
