@@ -33,9 +33,9 @@ class IdolController extends Controller
                 array_push($like,array_sum(array_column($today_like,'daypm')));
                 array_push($like,array_sum(array_column($today_like,'dayam')));
             if ($i == 0) {
-                array_push($label,'hom nay : pm','hom nay : am');
+                array_push($label,'hôm nay : pm','hôm nay : am');
             }elseif ($i == -1) {
-                array_push($label,'hom qua : pm', 'hom qua : am');
+                array_push($label,'hôm qua : pm', 'hôm qua : am');
             }else {
                 $date = date('d-m-Y',strtotime($i. " days"));
                 array_push($label,$date.': pm', $date.': am');
@@ -47,22 +47,22 @@ class IdolController extends Controller
             array_shift($vote);
             array_shift($like);
         }
-        print_r($label); echo "<br>";
-        print_r($vote); echo "<br>";
-        print_r($like); echo "<br>";
-        // dd(implode(" ",$label));
         $lists = DB::table('idols')
             ->leftJoin('votes','votes.idol_id','=','idols.id')
             ->where('status',1)
             ->select('idols.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
-            ->orderBy('sumvote','desc')->limit(50)->get();
+            ->orderBy('sumvote','desc')->limit(50)
+            ->groupBy('votes.idol_id')
+            ->get();
         return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'vote'=>$vote,'like'=>$like]);
     }
 
     public function ranking() 
     {
         $gender = isset($_GET['gender']) ? $_GET['gender'] : 1;
-        $perpage = 1;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $perpage = 3;
+        $curenrankpage = $page * $perpage - $page - 1 ;
         $lists = DB::table('idols')
         ->leftJoin('votes','votes.idol_id','=','idols.id')
         ->where('status',1)
@@ -76,7 +76,7 @@ class IdolController extends Controller
         ->withPath('idol/ranking?perpage='.$perpage.'&gender='.$gender);
         $genders = DB::table('genders')->orderBy('sort','desc')->get();
         $gender = DB::table('genders')->where('id',$gender)->first();
-        return view('home.idol.ranking',['lists'=>$lists,'genders'=>$genders,'gender'=>$gender]);
+        return view('home.idol.ranking',['lists'=>$lists,'genders'=>$genders,'gender'=>$gender,'curenrankpage'=>$curenrankpage]);
     }
 
     public function list(Request $request ) 
@@ -85,7 +85,7 @@ class IdolController extends Controller
         try {
             $key = isset($_GET['key']) ? $_GET['key'] : null;
             $gender = isset($_GET['gender']) ? $_GET['gender'] : null;
-            $perpage = 1;
+            $perpage = 12;
             $lists = DB::table('idols')
                 ->leftJoin('votes','votes.idol_id','=','idols.id')
                 ->where('status',1)

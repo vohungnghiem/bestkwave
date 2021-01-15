@@ -30,6 +30,7 @@
         }
         .main-menu {
             position: relative;
+            padding-bottom: 15px;
             .menu-list {
                 list-style: none;
                 padding-left: 0px;
@@ -175,11 +176,23 @@
         }
     }
     .second-header-right{
+        .right{
+            &:first-child {
+                display: none;
+            }
+            &:last-child {
+                display: none;
+            }
+            &:nth-child(2){
+                display: none;
+            }
+        }
         right: 0px;
         position: absolute;
         .br-0 {
             border-right: none;
             padding-right: 0px;
+            padding-top: 3px;
         }
     }
 }
