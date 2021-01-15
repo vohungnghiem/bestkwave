@@ -6,30 +6,17 @@
 @endsection
 @section('content')
 <section id="idol">
+    <nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		</ol>
+	</nav>
     <div class="row">
         <div class="col-md-8 col-12">
             <canvas id="myChart" width="400" height="250"></canvas>
         </div>
         <div class="col-md-4 col-12 wrap-rank">
             <ul class="list-unstyled ">
-                {{-- <li class="row item-rank">
-                    <div class="col-2 num-rank"><img src="public/home/image/gold-medal.png" alt="gold medal"></div>
-                    <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
-                    <div class="col-5 name-rank"><a href="">Kang Daniel SFG FGG</a></div>
-                    <div class="col-2 result-rank first">400.000</div>
-                </li>
-                <li class="row item-rank">
-                    <div class="col-2 num-rank"><img src="public/home/image/silver-medal.png" alt="silver medal"></div>
-                    <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
-                    <div class="col-5 name-rank"><a href="">Kang Daniel</a></div>
-                    <div class="col-2 result-rank second">400.000</div>
-                </li>
-                <li class="row item-rank">
-                    <div class="col-2 num-rank"><img src="public/home/image/bronze-medal.png" alt="bronze medal"></div>
-                    <div class="col-3 img-rank"><img src="public/home/image/idol-men.jpg" alt="gold medal"></div>
-                    <div class="col-5 name-rank"><a href="">Kang Daniel</a></div>
-                    <div class="col-2 result-rank third">400.000</div>
-                </li> --}}
                 @foreach ($lists as $key => $item)
                 
                     <li class="row item-rank">

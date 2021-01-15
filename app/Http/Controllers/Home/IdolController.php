@@ -61,8 +61,8 @@ class IdolController extends Controller
     {
         $gender = isset($_GET['gender']) ? $_GET['gender'] : 1;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $perpage = 3;
-        $curenrankpage = $page * $perpage - $page - 1 ;
+        $perpage = 2;
+        $curenrankpage = $page * $perpage - $perpage ;
         $lists = DB::table('idols')
         ->leftJoin('votes','votes.idol_id','=','idols.id')
         ->where('status',1)

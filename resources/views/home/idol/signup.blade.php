@@ -6,6 +6,12 @@
 @endsection
 @section('content')
 <section id="signup">
+    <nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
+		</ol>
+	</nav>
     <div class="row">
         <div class="col-12">
             @if(session('error'))
@@ -23,25 +29,25 @@
         <div class="col-md-4 col-12"></div>
         <div class="col-md-4 col-12">
             <div class="form-title text-center">
-                <h2 class="m-4">Signup</h2>
+                <h2 class="m-4">Đăng ký</h2>
             </div>
             <div class="d-flex flex-column">
                 <form action="logauth/signup" method="post" id="loginLogAuth">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" id="nameLogAuth" placeholder="Your name..." value="{{old('name')}}" >
+                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" id="nameLogAuth" placeholder="Tên của bạn..." value="{{old('name')}}" >
                         <div class="invalid-feedback">{{$errors->first('name')}}</div>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" id="emailLogAuth" placeholder="Your email address..." value="{{old('email')}}">
+                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" id="emailLogAuth" placeholder="Email của bạn..." value="{{old('email')}}">
                         <div class="invalid-feedback">{{$errors->first('email')}}</div>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : ''}}" id="passwordLogAuth" placeholder="Your password..." >
+                        <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : ''}}" id="passwordLogAuth" placeholder="Mật khẩu..." >
                         <div class="invalid-feedback">{{$errors->first('password')}}</div>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="passwordVerify" class="form-control {{ $errors->has('passwordVerify') ? 'is-invalid' : ''}}" id="passwordVerify" placeholder="Your password verify..." >
+                        <input type="password" name="passwordVerify" class="form-control {{ $errors->has('passwordVerify') ? 'is-invalid' : ''}}" id="passwordVerify" placeholder="Xác nhân mật khẩu..." >
                         <div class="invalid-feedback">{{$errors->first('passwordVerify')}}</div>
                     </div>
                     <div class="form-group">

@@ -6,6 +6,12 @@
 @endsection
 @section('content')
 <section id="listidol">
+    <nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+		</ol>
+	</nav>
     <div class="row listidol-search ">
         <div class="col-md-8 col-12">
             <form action="idol/list" method="GET">

@@ -19,7 +19,7 @@ class LogAuthController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'passwordVerify' => 'same:password'
         ],[
