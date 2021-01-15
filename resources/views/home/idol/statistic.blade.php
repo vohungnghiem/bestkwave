@@ -46,7 +46,7 @@
         </p>
     </div>
     @php
-       echo implode(" ",$label);
+       echo implode(",",$label);
     @endphp
 </section>
 @endsection
