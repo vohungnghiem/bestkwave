@@ -8,7 +8,7 @@
 <section id="listidol">
     <nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		  <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-arrow-alt-circle-left"></i> BEST IDOL</a></li>
 		  <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
 		</ol>
 	</nav>
