@@ -8,7 +8,7 @@
 <section id="detailidol">
     <nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		  <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-arrow-alt-circle-left"></i> BEST IDOL</a></li>
 		  <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
 		</ol>
 	</nav>
@@ -60,7 +60,7 @@
                         <div class="pro-value">{{$idol->group_name}}</div>
                     </div>
                     <div class="pro-list">
-                        <div class="pro-key">Đại lý</div>
+                        <div class="pro-key">Công ty quản lý</div>
                         <div class="pro-value"> {{$idol->agency_name}}</div>
                     </div>
                     <div class="pro-list">
@@ -68,7 +68,7 @@
                         <div class="pro-value"> {{$idol->birthday}}</div>
                     </div>
                     <div class="pro-list">
-                        <div class="pro-key">thông tin thần tượng</div>
+                        <div class="pro-key">Thông tin thần tượng</div>
                         <div class="pro-value"> {{$idol->profession}}</div>
                     </div>
                     <div class="pro-list">
@@ -76,7 +76,7 @@
                         <div class="pro-value"> {{$idol->gender}}</div>
                     </div>
                     <div class="pro-list">
-                        <div class="pro-key">Tự nhiên</div>
+                        <div class="pro-key">Quê quán</div>
                         <div class="pro-value"> {{$idol->nature}}</div>
                     </div>
                     <div class="pro-list">

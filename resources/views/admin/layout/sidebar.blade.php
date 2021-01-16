@@ -177,7 +177,7 @@
                         <li class="nav-item">
                             <a href="admincp/idolplus/agency" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Agency (đại lý)</p>
+                            <p>Agency (công ty quản lý)</p>
                             </a>
                         </li>
                         <li class="nav-item">

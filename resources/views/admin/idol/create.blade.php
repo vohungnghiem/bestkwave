@@ -68,7 +68,7 @@
                                 <input class="form-control @if ($errors->first('nickname')) is-invalid @endif " id="nickname" name="nickname" placeholder="Nickname" value="{{old('nickname')}}">
                             </div>
                             <div class="form-group">
-                                <label for="agency_name"> Agency name (Tên đại lý)</label>
+                                <label for="agency_name"> Agency name (Tên công ty quản lý)</label>
                                 <input type="text" name="agency_name" value="{{old('agency_name')}}" class="form-control " id="agency_name" placeholder="Agency name">
                             </div>
                             <div class="form-group">
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Birthday: </label>
+                                <label>Birthday: ngày / tháng / năm</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -135,7 +135,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                    <a class="iframe-btn fancy" href="tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe">
+                                    <a class="iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe">
                                         <i class="fas fa-upload"></i> Tải Gallery </a>
                                 <br>
                                 <div class="grid-container row">

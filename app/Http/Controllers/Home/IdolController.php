@@ -32,14 +32,12 @@ class IdolController extends Controller
                 ->get()->toArray();
                 array_push($like,array_sum(array_column($today_like,'daypm')));
                 array_push($like,array_sum(array_column($today_like,'dayam')));
-            if ($i == 0) {
-                array_push($label,'hôm nay : pm','hôm nay : am');
-            }elseif ($i == -1) {
-                array_push($label,'hôm qua : pm', 'hôm qua : am');
-            }else {
+            // if ($i == 0) {
+            //     array_push($label,'hôm nay : chiều','hôm nay : sáng');
+            // }else {
                 $date = date('d-m-Y',strtotime($i. " days"));
-                array_push($label,$date.': pm', $date.': am');
-            }
+                array_push($label,$date.': chiều', $date.': sáng');
+            // }
         }
         
         if (date('A') == "AM") {

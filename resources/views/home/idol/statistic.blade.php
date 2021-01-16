@@ -8,7 +8,7 @@
 <section id="idol">
     <nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="idol/statistic">BEST IDOL</a></li>
+		  <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-laptop-house"></i> BEST IDOL</a></li>
 		</ol>
 	</nav>
     <div class="row">
@@ -37,8 +37,8 @@
             </ul>
         </div>
         <p class="col-12 text-right mt-3"> 
-            <a href="idol/list" class="btn btn-sm btn-secondary">danh sách</a>
-            <a href="idol/ranking" class="btn btn-sm btn-secondary">xem xếp hạng</a> 
+            <a href="idol/list" class="btn btn-sm btn-secondary"><i class="fas fa-list"></i> Danh sách</a>
+            <a href="idol/ranking" class="btn btn-sm btn-secondary"><i class="fas fa-list-ol"></i> Xem xếp hạng</a> 
         </p>
     </div>
 

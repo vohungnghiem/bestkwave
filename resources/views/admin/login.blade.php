@@ -8,9 +8,9 @@
 	<title>@yield('title') Login</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="admin/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="admin/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="public/admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="public/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="public/admin/dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -75,11 +75,11 @@
     </div>
 
     <!-- jQuery -->
-    <script src="admin/plugins/jquery/jquery.min.js"></script>
+    <script src="public/admin/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="admin/dist/js/adminlte.min.js"></script>
+    <script src="public/admin/dist/js/adminlte.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script>
