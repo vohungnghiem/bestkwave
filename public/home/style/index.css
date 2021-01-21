@@ -1133,6 +1133,7 @@ a:hover {
 #listidol .listidol-idol .item-idol .box-idol {
   padding: 5px;
   text-align: center;
+  min-height: 100px;
 }
 #listidol .listidol-idol .item-idol .box-idol .name-idol {
   font-weight: 700;

@@ -65,7 +65,7 @@
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Sinh</div>
-                        <div class="pro-value"> {{$idol->birthday}}</div>
+                        <div class="pro-value"> {{date("d/m/Y", strtotime($idol->birthday))}}</div>
                     </div>
                     <div class="pro-list">
                         <div class="pro-key">Thông tin thần tượng</div>
