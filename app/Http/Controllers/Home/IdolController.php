@@ -36,7 +36,8 @@ class IdolController extends Controller
             //     array_push($label,'hôm nay : chiều','hôm nay : sáng');
             // }else {
                 $date = date('d-m-Y',strtotime($i. " days"));
-                array_push($label,$date.': chiều', $date.': sáng');
+                // array_push($label,$date.': chiều', $date.': sáng');
+                array_push($label,$date, $date);
             // }
         }
         

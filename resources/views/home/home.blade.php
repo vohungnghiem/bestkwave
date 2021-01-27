@@ -26,18 +26,18 @@
 
 @isset($adfirst)
 <section class="qc-1">
-    <a href="{{$adfirst->link}}"><img src="{{$adfirst->image}}" alt="advertisement"></a>
+    <a href="{{$adfirst->link}}" target="_blank"><img src="{{$adfirst->image}}" alt="advertisement"></a>
 </section>
 @endisset
 <section class="home-lasted">
     @isset($adsecond)
     <aside class="qc-2 qc-2-left">
-        <a href="{{$adsecond->link}}"><img src="{{$adsecond->image}}" alt="advertisement"></a>
+        <a href="{{$adsecond->link}}" target="_blank"><img src="{{$adsecond->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     @isset($adthird)
     <aside class="qc-2 qc-2-right">
-        <a href="{{$adthird->link}}"><img src="{{$adthird->image}}" alt="advertisement"></a>
+        <a href="{{$adthird->link}}" target="_blank"><img src="{{$adthird->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     <div class="row" id="loadmore">
@@ -61,7 +61,7 @@
         @endforeach
         @isset($adseventh)
         <section class="qc-1 col-md-12">
-            <a href="{{$adseventh->link}}"><img src="{{$adseventh->image}}" alt="advertisement"></a>
+            <a href="{{$adseventh->link}}" target="_blank"><img src="{{$adseventh->image}}" alt="advertisement"></a>
         </section>
         @endisset
         @foreach ($latestadd as $item)
@@ -84,24 +84,24 @@
         @endforeach
     </div>
     <div class="btn-more">
-        <p><a class="nextpage" href="1">load more stories</a></p>
+        <p><a class="nextpage" href="1">More Stories</a></p>
         <span></span>
     </div>
 </section>
 @isset($adfourth)
 <section class="qc-1">
-    <a href="{{$adfourth->link}}"><img src="{{$adfourth->image}}" alt="advertisement"></a>
+    <a href="{{$adfourth->link}}" target="_blank"><img src="{{$adfourth->image}}" alt="advertisement"></a>
 </section>
 @endisset
 <section class="home-most">
     @isset($adeighth)
     <aside class="qc-3-left">
-        <a href="{{$adeighth->link}}"><img src="{{$adeighth->image}}" alt="advertisement"></a>
+        <a href="{{$adeighth->link}}" target="_blank"><img src="{{$adeighth->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     @isset($adfifth)
     <aside class="qc-3-right">
-        <a href="{{$adfifth->link}}"><img src="{{$adfifth->image}}" alt="advertisement"></a>
+        <a href="{{$adfifth->link}}" target="_blank"><img src="{{$adfifth->image}}" alt="advertisement"></a>
     </aside>
     @endisset
     <h1 class="home-most-title">most popular</h1>
@@ -125,7 +125,7 @@
 </section>
 @isset($adsixth)
 <section class="qc-1">
-    <a href="{{$adsixth->link}}"><img src="{{$adsixth->image}}" alt="advertisement"></a>
+    <a href="{{$adsixth->link}}" target="_blank"><img src="{{$adsixth->image}}" alt="advertisement"></a>
 </section>
 @endisset
 

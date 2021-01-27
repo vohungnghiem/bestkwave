@@ -26,8 +26,10 @@
             text-transform: none;
             padding: 20px 5px 40px;
             img {
-                max-width: 100%;
+                max-height: 650px;
                 margin: 10px 0px;
+                max-width: 100%;
+                width: auto;
             }
             p {
                 margin-bottom: 0rem;
@@ -92,6 +94,14 @@
             img {
                 width: 100%;
                 height: auto;
+            }
+        }
+        .post-wrapper {
+            .post-content {
+                img {
+                    max-height: 350px;
+                    width: auto;
+                }
             }
         }
     }

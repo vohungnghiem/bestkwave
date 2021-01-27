@@ -13,7 +13,7 @@ a:hover {
 }
 
 .header-wrapper {
-  border-bottom: 1px dotted #808080;
+  border-bottom: 0px;
 }
 .header-wrapper .second-header {
   min-height: 40px;
@@ -64,10 +64,10 @@ a:hover {
 }
 .header-wrapper .two-header-menu .header-logo {
   padding-right: 10px;
-  border-right: 1px dotted #808080;
+  border-right: none;
 }
 .header-wrapper .two-header-menu .header-logo .logo img {
-  height: 40px;
+  height: 65px;
 }
 .header-wrapper .two-header-menu .main-menu .menu-list {
   list-style: none;
@@ -148,7 +148,7 @@ a:hover {
   position: fixed;
   top: 0;
   background-color: white;
-  border-bottom: 1px dotted #808080;
+  border-bottom: none;
   width: 100%;
   height: 50px;
   display: flex;
@@ -166,7 +166,7 @@ a:hover {
 }
 #menufixed .second-header-left .logo {
   padding-right: 10px;
-  border-right: 1px dotted #808080;
+  border-right: none;
 }
 #menufixed .second-header-left .logo img {
   height: 40px;
@@ -411,7 +411,7 @@ a:hover {
 #wrap-content {
   max-width: 970px;
   margin: -1px auto 0;
-  padding: 30px 0px 45px 0px;
+  padding: 15px 0px 45px 0px;
   min-height: 500px;
 }
 #wrap-content .qc-1 {
@@ -470,7 +470,8 @@ a:hover {
   position: relative;
   padding: 10px 0px;
   margin-top: 20px;
-  border-bottom: 1px dotted #808080;
+  margin-bottom: 20px;
+  border-bottom: none;
 }
 .home-lasted .btn-more p {
   position: absolute;
@@ -485,14 +486,14 @@ a:hover {
 }
 .home-lasted .btn-more p .nextpage {
   color: white;
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   display: block;
 }
 .home-lasted .btn-more span {
   padding: 6px;
   position: absolute;
-  top: 13px;
+  top: 20px;
   background-color: #fe0000;
   left: 50%;
   margin-left: -7px;
@@ -685,7 +686,7 @@ a:hover {
   }
 
   #wrap-content {
-    padding: 30px 5px 45px 5px;
+    padding: 15px 5px 45px 5px;
   }
 
   .header-wrapper {
@@ -711,6 +712,13 @@ a:hover {
     top: -20px;
     right: 10px;
     margin-bottom: -15px;
+  }
+  .footer .logo-footer {
+    border-bottom: 1px solid white;
+    padding: 10px;
+  }
+  .footer .logo-footer img {
+    height: 80px;
   }
 }
 @media only screen and (max-width: 376px) {
@@ -861,8 +869,10 @@ a:hover {
   padding: 20px 5px 40px;
 }
 .post .post-wrapper .post-content img {
-  max-width: 100%;
+  max-height: 650px;
   margin: 10px 0px;
+  max-width: 100%;
+  width: auto;
 }
 .post .post-wrapper .post-content p {
   margin-bottom: 0rem;
@@ -919,6 +929,10 @@ a:hover {
   .post .post-list img {
     width: 100%;
     height: auto;
+  }
+  .post .post-wrapper .post-content img {
+    max-height: 350px;
+    width: auto;
   }
 }
 .subscribe h2 {
@@ -1131,9 +1145,10 @@ a:hover {
   max-width: 100%;
 }
 #listidol .listidol-idol .item-idol .box-idol {
+  position: relative;
   padding: 5px;
   text-align: center;
-  min-height: 100px;
+  min-height: 120px;
 }
 #listidol .listidol-idol .item-idol .box-idol .name-idol {
   font-weight: 700;
@@ -1152,6 +1167,10 @@ a:hover {
   font-size: 15px;
   color: #d08182;
   margin-top: 7px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #detailidol .idol-detail .idol-profile {

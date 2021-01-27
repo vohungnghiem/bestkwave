@@ -19,9 +19,9 @@
             <li>Visitors today: {{$visitor_today}}</li>
             <li>Visitors per month: {{$visitor_month}}</li>
         </ul>
-        Website: @foreach ($website as $item) {{$item->title}} @endforeach <br> 
-        Email: @foreach ($email as $item) {{$item->title}} /  @endforeach <br>
-        Phone: @foreach ($phone as $item) {{$item->title}} @endforeach <br>
+        {{-- Website: @foreach ($website as $item) {{$item->title}} @endforeach <br>  --}}
+        @foreach ($phone as $item) {{$item->title}} &nbsp; @endforeach  &nbsp; @foreach ($email as $item) {{$item->title}} &nbsp; @endforeach <br>
+        
         @foreach ($address as $item) {{$item->title}} @endforeach <br>
         COPYRIGHT ⓒ  2021 KWAVE ALL RIGHTS RESERVED
         <p>

@@ -135,9 +135,10 @@
                 max-width: 100%;
             }
             .box-idol {
+                position: relative;
                 padding: 5px;
                 text-align: center;
-                min-height: 100px;
+                min-height: 120px;
                 .name-idol {
                     font-weight: 700;
                     font-size: 16px;
@@ -155,6 +156,10 @@
                     font-size: 15px;
                     color: $color-title;
                     margin-top: 7px;
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translate(-50%, -50%); //canh giua
                 }
             }
         }

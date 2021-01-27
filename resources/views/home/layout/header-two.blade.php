@@ -20,10 +20,10 @@
         <div class="second-header ">
             <div class="second-header-left" id="social">
                 <div class="social">
-                    <a href="https://www.instagram.com/bestkwave"><i class="fab fa-instagram"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/BestKwave"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/BestkWave"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/bestkwave" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UC_O4llmSE8PsyRIVODiglrw" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/BestKwave" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/BestkWave" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div id="second-header-right">
@@ -64,7 +64,7 @@
                         <li class="menu-item"><a href="category/{{$item->slug}}">{{$item->title}}</a></li>
                     @endforeach
                     @isset($emagazine)
-                        <li class="menu-item"><a href="{{$emagazine->link}}">E-MAGAZINE</a></li>                        
+                        <li class="menu-item"><a href="{{$emagazine->link}}" target="_blank">E-MAGAZINE</a></li>                        
                     @endisset
 					    {{-- <li class="menu-item"><a href="idol/statistic">BEST IDOL</a></li> --}}
                 </ul>
