@@ -29,6 +29,9 @@
     <a href="{{$adfirst->link}}" target="_blank"><img src="{{$adfirst->image}}" alt="advertisement"></a>
 </section>
 @endisset
+<section class="video mt-5" width="100%">
+    <iframe width="560" height="315" style="width:100%; min-height: 300px" src="https://www.youtube.com/embed/3PtJQhseIuE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
 <section class="home-lasted">
     @isset($adsecond)
     <aside class="qc-2 qc-2-left">
