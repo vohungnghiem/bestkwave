@@ -30,6 +30,8 @@
                 margin: 10px 0px;
                 max-width: 100%;
                 width: auto;
+                // width: 100%;
+                // height: auto;
             }
             p {
                 margin-bottom: 0rem;
@@ -99,8 +101,12 @@
         .post-wrapper {
             .post-content {
                 img {
-                    max-height: 350px;
-                    width: auto;
+                    // max-height: 350px;
+                    // width: auto;
+                    // width: 100%;
+                    // height: auto;
+                    width: 100% !important;
+                    height: auto !important;
                 }
             }
         }

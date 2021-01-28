@@ -214,35 +214,44 @@
     }
 }
 .footer {
-    // background-color: #F7D0D0;
-    // background: url('/uploads/logobg/backgroud.jpg') no-repeat center center fixed;
-    // background-size: cover;
     position: relative;
     background-image: linear-gradient(to right, #d08182,#f7aba5,#ebbdb5, #f7aba5,#d08182);
-    padding-bottom: 50px;
+    padding-bottom: 5px;
     min-height: 200px;
     // background: $color-title;
     text-align: center;
     .logo-footer {
-        border-bottom: 1px solid $color-white;
-        padding: 10px;
+        // border-bottom: 1px solid $color-white;
+        border-bottom: none;
+        padding: 10px 0px;
         img {
-            height: 110px;
+            height: 70px;
         }
     }
     .footer-txt {
         color: $color-white;
-        font-size: 13px;
+        font-size: 15px;
         letter-spacing: 0.05em;
         line-height: 1.6em;
-        padding-top: 10px;
+        padding-top: 0px;
         margin-top: 10px;
         text-transform: none;
+        .phonemail {
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .address {
+            font-size: 13px;
+        }
+        .copyright {
+            font-size: 10px;
+            margin: 0px;
+        }
         a {
             color: $color-white;
         }
         p {
-            padding: 10px;
+            padding: 0px;
             a {
                 margin: 0 5px;
             }
@@ -296,7 +305,28 @@
         padding:10px 12px;
     }
 }
-
+@media only screen and (min-device-width: 769px) and (max-device-width: 900px) {
+    #home {
+        padding: 0px 5px;
+    }
+    .home-lasted{
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+    .home-most {
+        .home-most-list {
+            padding: 20px 40px;
+            .home-most-article {
+                width: 85%;
+            }
+            .home-most-image {
+                display: none;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 768px) {
     // slider
     .carousel-inner img {
@@ -327,22 +357,26 @@
         }
     }
     .home-lasted{
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
         .qc-2 {
             display: none;
         }
     }
     .footer {
         .footer-count {
-            position: relative; 
-            top: -20px; 
+            position: absolute; 
+            top: 0px; 
             right: 10px;
-            margin-bottom: -15px;
+            // margin-bottom: -15px;
         }
         .logo-footer {
-            border-bottom: 1px solid $color-white;
-            padding: 10px;
+            // border-bottom: 1px solid $color-white;
+            padding-top: 110px;
             img {
-                height: 80px;
+                height: 70px;
             }
         }
     }
@@ -362,6 +396,10 @@
         }
     }
     .home-lasted{
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
         .qc-2 {
             display: none;
         }

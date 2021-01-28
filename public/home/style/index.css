@@ -215,7 +215,7 @@ a:hover {
   opacity: 1;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   .fixedmobile {
     opacity: 1;
   }
@@ -594,31 +594,42 @@ a:hover {
 .footer {
   position: relative;
   background-image: linear-gradient(to right, #d08182, #f7aba5, #ebbdb5, #f7aba5, #d08182);
-  padding-bottom: 50px;
+  padding-bottom: 5px;
   min-height: 200px;
   text-align: center;
 }
 .footer .logo-footer {
-  border-bottom: 1px solid white;
-  padding: 10px;
+  border-bottom: none;
+  padding: 10px 0px;
 }
 .footer .logo-footer img {
-  height: 110px;
+  height: 70px;
 }
 .footer .footer-txt {
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.05em;
   line-height: 1.6em;
-  padding-top: 10px;
+  padding-top: 0px;
   margin-top: 10px;
   text-transform: none;
+}
+.footer .footer-txt .phonemail {
+  font-weight: 500;
+  font-size: 15px;
+}
+.footer .footer-txt .address {
+  font-size: 13px;
+}
+.footer .footer-txt .copyright {
+  font-size: 10px;
+  margin: 0px;
 }
 .footer .footer-txt a {
   color: white;
 }
 .footer .footer-txt p {
-  padding: 10px;
+  padding: 0px;
 }
 .footer .footer-txt p a {
   margin: 0 5px;
@@ -674,6 +685,26 @@ a:hover {
   padding: 10px 12px;
 }
 
+@media only screen and (min-device-width: 769px) and (max-device-width: 900px) {
+  #home {
+    padding: 0px 5px;
+  }
+
+  .home-lasted .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .home-most .home-most-list {
+    padding: 20px 40px;
+  }
+  .home-most .home-most-list .home-most-article {
+    width: 85%;
+  }
+  .home-most .home-most-list .home-most-image {
+    display: none;
+  }
+}
 @media only screen and (max-width: 768px) {
   .carousel-inner img {
     width: 100%;
@@ -703,22 +734,24 @@ a:hover {
     display: none;
   }
 
+  .home-lasted .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .home-lasted .qc-2 {
     display: none;
   }
 
   .footer .footer-count {
-    position: relative;
-    top: -20px;
+    position: absolute;
+    top: 0px;
     right: 10px;
-    margin-bottom: -15px;
   }
   .footer .logo-footer {
-    border-bottom: 1px solid white;
-    padding: 10px;
+    padding-top: 110px;
   }
   .footer .logo-footer img {
-    height: 80px;
+    height: 70px;
   }
 }
 @media only screen and (max-width: 376px) {
@@ -732,6 +765,10 @@ a:hover {
     display: none;
   }
 
+  .home-lasted .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .home-lasted .qc-2 {
     display: none;
   }
@@ -931,8 +968,8 @@ a:hover {
     height: auto;
   }
   .post .post-wrapper .post-content img {
-    max-height: 350px;
-    width: auto;
+    width: 100% !important;
+    height: auto !important;
   }
 }
 .subscribe h2 {

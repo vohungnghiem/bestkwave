@@ -37,7 +37,8 @@
                                     <option value="2">Phone</option>
                                     <option value="3">Email</option>
                                     <option value="4">Address</option>     
-                                    <option value="5">E-MAGAZINE</option>                                                                          
+                                    <option value="5">E-MAGAZINE</option>
+                                    <option value="6">IDOL</option>                                                                          
                                 </select>
                             </div>
                             <div class="form-group">

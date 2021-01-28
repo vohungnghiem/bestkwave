@@ -13,17 +13,23 @@
         <img src="public/uploads/logobg/logo-footer.png?v={{time()}}" alt="logo">
     </div>
     <div class="footer-txt">
-        <ul class="list-unstyled text-right p-3 footer-count">
+        <ul class="list-unstyled text-right p-2 footer-count">
             <li>Count Per Day</li>
             <li>Total Visitors: {{$visitor_total}}</li>
             <li>Visitors today: {{$visitor_today}}</li>
             <li>Visitors per month: {{$visitor_month}}</li>
         </ul>
         {{-- Website: @foreach ($website as $item) {{$item->title}} @endforeach <br>  --}}
-        @foreach ($phone as $item) {{$item->title}} &nbsp; @endforeach  &nbsp; @foreach ($email as $item) {{$item->title}} &nbsp; @endforeach <br>
-        
-        @foreach ($address as $item) {{$item->title}} @endforeach <br>
-        COPYRIGHT ⓒ  2021 KWAVE ALL RIGHTS RESERVED
+        <span class="phonemail">
+            @foreach ($phone as $item) {{$item->title}} &nbsp; @endforeach  &nbsp; 
+            @foreach ($email as $item) {{$item->title}} &nbsp; @endforeach 
+        </span>
+        <p class="address">
+            @foreach ($address as $item) {{$item->title}} @endforeach
+        </p>
+        <p class="copyright">
+            COPYRIGHT ⓒ  2021 KWAVE ALL RIGHTS RESERVED
+        </p>
         <p>
             <a href="page/about">About us</a> 
             <a href="page/advertisement">Advertising Cooperation</a> 

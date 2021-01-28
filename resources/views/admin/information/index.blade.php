@@ -70,6 +70,9 @@
                                                     case '5':
                                                         echo "E-MAGAZINE";
                                                         break;
+                                                    case '6':
+                                                        echo "IDOL";
+                                                        break;
                                                     default:
                                                         echo "Not found";
                                                         break;
