@@ -305,6 +305,9 @@
         padding:10px 12px;
     }
 }
+.admobile {
+    display: none;
+}
 @media only screen and (min-device-width: 769px) and (max-device-width: 900px) {
     #home {
         padding: 0px 5px;
@@ -328,6 +331,12 @@
     }
 }
 @media only screen and (max-width: 768px) {
+    .admobile {
+        display: block;
+    }
+    .addesktop-mobile {
+        display: none;
+    }
     // slider
     .carousel-inner img {
         width: 100%;

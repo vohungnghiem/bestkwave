@@ -64,6 +64,7 @@
                             </div>
 
                             <div class="form-group">
+                                <label>banner desktop</label>
                                 <div class="">
                                     <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
                                     <span onclick="clear_img()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
@@ -73,9 +74,25 @@
                                 @if ($advertisement->image)
                                     <img src="{{$advertisement->image}}" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
                                 @else
-                                    <img src="public/admin/images/non_image.png'" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
+                                    <img src="public/admin/images/non_image.png" alt="" id="prev_img" class="medium  ui image bordered img-thumbnail">
                                 @endif
                                 <input name="image" type="hidden" value="{{$advertisement->image}}" id="none_img" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>banner mobile</label>
+                                <div class="">
+                                    <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img_1" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
+                                    <span onclick="clear_img_1()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
+                                </div>
+                                <br>
+                                
+                                @if ($advertisement->imagemobile)
+                                    <img src="{{$advertisement->imagemobile}}" alt="" id="prev_img_1" class="medium  ui image bordered img-thumbnail">
+                                @else
+                                    <img src="public/admin/images/non_image.png" alt="" id="prev_img_1" class="medium  ui image bordered img-thumbnail">
+                                @endif
+                                <input name="imagemobile" type="hidden" value="{{$advertisement->imagemobile}}" id="none_img_1" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -118,5 +135,5 @@
 {{-- <script src="fancybox/vhn_customs/preview-img.js"></script> --}}
 <link  href="public/fancybox/vhn_customs/preview-img.css">
 <script src="public/fancybox/jquery.fancybox.pack.js"></script>
-<script src="public/fancybox/vhn_customs/config_Fancybox.js"></script>
+<script src="public/fancybox/vhn_customs/config_Fancybox.js?v={{time()}}"></script>
 @endsection

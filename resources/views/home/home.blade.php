@@ -26,12 +26,17 @@
 
 @isset($adfirst)
 <section class="qc-1">
-    <a href="{{$adfirst->link}}" target="_blank"><img src="{{$adfirst->image}}" alt="advertisement"></a>
+    @if ($adfirst->imagemobile)
+        <a href="{{$adfirst->link}}" target="_blank" class="admobile"><img src="{{$adfirst->imagemobile}}" alt="advertisement"></a>
+        <a href="{{$adfirst->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adfirst->image}}" alt="advertisement"></a>
+    @else
+        <a href="{{$adfirst->link}}" target="_blank" class="addesktop"><img src="{{$adfirst->image}}" alt="advertisement"></a>
+    @endif
 </section>
 @endisset
-<section class="video mt-5" width="100%">
+{{-- <section class="video mt-5" width="100%">
     <iframe width="560" height="315" style="width:100%; min-height: 300px" src="https://www.youtube.com/embed/3PtJQhseIuE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
+</section> --}}
 <section class="home-lasted">
     @isset($adsecond)
     <aside class="qc-2 qc-2-left">
@@ -56,7 +61,6 @@
                 <div class="item-text">
                     <p class="item-cat">{{$item->title_cat}}</p>
                     <h2 class="item-title"><a href="{{$item->slug}}">{{$item->title}}</a></h2>
-                    {{-- <p class="item-date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </p> --}}
                     <p class="item-date">{{ $item->date}} </p>
                 </div>
             </div>
@@ -64,7 +68,12 @@
         @endforeach
         @isset($adseventh)
         <section class="qc-1 col-md-12">
-            <a href="{{$adseventh->link}}" target="_blank"><img src="{{$adseventh->image}}" alt="advertisement"></a>
+            @if ($adseventh->imagemobile)
+                <a href="{{$adseventh->link}}" target="_blank" class="admobile"><img src="{{$adseventh->imagemobile}}" alt="advertisement"></a>
+                <a href="{{$adseventh->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adseventh->image}}" alt="advertisement"></a>
+            @else
+                <a href="{{$adseventh->link}}" target="_blank" class="addesktop"><img src="{{$adseventh->image}}" alt="advertisement"></a>
+            @endif
         </section>
         @endisset
         @foreach ($latestadd as $item)
@@ -79,7 +88,6 @@
                 <div class="item-text">
                     <p class="item-cat">{{$item->title_cat}}</p>
                     <h2 class="item-title"><a href="{{$item->slug}}">{{$item->title}}</a></h2>
-                    {{-- <p class="item-date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </p> --}}
                     <p class="item-date">{{ $item->date}} </p>
                 </div>
             </div>
@@ -93,18 +101,33 @@
 </section>
 @isset($adfourth)
 <section class="qc-1">
-    <a href="{{$adfourth->link}}" target="_blank"><img src="{{$adfourth->image}}" alt="advertisement"></a>
+    @if ($adfourth->imagemobile)
+        <a href="{{$adfourth->link}}" target="_blank" class="admobile"><img src="{{$adfourth->imagemobile}}" alt="advertisement"></a>
+        <a href="{{$adfourth->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adfourth->image}}" alt="advertisement"></a>
+    @else
+        <a href="{{$adfourth->link}}" target="_blank" class="addesktop"><img src="{{$adfourth->image}}" alt="advertisement"></a>
+    @endif
 </section>
 @endisset
 <section class="home-most">
     @isset($adeighth)
     <aside class="qc-3-left">
-        <a href="{{$adeighth->link}}" target="_blank"><img src="{{$adeighth->image}}" alt="advertisement"></a>
+        @if ($adeighth->imagemobile)
+            <a href="{{$adeighth->link}}" target="_blank" class="admobile"><img src="{{$adeighth->imagemobile}}" alt="advertisement"></a>
+            <a href="{{$adeighth->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adeighth->image}}" alt="advertisement"></a>
+        @else
+            <a href="{{$adeighth->link}}" target="_blank" class="addesktop"><img src="{{$adeighth->image}}" alt="advertisement"></a>
+        @endif
     </aside>
     @endisset
     @isset($adfifth)
     <aside class="qc-3-right">
-        <a href="{{$adfifth->link}}" target="_blank"><img src="{{$adfifth->image}}" alt="advertisement"></a>
+        @if ($adfifth->imagemobile)
+            <a href="{{$adfifth->link}}" target="_blank" class="admobile"><img src="{{$adfifth->imagemobile}}" alt="advertisement"></a>
+            <a href="{{$adfifth->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adfifth->image}}" alt="advertisement"></a>
+        @else
+            <a href="{{$adfifth->link}}" target="_blank" class="addesktop"><img src="{{$adfifth->image}}" alt="advertisement"></a>
+        @endif
     </aside>
     @endisset
     <h1 class="home-most-title">most popular</h1>
@@ -128,7 +151,12 @@
 </section>
 @isset($adsixth)
 <section class="qc-1">
-    <a href="{{$adsixth->link}}" target="_blank"><img src="{{$adsixth->image}}" alt="advertisement"></a>
+    @if ($adsixth->imagemobile)
+        <a href="{{$adsixth->link}}" target="_blank" class="admobile"><img src="{{$adsixth->imagemobile}}" alt="advertisement"></a>
+        <a href="{{$adsixth->link}}" target="_blank" class="addesktop-mobile"><img src="{{$adsixth->image}}" alt="advertisement"></a>
+    @else
+        <a href="{{$adsixth->link}}" target="_blank" class="addesktop"><img src="{{$adsixth->image}}" alt="advertisement"></a>
+    @endif
 </section>
 @endisset
 

@@ -58,6 +58,7 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Banner Desktop</label>
                                 <div class="">
                                     <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
                                     <span onclick="clear_img()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
@@ -65,6 +66,17 @@
                                 <br>
                                 <img src="{{url('public/admin/images/non_image.png')}}" alt="" id="prev_img" class=" medium ui image bordered img-thumbnail ">
                                 <input name="image" type="hidden" value="" id="none_img" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Banner Mobile</label>
+                                <div class="">
+                                    <a class="btn btn-primary iframe-btn fancy" href="public/tinymce/filemanager/dialog.php?type=0&field_id=none_img_1" data-fancybox-type="iframe"><i class="upload icon"></i> Tải Hình Ảnh</a>
+                                    <span onclick="clear_img_1()"><i class="fas fa-trash-alt fa-1x"> </i> HỦY</span>
+                                </div>
+                                <br>
+                                <img src="{{url('public/admin/images/non_image.png')}}" alt="" id="prev_img_1" class=" medium ui image bordered img-thumbnail ">
+                                <input name="imagemobile" type="hidden" value="" id="none_img_1" class="form-control">
                             </div>
                             
                             <div class="form-group">
@@ -107,5 +119,5 @@
 {{-- <script src="fancybox/vhn_customs/preview-img.js"></script> --}}
 <link  href="public/fancybox/vhn_customs/preview-img.css">
 <script src="public/fancybox/jquery.fancybox.pack.js"></script>
-<script src="public/fancybox/vhn_customs/config_Fancybox.js"></script>
+<script src="public/fancybox/vhn_customs/config_Fancybox.js?v={{time()}}"></script>
 @endsection

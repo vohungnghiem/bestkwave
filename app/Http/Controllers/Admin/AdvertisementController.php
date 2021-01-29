@@ -35,6 +35,7 @@ class AdvertisementController extends Controller
         $advertisement->standad = $request->standad;
         $advertisement->link = $request->link;
         $advertisement->image = $request->image;
+        $advertisement->imagemobile = $request->imagemobile;
         $advertisement->status = ($request->status == 'on' ? 1 : 0);
         $advertisement->created_at = date("Y-m-d H:i:s");
         $advertisement->updated_at = date("Y-m-d H:i:s");
@@ -56,6 +57,7 @@ class AdvertisementController extends Controller
         $advertisement->standad = $request->standad;
         $advertisement->link = $request->link;
         $advertisement->image = $request->image;
+        $advertisement->imagemobile = $request->imagemobile;
         $advertisement->status = ($request->status == 'on' ? 1 : 0);
         $advertisement->updated_at = date("Y-m-d H:i:s");
         $advertisement->save();
@@ -80,7 +82,6 @@ class AdvertisementController extends Controller
     }
     public function destroy($id)
     {
-     
         $advertisement = Advertisement::find($id);
         if($advertisement){
             $advertisement->delete();

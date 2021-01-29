@@ -27,3 +27,8 @@ $(document).ready(function(){
     $('#prev_img').attr('src', images);
     $('#none_img').val('');
   }
+  function clear_img_1(){
+    var images = 'public/admin/images/non_image.png';
+    $('#prev_img_1').attr('src', images);
+    $('#none_img_1').val('');
+  }

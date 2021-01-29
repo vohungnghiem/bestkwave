@@ -41,7 +41,8 @@
                                         <th>Title</th>
                                         <th>Stand</th>
                                         <th>Link</th>
-                                        <th>Image</th>
+                                        <th>Image Desktop</th>
+                                        <th>Image Mobile</th>
                                         <th>Sort</th>
                                         <th>Status</th>    
                                         <th class="text-center">Actions</th>
@@ -55,6 +56,7 @@
                                         <td>{{$item->standad}}</td>
                                         <td>{{$item->link}}</td>
                                         <td><img src="{{$item->image}}" alt="" height="30px"></td>
+                                        <td><img src="{{$item->imagemobile}}" alt="" height="30px"></td>
                                         <td>
                                             <div class="wrapsort">
                                             <input class="form-control sort" idsort="{{$item->id}}" type="number" value="{{$item->sort}}">
@@ -88,7 +90,8 @@
                                         <th>Title</th>
                                         <th>Stand</th>
                                         <th>Link</th>
-                                        <th>Image</th>
+                                        <th>Image Desktop</th>
+                                        <th>Image Mobile</th>
                                         <th>Sort</th>
                                         <th>Status</th>    
                                         <th class="text-center">Actions</th>
