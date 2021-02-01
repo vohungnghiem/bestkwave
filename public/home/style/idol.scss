@@ -312,8 +312,21 @@
         }
     }
 
-
+// @media only screen and (max-width: 400px) {
+   
+// }
 @media only screen and (max-width: 800px) {
+    #detailidol {
+        .idol-detail {
+            .detail-top {
+                .detail-background {
+                    img {
+                        height: 550px;
+                    }
+                }
+            }
+        }
+    }
     #ranking {
         table {
             .num-rank {
