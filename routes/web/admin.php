@@ -225,7 +225,8 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'admincp', 'namespa
 		Route::post('sort/{id}', 'IdolController@sort');
 	});
 	Route::group(['prefix' => 'idolclient'],function(){
-		Route::get('/','IdolClientController@index');
+		Route::get('client','IdolClientController@client');
+		Route::get('idol','IdolClientController@idol');
 	});
 });
 

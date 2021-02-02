@@ -1341,6 +1341,7 @@ a:hover {
   margin: 15px 0px;
 }
 #detailidol .idol-detail .detail-bottom .detail-item {
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 0px;
   text-align: center;
   overflow: hidden;

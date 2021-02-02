@@ -16,162 +16,48 @@ use Illuminate\Support\Str;
 
 class IdolClientController extends Controller
 {
-    public function index()
+    public function client()
     {
-        $lists = DB::table('votes')
+        $month = isset($_GET['month']) ? $_GET['month'] : 0;
+        $year = isset($_GET['year']) ? $_GET['year'] : 0;
+        $clients = DB::table('votes')
         ->join('users','votes.user_id','=','users.id')
-        // ->where('status',1)
-        // ->when($gender, function ($query, $gender) {
-        //     if (($gender != 1)) { return $query->where('idols.gender_id', $gender); }
-        // })
+        ->when($month, function ($query, $month) {
+            if (($month != 0)) { return $query->whereMonth('votes.created_at', $month); }
+        })
+        ->when($year, function ($query, $year) {
+            if (($year != 0)) { return $query->whereYear('votes.created_at', $year); }
+        })
         ->select('users.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
         ->orderBy('sumvote','desc')
         ->groupBy('users.id')->get();
-        return view('admin.idolclient.index',['idols'=>$idols]);
+        // dd($lists);
+        return view('admin.idolclient.client',['clients'=>$clients,'month'=>$month,'year'=>$year]);
     }
     
-    public function create()
+    public function idol()
     {
-        $professions = Profession::all();
-        $genders = Gender::all();
-        return view('admin.idol.create',['professions'=>$professions,'genders'=>$genders]);
+        $id = isset($_GET['id']) ? $_GET['id'] : 0;
+        $month = isset($_GET['month']) ? $_GET['month'] : 0;
+        $year = isset($_GET['year']) ? $_GET['year'] : 0;
+        $idols = DB::table('votes')
+        ->join('idols','votes.idol_id','=','idols.id')
+        ->when($id, function ($query, $id) {
+            if (($id != 0)) { return $query->where('votes.user_id', $id); }
+        })
+        ->when($month, function ($query, $month) {
+            if (($month != 0)) { return $query->whereMonth('votes.created_at', $month); }
+        })
+        ->when($year, function ($query, $year) {
+            if (($year != 0)) { return $query->whereYear('votes.created_at', $year); }
+        })
+        ->select('idols.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
+        ->orderBy('sumvote','desc')
+        ->groupBy('idols.id')->get();
+        // dd($idols);
+        return view('admin.idolclient.idol',
+            ['idols'=>$idols,'month'=>$month,'year'=>$year,'id'=>$id]
+        );
     }
     
-    public function store(Request $request)
-    {
-
-        $id_latest = Idol::latest()->first();
-        $id_id = $id_latest ? ($id_latest->id + 1) : 1;  
-        $idol = new Idol;
-        $idol->name = $request->name;
-        $idol->nickname = $request->nickname;
-        $idol->agency_name = $request->agency_name;
-        $idol->group_name = $request->group_name;
-        $idol->profession_id = $request->profession_id;
-        if ($request->birthday && ($request->birthday != 'null')) {
-            $idol->birthday = date_create_from_format("d/m/Y", $request->birthday)->format("Y-m-d");
-        }else {
-            $idol->birthday = null;
-        }
-        $idol->gender_id = $request->gender_id;
-        $idol->nature = $request->nature;
-        $idol->weight = $request->weight;
-        $idol->height = $request->height;
-        $idol->sort = 0;
-        $idol->status = ($request->status == 'on' ? 1 : 0);
-        $idol->created_at = date("Y-m-d H:i:s");
-        $idol->updated_at = date("Y-m-d H:i:s");
-
-        // image
-        $image = $request->avatar;         
-        $name_image = $id_id; // name image get id
-        if (strlen($image) >= 200){
-            $image = str_replace('data:image/png;base64,', '', $image);
-            $image = str_replace(' ', '+', $image);
-            $imageName = $name_image . '.jpg';    
-            Storage::disk('local')->put("/idol"."/".year($idol->created_at)."/".month($idol->created_at)."/".$imageName, base64_decode($image));
-            $idol->avatar = $imageName;
-        }
-        if ($image == "default") {          
-            Storage::delete('idol/'.year($idol->created_at).'/'.month($idol->created_at).'/'.$idol->avatar);
-            $idol->avatar = NULL;
-        }
-        $idol->save();
-        if ($request->gallery) {
-            foreach ($request->gallery as $key => $item) {
-                DB::table('gallery_idols')->insert([
-                    'idol_id' => $idol->id,
-                    'gallery_id' => $key,
-                    'image' => $item
-                ]);
-            }
-        }
-        return redirect('admincp/idol/'.$idol->id.'/edit')->with('success','Success !');
-        
-        
-    }
-    public function edit($id)
-    {        
-        $idol = Idol::find($id);  
-        $professions = Profession::all();
-        $genders = Gender::all();
-        $gallery = Gallery::all();
-        return view('admin.idol.edit',['idol'=>$idol,'professions'=>$professions,'genders'=>$genders,'gallery'=>$gallery]);
-    }
-    public function update(Request $request,$id)
-    {   
-        $idol = Idol::find($id);   
-        $id_id = $idol->id;  
-        $idol->name = $request->name;
-        $idol->nickname = $request->nickname;
-        $idol->agency_name = $request->agency_name;
-        $idol->group_name = $request->group_name;
-        $idol->profession_id = $request->profession_id;
-        if ($request->birthday && ($request->birthday != 'null')) {
-            $idol->birthday = date_create_from_format("d/m/Y", $request->birthday)->format("Y-m-d");
-        }else {
-            $idol->birthday = null;
-        }
-        $idol->gender_id = $request->gender_id;
-        $idol->nature = $request->nature;
-        $idol->weight = $request->weight;
-        $idol->height = $request->height;
-        $idol->status = ($request->status == 'on' ? 1 : 0);
-        $idol->updated_at = date("Y-m-d H:i:s");
-
-        $image = $request->avatar;         
-        $name_image = $id_id;
-        if (strlen($image) >= 200){
-            $image = str_replace('data:image/png;base64,', '', $image);
-            $image = str_replace(' ', '+', $image);
-            $imageName = $name_image.'.jpg';    
-            Storage::disk('local')->put("/idol"."/".year($idol->created_at)."/".month($idol->created_at)."/".$imageName, base64_decode($image));
-            $idol->avatar = $imageName;
-        }
-        if ($image == "default") {          
-            Storage::delete('idol/'.year($idol->created_at).'/'.month($idol->created_at).'/'.$idol->avatar);
-            $idol->avatar = NULL;
-        } 
-        $idol->save();
-        DB::table('gallery_idols')->where('idol_id',$id)->delete();
-        if ($request->gallery) {
-            foreach ($request->gallery as $key => $item) {
-                DB::table('gallery_idols')->insert([
-                    'idol_id' => $id,
-                    'gallery_id' => $key,
-                    'image' => $item
-                ]);
-            }
-        }
-
-        return redirect()->back()->with('success','Success !'); 
-    }
-
-    public function status(Request $request,$id){
-        $idol = Idol::find($id);
-        if ($idol) {
-            $idol->status = $request->status;
-            $idol->save();
-            return $request->status;
-        } else {
-            return "error";
-        }
-    }
-    public function sort(Request $request,$id){
-        $idol = Idol::find($id);
-        $idol->sort = $request->sort;
-        $idol->save();
-        return "success";
-    }
-    public function destroy($id)
-    {
-        $idol = Idol::find($id);
-        if ($idol) {
-            Storage::delete('idol/'.year($idol->created_at).'/'.month($idol->created_at).'/'.$idol->image);
-            DB::table('idols')->where('id', $id)->delete();
-            return "success";
-        } else {
-            return redirect()->back()->with('error','error!');
-        }
-    }
 }

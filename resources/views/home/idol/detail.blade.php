@@ -133,7 +133,7 @@
             </div>
             <div class="row detail-bottom">
                 @foreach ($gallery as $item)
-                <div class="col-md-4 col-6 detail-item">
+                <div class="col-md-4 col-6 detail-item d-flex align-items-center">
                     <a href="{{$item->image}}" data-lightbox="photos">
                         <img class="img-fluid" src="{{$item->image}}">
                     </a>

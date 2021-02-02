@@ -220,9 +220,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admincp/idolclient" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>danh sách khách</p>
+                            <a href="admincp/idolclient/client" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>danh sách khách hàng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="admincp/idolclient/idol" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>danh sách vote idol</p>
                             </a>
                         </li>
                     </ul>

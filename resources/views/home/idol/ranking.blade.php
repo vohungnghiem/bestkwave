@@ -62,10 +62,14 @@
 				</table>
 			</div>
 			
-			<ul class="pagination pagination-md float-right mt-3">
+			{{-- <ul class="pagination pagination-md float-right mt-3">
 				{{ $lists->onEachSide(2)->links() }}
-			</ul>
-			
+			</ul> --}}
+			<nav aria-label="Page navigation example " >
+				<div class="pagination justify-content-center mt-3">
+				  {{ $lists->onEachSide(2)->links() }}
+				</div>
+			  </nav>
 		</div>
 		
 	</div>
