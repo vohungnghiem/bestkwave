@@ -1133,6 +1133,7 @@ a:hover {
 }
 #ranking table td {
   vertical-align: middle;
+  min-height: 30px;
 }
 #ranking table .num-rank {
   font-size: 20px;

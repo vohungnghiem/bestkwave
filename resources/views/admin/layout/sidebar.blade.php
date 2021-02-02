@@ -209,6 +209,25 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-envelope-square"></i>
+                      <p>
+                        KHÁCH HÀNG +
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="admincp/idolclient" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>danh sách khách</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
