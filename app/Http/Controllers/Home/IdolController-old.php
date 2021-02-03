@@ -15,63 +15,37 @@ class IdolController extends Controller
     public function index() 
     {
         $label = array();
-        
-        $mainvote = array();
-        $nickname = array();
-        $idol_ids = array();
-        $dateStart =  date("Y-m-d")."12:00:00";
-        // if (date('A') == "PM") {
-        //     $ab = DB::table('idols')
-        //         ->leftJoin('votes','votes.idol_id','=','idols.id')
-        //         ->whereDate('votes.date_id',date('Y-m-d'))
-        //         ->where('votes.created_at','>',date('Y-m-d H:i:s', strtotime($dateStart) ))
-        //         ->get();            
-        //     dd($ab);
-        // }
-        // else {
-            $arridol = DB::table('idols')
-                ->leftJoin('votes','votes.idol_id','=','idols.id')
-                ->whereDate('votes.date_id',date('Y-m-d'))
-                ->where('votes.created_at','<=',date('Y-m-d H:i:s', strtotime($dateStart) ))
-                // ->where('votes.vote',1)
-                ->select('idols.*',DB::raw('(CASE WHEN votes.vote = 1 THEN sum(votes.vote) ELSE 0 END) as sumvote'))
-                ->orderBy('sumvote','desc')->limit(5)
-                ->groupBy('votes.idol_id')
-                ->get()->toArray();   
-            
-        // }
-        foreach ($arridol as $key => $value) {
-            array_push($nickname,$value->nickname);
-            array_push($idol_ids,$value->id);
-        }
-        // label ngày
-        for ($i=0; $i >= -5 ; $i--) {
-            $date = date('d-m-Y',strtotime($i. " days"));
-            array_push($label,$date, $date);
-        }
-        foreach ($idol_ids as $key => $idol_id) {  
-            $vote = array();
-            for ($i=0; $i >= -5 ; $i--) { 
-                $today_vote = DB::table('votes')
-                    ->whereDate('date_id',date('Y-m-d',strtotime($i. " days")))
-                    ->where([['vote',1],['idol_id', $idol_id]])
-                    ->select( 
-                        DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), 
-                        DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') 
-                    )
-                    ->get()->toArray();
-
-                    array_push($vote,array_sum(array_column($today_vote,'daypm')));
-                    array_push($vote,array_sum(array_column($today_vote,'dayam')));  
-            }
-            array_push($mainvote,$vote);
+        $vote = array();
+        // $like = array();
+        for ($i=0; $i >= -5 ; $i--) { 
+            $today_vote = DB::table('votes')
+                ->whereDate('date_id',date('Y-m-d',strtotime($i. " days")))
+                ->where('vote',1)
+                ->select( DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') )
+                ->get()->toArray();
+                array_push($vote,array_sum(array_column($today_vote,'daypm')));
+                array_push($vote,array_sum(array_column($today_vote,'dayam')));
+            // $today_like = DB::table('votes')
+            //     ->whereDate('date_id',date('Y-m-d',strtotime($i." days")))
+            //     ->where('like',1)
+            //     ->select( DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') )
+            //     ->get()->toArray();
+            //     array_push($like,array_sum(array_column($today_like,'daypm')));
+            //     array_push($like,array_sum(array_column($today_like,'dayam')));
+            // if ($i == 0) {
+            //     array_push($label,'hôm nay : chiều','hôm nay : sáng');
+            // }else {
+                $date = date('d-m-Y',strtotime($i. " days"));
+                // array_push($label,$date.': chiều', $date.': sáng');
+                array_push($label,$date, $date);
+            // }
         }
         
         if (date('A') == "AM") {
             array_shift($label);
-            array_shift($mainvote);
+            array_shift($vote);
+            // array_shift($like);
         }
-
         $lists = DB::table('idols')
             ->leftJoin('votes','votes.idol_id','=','idols.id')
             ->where('status',1)
@@ -80,7 +54,7 @@ class IdolController extends Controller
             ->groupBy('votes.idol_id')
             ->get();
         
-        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname
+        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'vote'=>$vote,
         // 'like'=>$like
         ]);
     }

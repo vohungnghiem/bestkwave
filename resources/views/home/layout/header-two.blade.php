@@ -68,7 +68,7 @@
                         <li class="menu-item"><a href="{{$emagazine->link}}" target="_blank">E-MAGAZINE</a></li>                        
                     @endisset
 					@isset($bestidol)
-                        <li class="menu-item"><a href="idol/statistic">BEST-IDOL</a></li>                        
+                        <li class="menu-item"><a href="idol/statistic">K-IDOL VOTE</a></li>                        
                     @endisset
                 </ul>
                 

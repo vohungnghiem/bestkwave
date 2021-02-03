@@ -38,13 +38,11 @@
         </div>
         <p class="col-12 text-right mt-3"> 
             <a href="idol/list" class="btn btn-sm btn-secondary"><i class="fas fa-list"></i> Danh sách</a>
-            <a href="idol/ranking" class="btn btn-sm btn-secondary"><i class="fas fa-list-ol"></i> Xem xếp hạng </a> 
+            <a href="idol/ranking" class="btn btn-sm btn-secondary"><i class="fas fa-list-ol"></i> Xem xếp hạng</a> 
         </p>
     </div>
 
     <div id="label" label="{{json_encode($label)}}"></div>
-    <div id="nickname" label="{{json_encode($nickname)}}"></div>
-    <div id="mainvote" label="{{json_encode($mainvote)}}"></div>
 
 </section>
 @endsection
@@ -62,13 +60,6 @@
     var label = $('#label').attr('label');
     label = label.replace(/'/g, '"');
     label = JSON.parse(label);
-    var nickname = $('#nickname').attr('label');
-    nickname = nickname.replace(/'/g, '"');
-    nickname = JSON.parse(nickname);
-    var mainvote = $('#mainvote').attr('label');
-    mainvote = mainvote.replace(/'/g, '"');
-    mainvote = JSON.parse(mainvote);
-console.log(mainvote[5]);
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -79,8 +70,8 @@ console.log(mainvote[5]);
                 // ],
             datasets: [
                 {
-                    label: nickname[0],
-                    data: mainvote[0],
+                    label: '# of Votes',
+                    data: {{json_encode($vote)}},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0)',
                       
@@ -90,43 +81,13 @@ console.log(mainvote[5]);
                     ],
                 },
                 {
-                    label: nickname[1],
-                    data: mainvote[1],
+                    label: '# of Likes',
+                    data: {{json_encode($like)}},
                     backgroundColor: [
                         'rgba(54, 162, 235, 0)',
                     ],
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
-                    ],
-                },
-                {
-                    label: nickname[2],
-                    data: mainvote[2],
-                    backgroundColor: [
-                        'rgba(255, 206, 86, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 206, 86, 1)',
-                    ],
-                },
-                {
-                    label: nickname[3],
-                    data: mainvote[3],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                },
-                {
-                    label: nickname[4],
-                    data: mainvote[4],
-                    backgroundColor: [
-                        'rgba(153, 102, 255, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(153, 102, 255, 1)',
                     ],
                 }
                
