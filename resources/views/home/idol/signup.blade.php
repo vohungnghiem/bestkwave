@@ -47,7 +47,7 @@
                         <div class="invalid-feedback">{{$errors->first('password')}}</div>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="passwordVerify" class="form-control {{ $errors->has('passwordVerify') ? 'is-invalid' : ''}}" id="passwordVerify" placeholder="Xác nhân mật khẩu..." >
+                        <input type="password" name="passwordVerify" class="form-control {{ $errors->has('passwordVerify') ? 'is-invalid' : ''}}" id="passwordVerify" placeholder="Xác nhận mật khẩu..." >
                         <div class="invalid-feedback">{{$errors->first('passwordVerify')}}</div>
                     </div>
                     <div class="form-group">
@@ -66,7 +66,7 @@
 </section>    
 @endsection
 @push('script')
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
 		$(document).ready(function() {
 			var remember = $.cookie('rememberLogAuth');
@@ -101,5 +101,5 @@
 			});
 
 		});
-	</script>
+	</script> --}}
 @endpush

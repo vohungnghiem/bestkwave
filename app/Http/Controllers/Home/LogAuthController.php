@@ -11,6 +11,30 @@ use Session;
 use Auth;
 class LogAuthController extends Controller
 {
+    public function info($id)
+    {
+        if ( (!Auth::user()) || (Auth::user()->id != $id ) ) {
+            return redirect('idol/statistic');
+        } else {
+            $user = User::find($id);
+            $list = DB::table('votes')->paginate(9);
+            return view('home.idol.info',['user'=>$user]);
+        }   
+    }
+    public function changePassWord( Request $request, $id)
+    {
+        $request->validate([
+            'password' => 'required',
+            'passwordVerify' => 'same:password'
+        ],[
+            'password.required'  => 'Nhập mật khẩu mới để đăng nhập',
+            'passwordVerify.same' => 'Mật khẩu không trùng khớp'
+        ]);
+        $user = User::find($id);
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect()->back()->with('success','Đăng ký thành công !');
+    }
     public function getSignup()
     {
         return view('home.idol.signup');

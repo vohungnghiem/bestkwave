@@ -35,6 +35,10 @@ Route::group([ 'namespace' => 'Home'], function() {
         Route::post('signup','LogAuthController@postSignup');
         Route::post('login','LogAuthController@postLogin');
         Route::get('logout','LogAuthController@logout');
+
+        Route::get('info/{id}','LogAuthController@info');
+        Route::post('info/changepassword/{id}','LogAuthController@changePassWord');
+        
     });
     Route::get('auth/redirect/{provider}', 'SocialController@redirect');
     Route::get('callback/{provider}', 'SocialController@callback');

@@ -41,4 +41,41 @@
           
     </body>
     @stack('script')
+    
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({html: true});
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var remember = $.cookie('rememberLogAuth');
+            if (remember == 'true') 
+            {
+                var email = $.cookie('emailLogAuth');
+                var password = atob($.cookie('passwordLogAuth'));
+                $('#emailLogAuth').val(email);
+                $('#passwordLogAuth').val(password);
+                $('#rememberLogAuth').prop('checked', true);
+            }
+            $("#loginLogAuth").submit(function() {
+                if ($('#rememberLogAuth').is(':checked')) {
+                    var email = $('#emailLogAuth').val();
+                    var password = btoa($('#passwordLogAuth').val());
+                    $.cookie('emailLogAuth', email, { expires: 365 });
+                    $.cookie('passwordLogAuth', password, { expires: 365 });
+                    $.cookie('rememberLogAuth', true, { expires: 365 });
+                }
+            
+            });
+
+            $("#resetLogAuth").click(function() {
+                $.cookie('emailLogAuth', null);
+                $.cookie('passwordLogAuth', null);
+                $.cookie('rememberLogAuth', null);
+            });
+
+        });
+    </script>
     </html>

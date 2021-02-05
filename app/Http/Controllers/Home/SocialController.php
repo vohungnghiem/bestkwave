@@ -18,36 +18,39 @@ class SocialController extends Controller
     {
         $getInfo = Socialite::driver($provider)->stateless()->user();
         $finduser = User::where('provider_id', $getInfo->id)->first();
-
         if($finduser){
+            $user = User::find($finduser->id);
+            $user->avatar = $getInfo->avatar;
+            $user->save(); 
             Auth::login($finduser);
         }else{
-            $newUser = User::create([
-                'name'     => $getInfo->name,
-                'email'    => $getInfo->email,
-                'provider' => $provider,
-                'provider_id' => $getInfo->id
-            ]);
+
+            $newUser = new User;
+            $newUser->name = $getInfo->name;
+            $newUser->email = $getInfo->email;
+            $newUser->avatar = $getInfo->avatar;
+            $newUser->provider = $provider;
+            $newUser->provider_id = $getInfo->id;
+            $newUser->save();
+        
             Auth::login($newUser);
         }
        
-            return redirect()->to(session('backurlsocial')); 
-            // return redirect()->to('idol/detail/1'); 
-       
-        
-        
-    }
-    function createUser($getInfo,$provider){
+        return redirect()->to(session('backurlsocial'));      
     
-        $user = User::where('provider_id', $getInfo->id)->first();
-        if (isset($user) && ($user != 'null')) {
-            $user = User::create([
-                'name'     => $getInfo->name,
-                'email'    => $getInfo->email,
-                'provider' => $provider,
-                'provider_id' => $getInfo->id
-            ]);
-        }
-        return $user;
     }
+    // function createUser($getInfo,$provider){
+    
+    //     $user = User::where('provider_id', $getInfo->id)->first();
+    //     if (isset($user) && ($user != 'null')) {
+    //         $user = User::create([
+    //             'name'     => $getInfo->name,
+    //             'email'    => $getInfo->email,
+    //             'avatar'   => $getInfo->avatar,
+    //             'provider' => $provider,
+    //             'provider_id' => $getInfo->id
+    //         ]);
+    //     }
+    //     return $user;
+    // }
 }

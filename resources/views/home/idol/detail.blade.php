@@ -6,11 +6,34 @@
 @endsection
 @section('content')
 <section id="detailidol">
-    <nav aria-label="breadcrumb">
+    <nav id="breadcrumb" >
 		<ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-arrow-alt-circle-left"></i> BEST IDOL</a></li>
-		  <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
+            <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-arrow-alt-circle-left"></i> BEST IDOL</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
 		</ol>
+        @if(Auth::user())
+        <div class="dropdown">
+            <div class="bread-right " id="dropdownMenuButton" data-toggle="dropdown"> 
+                <span>{{Auth::user()->name}}</span> 
+                @if (Auth::user()->avatar != '')
+                    <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}"  onerror="this.onerror=null; this.src='public/home/image/non_avatar.png'">
+                @else
+                    <i class="far fa-user"></i>
+                @endif
+            </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="logauth/info/{{Auth::user()->id}}"><i class="far fa-user"></i> Tên: {{Auth::user()->name}}</a>
+                <a class="dropdown-item" href="logauth/info/{{Auth::user()->id}}"><i class="fas fa-people-arrows"></i> Tài khoản: {{Auth::user()->provider}}</a>
+                <a class="dropdown-item" href="logauth/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </div>
+        @else
+        <div class="dropdown" data-toggle="modal" data-target="#loginModal">
+            <div  class="bread-right "> 
+                <span>Đăng nhập</span> <i class="far fa-user"></i>
+            </div>
+        </div>
+        @endif
 	</nav>
     <div class="row idol-detail ">
         <div class="col-12">
@@ -143,97 +166,11 @@
         </div>
     </div>
 </section>
+@include('home.idol.modal')
 
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-title text-center">
-                    <h4>Đăng nhập</h4>
-                </div>
-                <div class="d-flex flex-column text-center">
-                    <form action="logauth/login" method="post" id="loginLogAuth">
-                        @csrf
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" id="emailLogAuth" placeholder="Your email address...">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="passwordLogAuth" placeholder="Your password...">
-                        </div>
-                        <div class="form-group text-left">
-                            <div class="icheck-secondary">
-                                <input type="checkbox" name="remember" id="rememberLogAuth" checked >
-                                <label for="remember">
-                                    Nhớ đăng nhập
-                                </label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-info btn-block btn-round">Đăng nhập</button>
-                    </form>
-
-                    <div class="text-center text-muted delimiter m-2">Đăng nhập bằng mạng xã hội</div>
-                    <div class="d-flex justify-content-center social-buttons">
-                        <a href="{{ url('/auth/redirect/google') }}" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google"><i class="fab fa-google"></i></a>
-                        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="{{ url('/auth/redirect/zalo') }}" class="btn btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-                            <i class="fab fa-zalo"></i>
-                            <img src="public/home/image/zalo.svg" alt="" width="18px">
-                        </a>
-                        {{-- <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter"> <i class="fab fa-twitter"></i> </button> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Chưa là thành viên? <a href="logauth/signup" class="text-info" > Đăng ký</a>.</div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 @endsection
 
 @push('script')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover({html: true});
-    });
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var remember = $.cookie('rememberLogAuth');
-        if (remember == 'true') 
-        {
-            var email = $.cookie('emailLogAuth');
-            var password = atob($.cookie('passwordLogAuth'));
-            $('#emailLogAuth').val(email);
-            $('#passwordLogAuth').val(password);
-            $('#rememberLogAuth').prop('checked', true);
-        }
-        $("#loginLogAuth").submit(function() {
-            if ($('#rememberLogAuth').is(':checked')) {
-                var email = $('#emailLogAuth').val();
-                var password = btoa($('#passwordLogAuth').val());
-                $.cookie('emailLogAuth', email, { expires: 365 });
-                $.cookie('passwordLogAuth', password, { expires: 365 });
-                $.cookie('rememberLogAuth', true, { expires: 365 });
-            }
-          
-        });
-
-        $("#resetLogAuth").click(function() {
-            $.cookie('emailLogAuth', null);
-            $.cookie('passwordLogAuth', null);
-            $.cookie('rememberLogAuth', null);
-        });
-
-    });
-</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 @endpush

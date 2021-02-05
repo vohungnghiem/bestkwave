@@ -1358,6 +1358,28 @@ a:hover {
   margin: 0 0.5rem 1rem;
 }
 
+#breadcrumb {
+  position: relative;
+}
+#breadcrumb .dropdown {
+  cursor: pointer;
+  right: 5px;
+  position: absolute;
+  top: 9%;
+}
+#breadcrumb .dropdown img {
+  width: 40px;
+  border-radius: 40px;
+}
+#breadcrumb .dropdown span {
+  font-size: 12px;
+}
+#breadcrumb .dropdown .bread-right i {
+  border: 1px solid black;
+  padding: 10px 12px;
+  border-radius: 25px;
+}
+
 @media only screen and (max-width: 800px) {
   #detailidol .idol-detail .detail-top .detail-background img {
     height: 550px;

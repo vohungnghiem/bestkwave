@@ -6,10 +6,38 @@
 @endsection
 @section('content')
 <section id="idol">
-    <nav aria-label="breadcrumb">
+    {{-- <nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 		  <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-laptop-house"></i> BEST IDOL</a></li>
 		</ol>
+	</nav> --}}
+    <nav id="breadcrumb" >
+		<ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="idol/statistic"><i class="fas fa-arrow-alt-circle-left"></i> BEST IDOL</a></li>
+		</ol>
+        @if(Auth::user())
+        <div class="dropdown">
+            <div class="bread-right " id="dropdownMenuButton" data-toggle="dropdown"> 
+                <span>{{Auth::user()->name}}</span> 
+                @if (Auth::user()->avatar != '')
+                    <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}"  onerror="this.onerror=null; this.src='public/home/image/non_avatar.png'">
+                @else
+                    <i class="far fa-user"></i>
+                @endif
+            </div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="logauth/info/{{Auth::user()->id}}"><i class="far fa-user"></i> Tên: {{Auth::user()->name}}</a>
+                <a class="dropdown-item" href="logauth/info/{{Auth::user()->id}}"><i class="fas fa-people-arrows"></i> Tài khoản: {{Auth::user()->provider}}</a>
+                <a class="dropdown-item" href="logauth/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+            </div>
+        </div>
+        @else
+        <div class="dropdown" data-toggle="modal" data-target="#loginModal">
+            <div  class="bread-right "> 
+                <span>Đăng nhập</span> <i class="far fa-user"></i>
+            </div>
+        </div>
+        @endif
 	</nav>
     <div class="row">
         <div class="col-md-8 col-12">
@@ -47,6 +75,7 @@
     <div id="mainvote" label="{{json_encode($mainvote)}}"></div>
 
 </section>
+@include('home.idol.modal')
 @endsection
 
 @push('javascript')
@@ -68,7 +97,6 @@
     var mainvote = $('#mainvote').attr('label');
     mainvote = mainvote.replace(/'/g, '"');
     mainvote = JSON.parse(mainvote);
-console.log(mainvote[5]);
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
