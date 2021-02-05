@@ -12,6 +12,8 @@
         <title>@yield('title')</title>
         <title>@yield('description')</title>
         <link rel="icon" href="public/uploads/logobg/logo.png" type="image/png" sizes="16x16">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=158121739091971&autoLogAppEvents=1" nonce="aLCPlLu9"></script>
         @stack('facescript')
         <link rel="stylesheet" href="public/home/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="public/home/style/index.css?v={{time()}}">

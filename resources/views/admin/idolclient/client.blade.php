@@ -67,6 +67,7 @@
                                         <th>Name</th>
                                         <th>Tài khoản</th>
                                         <th>Provider</th>
+                                        <th>Provider_id</th>
                                         <th>Phone</th>
                                         <th>Vote</th>
                                         <th>Like</th>
@@ -80,6 +81,7 @@
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->email}}</td>
                                         <td>{{$item->provider}}</td>
+                                        <td>{{$item->provider_id}}</td>
                                         <td>{{$item->phone}}</td>
                                         <td>{{$item->sumvote}}</td>
                                         <td>{{$item->sumlike}}</td>
@@ -97,6 +99,7 @@
                                         <th>Name</th>
                                         <th>Tài khoản</th>
                                         <th>Provider</th>
+                                        <th>Provider_id</th>
                                         <th>Phone</th>    
                                         <th>Vote</th>
                                         <th>Like</th>

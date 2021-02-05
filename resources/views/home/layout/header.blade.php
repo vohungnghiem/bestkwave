@@ -1,6 +1,6 @@
 @php
     $categories = DB::table('categories')->where([['parent',0],['status',1]])->orderBy('sort','asc')->orderBy('id','asc')->get();
-    $chunkcategories = $categories->chunk(4);
+    $chunkcategories = $categories->chunk(3);
     $emagazine = DB::table('informations')->where([['status',1],['type',5]])->first();
     $bestidol = DB::table('informations')->where([['status',1],['type',6]])->first();
 @endphp

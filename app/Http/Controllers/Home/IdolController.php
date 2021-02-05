@@ -20,26 +20,13 @@ class IdolController extends Controller
         $nickname = array();
         $idol_ids = array();
         $dateStart =  date("Y-m-d")."12:00:00";
-        // if (date('A') == "PM") {
-        //     $ab = DB::table('idols')
-        //         ->leftJoin('votes','votes.idol_id','=','idols.id')
-        //         ->whereDate('votes.date_id',date('Y-m-d'))
-        //         ->where('votes.created_at','>',date('Y-m-d H:i:s', strtotime($dateStart) ))
-        //         ->get();            
-        //     dd($ab);
-        // }
-        // else {
+     
             $arridol = DB::table('idols')
                 ->leftJoin('votes','votes.idol_id','=','idols.id')
-                ->whereDate('votes.date_id',date('Y-m-d'))
-                ->where('votes.created_at','<=',date('Y-m-d H:i:s', strtotime($dateStart) ))
-                // ->where('votes.vote',1)
-                ->select('idols.*',DB::raw('(CASE WHEN votes.vote = 1 THEN sum(votes.vote) ELSE 0 END) as sumvote'))
+                ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
                 ->orderBy('sumvote','desc')->limit(5)
                 ->groupBy('votes.idol_id')
                 ->get()->toArray();   
-            
-        // }
         foreach ($arridol as $key => $value) {
             array_push($nickname,$value->nickname);
             array_push($idol_ids,$value->id);
@@ -49,40 +36,45 @@ class IdolController extends Controller
             $date = date('d-m-Y',strtotime($i. " days"));
             array_push($label,$date, $date);
         }
+        if (date('A') == "AM") {
+            array_shift($label);
+        }
+        
+           
+
         foreach ($idol_ids as $key => $idol_id) {  
+            
             $vote = array();
             for ($i=0; $i >= -5 ; $i--) { 
-                $today_vote = DB::table('votes')
-                    ->whereDate('date_id',date('Y-m-d',strtotime($i. " days")))
+                $date_am = date('Y-m-d', strtotime($i. " days")). " 12:00:00";
+                $date_pm = date('Y-m-d', strtotime($i. " days")). " 23:59:59";
+                $today_vote_am = DB::table('votes')
                     ->where([['vote',1],['idol_id', $idol_id]])
-                    ->select( 
-                        DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "AM" THEN 1 END) AS dayam'), 
-                        DB::raw(' (CASE WHEN DATE_FORMAT(created_at,"%p") = "PM" THEN 1 END) AS daypm') 
-                    )
-                    ->get()->toArray();
+                    ->where('votes.created_at','<=',date('Y-m-d H:i:s', strtotime($date_am) ))
+                    ->count();
+                $today_vote_pm = DB::table('votes')
+                    ->where([['vote',1],['idol_id', $idol_id]])
+                    ->where('votes.created_at','<=',date('Y-m-d H:i:s', strtotime($date_pm) ))
+                    ->count();
 
-                    array_push($vote,array_sum(array_column($today_vote,'daypm')));
-                    array_push($vote,array_sum(array_column($today_vote,'dayam')));  
+                array_push($vote,$today_vote_pm);
+                array_push($vote,$today_vote_am);  
+            }
+            if (date('A') == 'AM') {
+               array_shift($vote);
             }
             array_push($mainvote,$vote);
         }
         
-        if (date('A') == "AM") {
-            array_shift($label);
-            array_shift($mainvote);
-        }
-
+        
         $lists = DB::table('idols')
             ->leftJoin('votes','votes.idol_id','=','idols.id')
             ->where('status',1)
-            ->select('idols.*',DB::raw('sum(votes.like) as sumlike'),DB::raw('sum(votes.vote) as sumvote'))
+            ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
             ->orderBy('sumvote','desc')->limit(50)
             ->groupBy('votes.idol_id')
             ->get();
-        
-        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname
-        // 'like'=>$like
-        ]);
+        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname ]);
     }
 
     public function ranking() 
@@ -170,7 +162,7 @@ class IdolController extends Controller
     {
         $count = DB::table('votes')->where([['user_id',Auth::user()->id]])->whereDate('date_id', date('Y-m-d'))->count();
         if ($count > 5) {
-            return redirect()->back()->with('error','Bạn đã hết lượt vào hôm nay !');
+            return redirect()->back()->with('error','Bạn đã hết lượt vote trong ngày hôm nay. Mời bạn quay lại vào ngày hôm sau nhé !');
         }
         $d = DB::table('votes')->where([['idol_id',$id],['user_id',Auth::user()->id]])->whereDate('date_id', date('Y-m-d'))->exists();
         if ($d) {
@@ -196,7 +188,7 @@ class IdolController extends Controller
     {
         $count = DB::table('votes')->where([['user_id',Auth::user()->id]])->whereDate('date_id', date('Y-m-d'))->count();
         if ($count > 5) {
-            return redirect()->back()->with('error','Bạn đã hết lượt vào hôm nay !');
+            return redirect()->back()->with('error','Bạn đã hết lượt vote trong ngày hôm nay. Mời bạn quay lại vào ngày hôm sau nhé !');
         }
         $d = DB::table('votes')->where([['idol_id',$id],['user_id',Auth::user()->id]])->whereDate('date_id', date('Y-m-d'))->exists();
         if ($d) {

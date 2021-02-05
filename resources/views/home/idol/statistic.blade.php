@@ -73,10 +73,6 @@ console.log(mainvote[5]);
         type: 'line',
         data: {
             labels: label, 
-                // [
-                // "today: PM", 'today: AM', 'yesterday: PM', 'yesterday: AM', 
-                // '2020.12.27: PM', '2020.12.27: AM', '2020.12.27: PM', '2020.12.27: AM',
-                // ],
             datasets: [
                 {
                     label: nickname[0],
@@ -103,7 +99,7 @@ console.log(mainvote[5]);
                     label: nickname[2],
                     data: mainvote[2],
                     backgroundColor: [
-                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 206, 86, 0)',
                     ],
                     borderColor: [
                         'rgba(255, 206, 86, 1)',
@@ -113,7 +109,7 @@ console.log(mainvote[5]);
                     label: nickname[3],
                     data: mainvote[3],
                     backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0)',
                     ],
                     borderColor: [
                         'rgba(75, 192, 192, 1)',
@@ -123,7 +119,7 @@ console.log(mainvote[5]);
                     label: nickname[4],
                     data: mainvote[4],
                     backgroundColor: [
-                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(153, 102, 255, 0)',
                     ],
                     borderColor: [
                         'rgba(153, 102, 255, 1)',

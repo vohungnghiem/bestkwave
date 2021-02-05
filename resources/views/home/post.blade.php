@@ -5,11 +5,13 @@
     @include('home.layout.header-two')
 @endsection
 @section('content')
+
 <div class="post" page="{{ $more->currentPage() }}" slug="{{$post->slug}}">
     <div class="post-wrapper">
         <div class="post-header">
             <div class="post-cat-title" @if($parentcat) urlpage="category/{{$parentcat->slug}}" @else urlpage="category/{{$post->slugcat}}" @endif> {{$post->titlecat}} | {{$post->date}} </div>
             <h1 class="post-title">{{$post->title}}</h1>
+            <div class="fb-like" data-href="https://bestkwave.com/{{$post->slug}}" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
             <div class="post-caption">{{$post->caption}}</div>
             <div class="hr-left"></div>
         </div>
