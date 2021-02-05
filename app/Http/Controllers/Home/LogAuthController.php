@@ -17,8 +17,14 @@ class LogAuthController extends Controller
             return redirect('idol/statistic');
         } else {
             $user = User::find($id);
-            $list = DB::table('votes')->paginate(9);
-            return view('home.idol.info',['user'=>$user]);
+            $lists = DB::table('votes')
+                ->leftJoin('idols','idols.id','=','votes.idol_id')
+                ->where('votes.user_id',$id)
+                ->orderBy('votes.created_at','desc')
+                ->select('votes.vote','votes.created_at as datevote','idols.*')
+                ->paginate(20);
+                // dd($lists);
+            return view('home.idol.info',['user'=>$user,'lists'=>$lists]);
         }   
     }
     public function changePassWord( Request $request, $id)

@@ -80,11 +80,34 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-12">
+        <div class="col-md-8 col-12">
             <div class="form-title text-center">
                 <h2 class="m-4">Xem lược sử vote</h2>
             </div>
-           
+            <table class="col-md-12 table-striped ">
+                <thead >
+                    <tr>
+                        <th width="10%">Hình</th>
+                        <th width="32%">Tên</th>
+                        <th width="30%" class="text-right">Ngày bỏ phiếu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($lists as $item)
+                    <tr>
+                        <td data-title="Hình" class="img-rank"><img height="50" src="public/uploads/idol/{{year($item->created_at)}}/{{month($item->created_at)}}/{{$item->avatar}}" alt=""></td>
+                        <td data-title="Tên"> {{$item->nickname}}</td>
+                        <td data-title="" class="text-right"><a href="idol/detail/{{$item->id}}" class="btn btn-sm btn-secondary">{{$item->datevote}}</a></td>
+                    </tr>	
+                    @endforeach
+                    
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example " >
+				<div class="pagination justify-content-center mt-3">
+				  {{ $lists->onEachSide(2)->links() }}
+				</div>
+			  </nav>
         </div>
     </div>
 </section>    
