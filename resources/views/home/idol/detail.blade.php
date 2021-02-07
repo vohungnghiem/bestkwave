@@ -36,7 +36,7 @@
         @endif
 	</nav>
     <div class="row idol-detail ">
-        <div class="col-12">
+        {{-- <div class="col-12">
             @if(Auth::user())
             <div class="float-left">
                 <h6>Tài khoản: {{Auth::user()->provider}}</h6>
@@ -44,7 +44,7 @@
             </div>
                 <a href="logauth/logout" class="btn btn-secondary btn-sm m-1 float-right">Đăng xuất</a>
             @endif
-        </div>
+        </div> --}}
         <div class="col-12">
             @if (session('success'))
                 <div class="alert alert-success">

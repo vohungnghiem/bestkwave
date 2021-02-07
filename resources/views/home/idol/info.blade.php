@@ -55,7 +55,7 @@
                 <h2 class="mt-4">Thông tin</h2>
             </div>
             <div class="row">
-                <div class="col-md-4 col-4"><img src="{{$user->avatar}}" onerror="this.onerror=null; this.src='public/home/image/non_avatar.png'" alt=""></div>
+                <div class="col-md-4 col-4" ><img style="max-width: 100px" src="{{$user->avatar}}" onerror="this.onerror=null; this.src='public/home/image/non_avatar.png'" alt=""></div>
                 <div class="col-md-8 col-8">
                     <p><i class="far fa-user"></i> : {{$user->name}}</p>
                     <p><i class="fas fa-people-arrows"></i> : {{Auth::user()->provider}}</p>
