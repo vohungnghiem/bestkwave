@@ -82,7 +82,7 @@
         </div>
         <div class="col-md-8 col-12">
             <div class="form-title text-center">
-                <h2 class="m-4">Xem lược sử vote</h2>
+                <h2 class="m-4">Xem lịch sử vote</h2>
             </div>
             <table class="col-md-12 table-striped ">
                 <thead >
