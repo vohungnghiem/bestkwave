@@ -19,14 +19,66 @@ class IdolController extends Controller
         $mainvote = array();
         $nickname = array();
         $idol_ids = array();
-        $dateStart =  date("Y-m-d")."12:00:00";
-     
-            $arridol = DB::table('idols')
-                ->leftJoin('votes','votes.idol_id','=','idols.id')
-                ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
-                ->orderBy('sumvote','desc')->limit(5)
-                ->groupBy('votes.idol_id')
-                ->get()->toArray();   
+        // label 5 name
+        $arridol = DB::table('idols')
+            ->leftJoin('votes','votes.idol_id','=','idols.id')
+            ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
+            ->orderBy('sumvote','desc')->limit(5)
+            ->groupBy('votes.idol_id')
+            ->get()->toArray();   
+        foreach ($arridol as $key => $value) {
+            array_push($nickname,$value->nickname);
+            array_push($idol_ids,$value->id);
+        }
+        // label ngày
+        for ($i=-7; $i <= 0 ; $i++) {
+            $date = date('d-m-Y',strtotime($i. " days"));
+            if ($i == -7) {
+                $date = "";
+            }
+            array_push($label,$date);
+        }
+        // line
+        foreach ($idol_ids as $key => $idol_id) {  
+            $vote = array();
+            for ($i=-7; $i <= 0 ; $i++) { 
+                $today_vote_am = DB::table('votes')
+                    ->where([['vote',1],['idol_id', $idol_id]])
+                    ->where('votes.created_at','<=',date('Y-m-d H:i:s', strtotime($i. " days") ))
+                    ->count();
+                if ($i == -7) {
+                    $today_vote_am = "0";
+                }
+                array_push($vote,$today_vote_am);  
+                
+            }
+            array_push($mainvote,$vote);
+        }
+        // list right
+        $lists = DB::table('idols')
+            ->leftJoin('votes','votes.idol_id','=','idols.id')
+            ->where('status',1)
+            ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
+            ->orderBy('sumvote','desc')->limit(50)
+            ->groupBy('votes.idol_id')
+            ->get();
+        return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname ]);
+    }
+    /*
+    public function index() 
+    {
+        $label = array();
+        
+        $mainvote = array();
+        $nickname = array();
+        $idol_ids = array();
+        // label name
+        $arridol = DB::table('idols')
+            ->leftJoin('votes','votes.idol_id','=','idols.id')
+            ->select('idols.*',DB::raw('sum(votes.vote) as sumvote'))
+            ->orderBy('sumvote','desc')->limit(5)
+            ->groupBy('votes.idol_id')
+            ->get()->toArray();   
         foreach ($arridol as $key => $value) {
             array_push($nickname,$value->nickname);
             array_push($idol_ids,$value->id);
@@ -39,11 +91,8 @@ class IdolController extends Controller
         if (date('A') == "AM") {
             array_shift($label);
         }
-        
-           
-
+        // line
         foreach ($idol_ids as $key => $idol_id) {  
-            
             $vote = array();
             for ($i=0; $i >= -5 ; $i--) { 
                 $date_am = date('Y-m-d', strtotime($i. " days")). " 12:00:00";
@@ -76,7 +125,7 @@ class IdolController extends Controller
             ->get();
         return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname ]);
     }
-
+    */
     public function ranking() 
     {
         $gender = isset($_GET['gender']) ? $_GET['gender'] : 1;
