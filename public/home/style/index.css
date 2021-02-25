@@ -1062,6 +1062,10 @@ a:hover {
   width: 100%;
 }
 
+#idol .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
 #idol .wrap-rank {
   height: 400px;
   overflow-y: auto;

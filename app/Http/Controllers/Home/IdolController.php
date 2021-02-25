@@ -12,10 +12,11 @@ use App\Models\Idol;
 use App\Models\Gallery;
 class IdolController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
+        $request->session()->put('backurlsocial', $request->path());
+
         $label = array();
-        
         $mainvote = array();
         $nickname = array();
         $idol_ids = array();
@@ -115,7 +116,6 @@ class IdolController extends Controller
             array_push($mainvote,$vote);
         }
         
-        
         $lists = DB::table('idols')
             ->leftJoin('votes','votes.idol_id','=','idols.id')
             ->where('status',1)
@@ -125,9 +125,13 @@ class IdolController extends Controller
             ->get();
         return view('home.idol.statistic',['lists'=>$lists,'label'=>$label,'mainvote'=>$mainvote,'nickname'=>$nickname ]);
     }
+<<<<<<< HEAD
     */
-    public function ranking() 
+
+    public function ranking(Request $request) 
     {
+        $request->session()->put('backurlsocial', $request->path());
+
         $gender = isset($_GET['gender']) ? $_GET['gender'] : 1;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $perpage = 20;
