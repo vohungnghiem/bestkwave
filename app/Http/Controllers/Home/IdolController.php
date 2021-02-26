@@ -33,7 +33,7 @@ class IdolController extends Controller
         }
         // label ngày
         for ($i=-7; $i <= 0 ; $i++) {
-            $date = date('d-m-Y',strtotime($i. " days"));
+            $date = date('d - m',strtotime($i. " days"));
             if ($i == -7) {
                 $date = "";
             }
