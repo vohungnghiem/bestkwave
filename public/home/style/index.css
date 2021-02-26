@@ -908,10 +908,10 @@ a:hover {
   font-weight: bold;
 }
 .post .post-wrapper .post-header .post-caption {
-  color: #808080;
+  color: black;
   padding-bottom: 1rem;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 500;
 }
 .post .post-wrapper .post-content {
   text-transform: none;
